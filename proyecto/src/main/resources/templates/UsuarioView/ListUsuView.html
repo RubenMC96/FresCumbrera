@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Usuario CRUD</title>
+  </head>
+  <body>
+    <h1>Listado de productos de la tienda</h1>
+    <table border="1px">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Fecha de registro</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="usuario : ${listausuario}">
+          <td th:text="${usuario.id}">Id</td>
+          <td th:text="${usuario.nombre}">Nombre</td>
+          <td th:text="${usuario.fecha}">Fecha</td>
+          <td>
+            <a th:href="@{/usuario/editar/{id}(id=${usuario.id})}"
+              >Editar</a
+            >
+          </td>
+          <td>
+            <a th:href="@{/usuario/borrar/{id}(id=${usuario.id})}"
+              >Borrar</a
+            >
+          </td>
+          <td>
+            <a th:href="@{/valoracion/usuario/{id}(id=${usuario.id})}"
+              >Valoraciones</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a th:href="@{/inicio}">Inicio</a><br />
+    <a th:href="@{/usuario/nuevo}">Nueva usuario</a><br />
+  </body>
+</html>

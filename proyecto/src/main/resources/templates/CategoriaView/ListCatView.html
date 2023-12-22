@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Categoria CRUD</title>
+  </head>
+  <body>
+    <h1>Listado de productos de la tienda</h1>
+    <table border="1px">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="categoria : ${listaCategoria}">
+          <td th:text="${categoria.id}">Id</td>
+          <td th:text="${categoria.nombre}">Nombre</td>
+          <td>
+            <a th:href="@{/categoria/editar/{id}(id=${categoria.id})}"
+              >Editar</a
+            >
+          </td>
+          <td>
+            <a th:href="@{/categoria/borrar/{id}(id=${categoria.id})}"
+              >Borrar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a th:href="@{/inicio}">Inicio</a><br />
+    <a th:href="@{/categoria/nuevo}">Nueva categoria</a><br />
+  </body>
+</html>

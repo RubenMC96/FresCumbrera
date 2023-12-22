@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/src/main/java/com/rmc/ejerciciosT6/controller/EmpleadoController.java"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Nueva valoracion</h1>
+    <form
+      method="post"
+      action="#"
+      th:action="@{/valoracion/nuevo/submit}"
+      th:object="${valoracionForm}"
+        >
+        <label>Id:<input type="text" id="id" th:field="*{id}" /> </label><br/>
+        <label
+            >Comentario: <input type="text" id="comentario" th:field="*{comentario}" /></label
+        ><br />
+        <label
+            >Fecha: <input type="date" id="fecha" th:field="*{fecha}" hidden/></label
+        ><br />
+        <input type="submit" value="Enviar" />
+    </form>
+    <a th:href="@{/valoracion/}">Inicio</a><br />
+  </body>
+</html>
