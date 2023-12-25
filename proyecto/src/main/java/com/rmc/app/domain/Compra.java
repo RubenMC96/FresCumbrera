@@ -1,5 +1,7 @@
 package com.rmc.app.domain;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,5 +19,7 @@ public class Compra {
     @Id
     @GeneratedValue
     private Long id;
-    private String nombre;
+    private String numFactura;
+    private LocalDate fechaFactura;
+
 }
