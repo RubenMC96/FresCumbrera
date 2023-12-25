@@ -10,7 +10,7 @@ import com.rmc.app.domain.Producto;
 public interface ProductoService {
     
     public Producto añadir(Producto producto);
-    public List<Producto> obteberLista();
+    public List<Producto> obtenerLista();
     public Producto obtenerPorId(long id);
     public Producto editar(Producto producto);
     public void borrar(Long id);

@@ -19,7 +19,7 @@ public class CategoriaServiceImp implements CategoriaService{
         catRepo.save(categoria);
         return categoria; // podría no devolver nada, o boolean, etc.
     }
-    public List<Categoria> obteberLista() {
+    public List<Categoria> obtenerLista() {
         return catRepo.findAll();
     }
     public Categoria obtenerPorId(long id) {

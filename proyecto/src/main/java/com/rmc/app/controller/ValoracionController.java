@@ -35,6 +35,7 @@ public class ValoracionController {
             return "valoracionView/ListValView";
         }
 
+        //Lista con las valoraciones que ha hecho el usuario
         @GetMapping({"/", "/valoracion/usuario/{idUsuario}"})
         public String showUsuario(@PathVariable long id, Model model){
             model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(id));

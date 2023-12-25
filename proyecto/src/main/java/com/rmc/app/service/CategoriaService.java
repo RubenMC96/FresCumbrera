@@ -10,7 +10,7 @@ import com.rmc.app.domain.Categoria;
 public interface CategoriaService {
     
     public Categoria añadir(Categoria categoria);
-    public List<Categoria> obteberLista();
+    public List<Categoria> obtenerLista();
     public Categoria obtenerPorId(long id);
     public Categoria editar(Categoria categoria);
     public void borrar(Long id);

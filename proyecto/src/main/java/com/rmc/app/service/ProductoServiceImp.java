@@ -22,7 +22,7 @@ public class ProductoServiceImp implements ProductoService{
         
         return proRepo.save(producto); // podría no devolver nada, o boolean, etc.
     }
-    public List<Producto> obteberLista() {
+    public List<Producto> obtenerLista() {
         return proRepo.findAll();
     }
     public Producto obtenerPorId(long id) {

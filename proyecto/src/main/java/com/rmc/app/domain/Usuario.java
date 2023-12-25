@@ -8,12 +8,16 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of ="id")
+@Getter
+@Setter
 @Entity
 public class Usuario {
     
@@ -24,6 +28,8 @@ public class Usuario {
     private String apellidos;
     private String email;
     private String dni;
+    private String nombreUsuario;
+    private String contrasena;
     private String telefono;
     private String calle;
     private String numero;
@@ -33,12 +39,20 @@ public class Usuario {
     private String direccion;
     private LocalDate fechaNacimiento;
 
+    public Usuario(String nombreUsuario, String contrasena){
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
+    }
+    
 
     public String getDireccion(){
  
         direccion = calle + numero + localidad + 
                     provincia + cp;
         return direccion;    
+    }
+    public String getContrasena (){
+        return contrasena;
     }
 
 }

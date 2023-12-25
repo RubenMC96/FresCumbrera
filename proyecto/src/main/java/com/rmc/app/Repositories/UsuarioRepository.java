@@ -1,14 +1,14 @@
 package com.rmc.app.Repositories;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.rmc.app.domain.Usuario_1;
+import com.rmc.app.domain.Usuario;
 
-public interface UsuarioRepository extends JpaRepository<Usuario_1, Long>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
    //public List <Usuario> findByUsuario (Usuario usuario); 
 
-   public Usuario_1 findByNombre(String nombre);
+   public Usuario findByNombre(String nombre);
+   public Boolean existsByEmail(String email);
+   public Usuario findByEmail(String email);
 } 

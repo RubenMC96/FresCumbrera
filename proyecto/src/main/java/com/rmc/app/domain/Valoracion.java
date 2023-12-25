@@ -1,6 +1,8 @@
 package com.rmc.app.domain;
 
 
+import java.time.LocalDate;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -24,6 +26,7 @@ public class Valoracion {
     private Long id;
     private String comentario;
     private Integer puntuacion;
+    private LocalDate fechaPublicacion;
     
 
     @ManyToOne

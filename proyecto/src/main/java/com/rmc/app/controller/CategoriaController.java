@@ -31,7 +31,7 @@ public class CategoriaController {
 
         @GetMapping({"/", "/list"})
         public String showList(Model model){
-            model.addAttribute("listaCategoria", categoriaService.obteberLista());
+            model.addAttribute("listaCategoria", categoriaService.obtenerLista());
             return "CategoriaView/ListCatView";
         }
         @GetMapping("/nuevo")

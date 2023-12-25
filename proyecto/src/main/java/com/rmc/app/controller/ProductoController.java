@@ -33,8 +33,8 @@ public class ProductoController {
 
     @GetMapping({"/", "/list"})
     public String showList(Model model){
-        model.addAttribute("listaProductos", productoService.obteberLista());
-        model.addAttribute("listaCategorias", categoriaService.obteberLista());
+        model.addAttribute("listaProductos", productoService.obtenerLista());
+        model.addAttribute("listaCategorias", categoriaService.obtenerLista());
         model.addAttribute("categoriaSeleccionada", new Categoria(0L,"Todas"));
         return "ProductosView/ListProducView";
     }
@@ -44,14 +44,14 @@ public class ProductoController {
             return "redirect:/producto/";
         }   
         model.addAttribute("listaProductos", productoService.findByCategory(idCat));
-        model.addAttribute("listaCategorias", categoriaService.obteberLista());
+        model.addAttribute("listaCategorias", categoriaService.obtenerLista());
         model.addAttribute("categoriaSeleccionada", categoriaService.obtenerPorId(idCat));
         return "ProductosView/ListProducView";
     }
     @GetMapping("/nuevo")
     public String showNuevo(Model model){
         model.addAttribute("productoForm", new Producto());
-        model.addAttribute("listaCategorias", categoriaService.obteberLista());
+        model.addAttribute("listaCategorias", categoriaService.obtenerLista());
         return "ProductosView/FormNew";
     }
     @PostMapping("/nuevo/submit")

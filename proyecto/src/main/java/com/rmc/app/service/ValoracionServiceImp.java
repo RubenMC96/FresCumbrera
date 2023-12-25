@@ -9,7 +9,7 @@ import com.rmc.app.Repositories.ProductoRepository;
 import com.rmc.app.Repositories.UsuarioRepository;
 import com.rmc.app.Repositories.ValoracionRepository;
 import com.rmc.app.domain.Producto;
-import com.rmc.app.domain.Usuario_1;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.domain.Valoracion;
 
 @Service
@@ -50,7 +50,7 @@ public class ValoracionServiceImp implements ValoracionService {
     }
     public List<Valoracion> obtenerPorUsuario(Long id){
 
-        Usuario_1 usuario = usuRepo.findById(id).orElse(null);
+        Usuario usuario = usuRepo.findById(id).orElse(null);
         if(usuario!= null){
             return valRepo.findByUsuario(usuario);
         }
