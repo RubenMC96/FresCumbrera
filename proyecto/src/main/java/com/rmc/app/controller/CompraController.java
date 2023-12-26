@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Compra;
 import com.rmc.app.service.CompraService;
-import com.rmc.app.service.ProductoService;
-
 import jakarta.validation.Valid;
 
 
@@ -26,8 +24,6 @@ public class CompraController {
 
     @Autowired
     public CompraService compraService;
-    @Autowired
-    public ProductoService productoService;
 
         @GetMapping({"/", "/list"})
         public String showList(Model model){
@@ -69,17 +65,6 @@ public class CompraController {
             // si no lo encuentra vuelve a la página de inicio.
             return "redirect:/compra/list";
         }
-
-        @GetMapping("/borrar/{id}")
-        public String showDelete(@PathVariable long id) {
-            if(productoService.findByCategory(id).size() == 0){
-                compraService.borrar(id);
-                return "redirect:/compra/list";
-            }
-            return "redirect:/compra/";
-            
-        }
-
 
     
 }
