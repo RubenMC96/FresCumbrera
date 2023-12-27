@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 
 import com.rmc.app.domain.Categoria;
 import com.rmc.app.domain.Producto;
-import com.rmc.app.domain.TipoIva;
 import com.rmc.app.service.CategoriaService;
 import com.rmc.app.service.ProductoService;
 
@@ -22,9 +21,10 @@ public class AppApplication {
 	public CommandLineRunner initData(CategoriaService categoriaService, ProductoService productoService) {
 
 		return args -> {
-			categoriaService.añadir(new Categoria(0L, "Ordenadores"));
-			categoriaService.añadir(new Categoria(0L, "Bombillas"));
-			productoService.añadir(new Producto(1L,"HP invictus",true,TipoIva.NORMAL,1000D,categoriaService.obtenerPorNombre("Ordenadores")));
+			categoriaService.añadir(new Categoria(0L, "Frutas"));
+			categoriaService.añadir(new Categoria(0L, "Preparados"));
+			productoService.añadir(new Producto(1L,"Fresas",true,3D,"Huelva",categoriaService.obtenerPorNombre("Fruta")));
+			productoService.añadir(new Producto(1L,"Batidos",true,10D,"España",categoriaService.obtenerPorNombre("Preparados")));
 		};
 	}
 

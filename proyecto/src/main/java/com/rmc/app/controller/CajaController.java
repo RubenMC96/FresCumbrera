@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Caja;
 import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CajaService;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.ProductoService;
+import com.rmc.app.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
@@ -32,10 +34,14 @@ public class CajaController {
     public ProductoService productoService;
     @Autowired
     public CajaService cajaService;
+    @Autowired
+    public UsuarioService usuarioService;
 
-        @GetMapping({"/", "/list"})
-        public String showList(Model model){
-            model.addAttribute("listaCaja", cajaService.obtenerLista());
+        @GetMapping({"/list/{id}"})
+        public String showList(@PathVariable long id , Model model){
+            Usuario usuario = usuarioService.obtenerPorId(id);
+            Caja caja = cajaService.obtenerPorUsuario(usuario);
+            model.addAttribute("listaCaja", caja);
             return "cajaView/ListCajaView";
         }
         @GetMapping("/annadir/{id}")

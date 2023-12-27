@@ -76,5 +76,7 @@ public class CajaServiceImp implements CajaService{
             cajaRepository.deleteAll();
     }
 
-    
+    public Caja obtenerPorUsuario(Usuario usuario){
+        return cajaRepository.findByUsuario(usuario);
+    }
 }

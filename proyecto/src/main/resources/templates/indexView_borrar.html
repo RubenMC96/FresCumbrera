@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" type="text/css" th:href="/@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+<!-- JS de Bootstrap -->
+    <script type="text/javascript" th:src="/@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <a th:href="@{/producto/}"><button>Productos</button></a>
+      <a th:href="@{/categoria/}"><button>Categorias</button></a>
+    </header>
+
+    <div class="container">
+      <header>
+          <a th:href="@{/inicio}">
+            <img src="RUTA_IMAGEN" alt="Logo">
+         </a>         
+        <h1>FresCumbrera</h1></header>
+      <div class="main-content">
+        <nav>
+          <ul>
+            <li class="menu">menu 1</li>
+            <li class="menu">menu 2</li>
+            <li class="menu">menu 3</li>
+          </ul>
+        </nav>
+        <main>
+          <div class="cuerpo">
+            <p><b>Loren Ipsum</b></p>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
+              nulla quidem harum vel magnam laudantium aperiam earum animi eius
+              sint, veniam cumque! Tempora eius itaque excepturi ut earum
+              corporis quasi?
+            </p>
+          </div>
+        </main>
+        <aside>
+          <div class="fondo">
+            <div class="grupo">
+              <p><b>Seccion 1</b></p>
+              <p class="pequeño">Lorem Ipsum</p>
+            </div>
+            <div class="grupo">
+              <p><b>Seccion 2</b></p>
+              <p class="pequeño">Lorem Ipsum</p>
+            </div>
+            <div class="grupo">
+              <p><b>Seccion 3</b></p>
+              <p class="pequeño">Lorem Ipsum</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <footer>
+        <p>Footer</p>
+      </footer>
+    </div>
+  </body>
+</html>
+

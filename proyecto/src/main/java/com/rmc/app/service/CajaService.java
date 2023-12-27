@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.rmc.app.domain.Caja;
+import com.rmc.app.domain.Usuario;
 
 @Service
 public interface CajaService {
@@ -15,5 +16,6 @@ public interface CajaService {
     public void annadir(Long usuarioId, Long productoId);
     public void borrar(Long id);
     public void borrarTodo();
+    public Caja obtenerPorUsuario(Usuario usuario);
     
 }

@@ -1,0 +1,32 @@
+body {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .cuerpo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    height: 50px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+  
+  
+  /* Media Queries para dispositivos móviles
+  @media screen and (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+  
+    aside,
+    main,
+    nav {
+      width: 100%;
+    }
+  }
+   */
