@@ -25,16 +25,6 @@
           th:field="*{oferta}"
         /> </label
       ><br />
-      Tipo Iva:<br />
-      <div th:each="iva : ${T(com.rmc.app.domain.TipoIva).values()}">
-        <input
-          type="radio"
-          name="button1"
-          th:value="${iva}"
-          th:text="${iva}"
-          th:field="*{tipoIva}"
-        />
-      </div>
       <label> Precio:<input type="text" th:field="*{precio}" /> </label><br />
       <label
         >Categoria

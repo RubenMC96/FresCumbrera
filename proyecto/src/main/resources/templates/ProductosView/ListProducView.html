@@ -31,7 +31,6 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>En oferta</th>
-          <th>Tipo Iva</th>
           <th>Precio</th>
           <th>Editar</th>
           <th>Borrar</th>
@@ -44,7 +43,6 @@
           <td th:text="${producto.id}">Id</td>
           <td th:text="${producto.nombre}">Nombre</td>
           <td th:text="${producto.oferta}">¿Oferta?</td>
-          <td th:text="${producto.tipoIva}">IVA</td>
           <td th:text="${producto.precio}">Precio</td>
           <td><a th:href="@{/producto/editar/{id}(id=${producto.id})}">Editar</a></td>
           <td><a th:href="@{/producto/borrar/{id}(id=${producto.id})}">Borrar</a></td>
