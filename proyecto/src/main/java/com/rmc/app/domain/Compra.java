@@ -2,9 +2,13 @@ package com.rmc.app.domain;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,4 +26,7 @@ public class Compra {
     private String numFactura;
     private LocalDate fechaFactura;
 
+    @ManyToOne
+    @OnDelete(action=OnDeleteAction.CASCADE)
+    private Usuario usuario;
 }
