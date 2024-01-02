@@ -20,9 +20,7 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-    
-    @Autowired
-    Usuario usuario;
+
     @Autowired
     UsuarioService usuarioService;
     @Autowired
@@ -57,7 +55,7 @@ public class UsuarioController {
     public String showEditUsuario(@PathVariable long id, Model model){
         
 
-        usuario = usuarioService.obtenerPorId(id);
+        Usuario usuario = usuarioService.obtenerPorId(id);
         if(usuario != null){
             model.addAttribute("usuarioForm", usuario);
             return "UsuarioView/usuarioEdit";

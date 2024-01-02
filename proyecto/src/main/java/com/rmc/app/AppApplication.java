@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.rmc.app.domain.Categoria;
 import com.rmc.app.domain.Producto;
@@ -27,5 +28,11 @@ public class AppApplication {
 			productoService.añadir(new Producto(1L,"Batidos",true,10D,"España",categoriaService.obtenerPorNombre("Preparados")));
 		};
 	}
+
+	@Bean
+		public BCryptPasswordEncoder passwordEncoder() {
+   		return new BCryptPasswordEncoder();
+	}
+
 
 }

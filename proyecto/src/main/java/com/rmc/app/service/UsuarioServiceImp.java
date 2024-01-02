@@ -13,10 +13,11 @@ import com.rmc.app.domain.Usuario;
 public class UsuarioServiceImp implements UsuarioService{
     @Autowired
     UsuarioRepository usuarioRepository;
-    @Autowired
-    Usuario usuario;
-    @Autowired
+    
     private BCryptPasswordEncoder passwordEncoder;
+    public UsuarioServiceImp(BCryptPasswordEncoder passwordEncoder) {
+      this.passwordEncoder = passwordEncoder;
+    }
 
     public Boolean añadir(Usuario usuario){
 
@@ -30,7 +31,7 @@ public class UsuarioServiceImp implements UsuarioService{
 
     }
     public void borrar(Long id){
-        usuario = usuarioRepository.findById(id).orElse(null);
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
         if(usuario != null){
             usuarioRepository.delete(usuario);
         }
@@ -47,7 +48,7 @@ public class UsuarioServiceImp implements UsuarioService{
 
     }
     public Usuario obtenerPorId(Long id){
-        usuario = usuarioRepository.findById(id).orElse(null);
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
         if(usuario != null){
             return usuario;
         }
@@ -60,7 +61,7 @@ public class UsuarioServiceImp implements UsuarioService{
 
     }
     public Usuario obtenerUsuario(Long id){
-        usuario = usuarioRepository.findById(id).orElse(null);
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
         if(usuario != null){
             return usuario;
         }
