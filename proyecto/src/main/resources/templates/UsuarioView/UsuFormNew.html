@@ -18,9 +18,11 @@
         <label
             >Nombre: <input type="text" id="nombre" th:field="*{nombre}" /></label
         ><br />
-        <label
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <!-- <label
             >Fecha de registro: <input type="date" id="fecha" th:field="*{fecha}" hidden/></label
-        ><br />
+        ><br /> -->
         <input type="submit" value="Enviar" />
     </form>
     <a th:href="@{/usuario/}">Inicio</a><br />

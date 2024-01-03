@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
      @GetMapping({"/","/inicio"})
     public String showInicio(){
-        return "indexView";
+        return "Generales/indexView";
     }
 }

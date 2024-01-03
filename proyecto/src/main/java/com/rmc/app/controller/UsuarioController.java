@@ -31,16 +31,16 @@ public class UsuarioController {
     @GetMapping("/list")
     public String showUsuarios(Model model){
         model.addAttribute("listaUsuarios", usuarioService.obtenerLista());//Fallos porque aun no exite
-        return "UsuarioView/usuarioList";
+        return "UsuarioView/ListUsuView";
     }
 
     @GetMapping("/nuevo")
     public String showNewUsuario(Model model){
         model.addAttribute("usuarioForm", new Usuario());
-        return "UsuarioView/usuarioNew";
+        return "UsuarioView/UsuFormNew";
     }
 
-    @GetMapping("/nuevo/submit")
+    @PostMapping("/nuevo/submit")
     public String showNewSubmitUsuario(@Valid Usuario usuarioForm, BindingResult bindingResult){
 
         if(bindingResult.hasErrors())
@@ -65,7 +65,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("editar/submit")
+    @PostMapping("editar/submit")
     private String showEditSubmitUsuario(@Valid Usuario usuarioForm, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "redirect:/usuario/nuevo";
