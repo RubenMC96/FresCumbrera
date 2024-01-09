@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Compra;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
+import com.rmc.app.service.UsuarioService;
+
 import jakarta.validation.Valid;
 
 
@@ -24,10 +27,19 @@ public class CompraController {
 
     @Autowired
     public CompraService compraService;
+    @Autowired
+    public UsuarioService usuarioService;
 
         @GetMapping({"/", "/list"})
         public String showList(Model model){
             model.addAttribute("listacompra", compraService.obtenerLista());
+            return "compraView/ListCatView";
+        }
+        @GetMapping({"/pedidos"})
+        public String showPedidos(@PathVariable Long id , Model model){
+            Usuario usuario = usuarioService.obtenerPorId(id);
+            Compra compra = compraService.obtenerPorUsuario(usuario);
+            model.addAttribute("listacompra", compraService.obtenerPedidos(compra));
             return "compraView/ListCatView";
         }
         @GetMapping("/nuevo")

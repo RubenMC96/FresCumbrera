@@ -12,6 +12,7 @@ public interface CompraService {
     
     public Compra añadir(Compra Compra);
     public List<Compra> obtenerLista();
+    public List<Compra> obtenerPedidos(Compra compra);
     public Compra obtenerPorId(long id);
     public Compra editar(Compra Compra);
     public void borrar(Long id);

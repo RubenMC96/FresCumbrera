@@ -1,7 +1,5 @@
 package com.rmc.app.domain;
 
-import java.time.LocalDate;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -23,13 +21,17 @@ public class Caja {
     @Id
     @GeneratedValue
     private Long id;
-    private Integer totalProductos;
-    private Integer numProductos;
-    private LocalDate fechaFactura;
+    private Integer cantidadProductos;
+
+    public Caja(Producto producto, Integer cantidadProducto){
+
+        this.producto = producto;
+        this.cantidadProductos = cantidadProducto;
+    }
 
     @ManyToOne
     @OnDelete(action=OnDeleteAction.CASCADE)
-    private Usuario usuario;
+    private Compra compra;
     
     @ManyToOne
     @OnDelete(action=OnDeleteAction.CASCADE)

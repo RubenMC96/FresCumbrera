@@ -25,6 +25,8 @@ public class Compra {
     private Long id;
     private String numFactura;
     private LocalDate fechaFactura;
+    private Integer totalProductos;
+    private Double importe;
 
     @ManyToOne
     @OnDelete(action=OnDeleteAction.CASCADE)

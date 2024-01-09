@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Caja;
+import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.Producto;
-import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CajaService;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.ProductoService;
@@ -39,16 +39,17 @@ public class CajaController {
 
         @GetMapping({"/list/{id}"})
         public String showList(@PathVariable long id , Model model){
-            Usuario usuario = usuarioService.obtenerPorId(id);
-            Caja caja = cajaService.obtenerPorUsuario(usuario);
+            Compra compra = compraService.obtenerPorId(id);
+            Caja caja = cajaService.obtenerPorCompra(compra);
             model.addAttribute("listaCaja", caja);
             return "cajaView/ListCajaView";
         }
         @GetMapping("/annadir/{id}")
-        public String showAñadir(@PathVariable long usuarioId, @PathVariable long productoId ,Model model){
+        public String showAñadir(@PathVariable long productoId, @PathVariable Integer cantidadProductos ,Model model){
             Producto producto = productoService.obtenerPorId(productoId);
-            cajaService.annadir(usuarioId, productoId);
+            cajaService.annadir(productoId, cantidadProductos);
             model.addAttribute("cajaForm", producto);
+            model.addAttribute("cantidad", cantidadProductos);
             return "redirect:/caja/list";
         }
         @PostMapping("/editar/submit")
