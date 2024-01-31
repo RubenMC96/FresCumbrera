@@ -1,7 +1,5 @@
 package com.rmc.app.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +15,8 @@ import com.rmc.app.service.ValoracionService;
 
 import jakarta.validation.Valid;
 
-
-
-
 @Controller
-@RequestMapping("/valoracion") 
+@RequestMapping("/valoracion")
 public class ValoracionController {
 
     @Autowired
@@ -29,64 +24,66 @@ public class ValoracionController {
     @Autowired
     public ProductoService productoService;
 
-        @GetMapping({"/", "/producto/{idProd}"})
-        public String showProducto(@PathVariable long id, Model model){
-            model.addAttribute("listaValoracion", valoracionService.obtenerPorProducto(id));
-            return "valoracionView/ListValView";
-        }
+    @GetMapping({ "/", "/list", "/producto/{idProd}" })
+    public String showProducto(@PathVariable long idProd, Model model) {
+        model.addAttribute("listaValoracion", valoracionService.obtenerPorProducto(idProd));
+        return "valoracionView/ListValView";
+    }
 
-        //Lista con las valoraciones que ha hecho el usuario
-        @GetMapping({"/", "/usuario/{idUsuario}"})
-        public String showUsuario(@PathVariable long id, Model model){
-            model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(id));
-            return "ValoracionView/ListValView";
-        }
-        @GetMapping("/nuevo")
-        public String showNuevo(Model model){
-            model.addAttribute("valoracionForm", new Valoracion());
-            return "valoracionView/ValFormNew";
-        }
-        @PostMapping("/nuevo/submit")
-        public String showNuevoSubmit (
-            @Valid Valoracion valoracionForm,
-            BindingResult bindingResult){
-                if(bindingResult.hasErrors())
-                    return "redirect:/valoracion/nuevo";
-                valoracionService.añadir(valoracionForm);
-                    return "redirect:/valoracion/list";
-        }
-        @PostMapping("/editar/submit")
-        public String showEditSubmit (
-            @Valid Valoracion valoracionForm,
-            BindingResult bindingResult){
-                if(bindingResult.hasErrors())
-                    return "redirect:/valoracion/editar/{id}";
-                valoracionService.editar(valoracionForm);
-                    return "redirect:/valoracion/list";
-        }
+    // Lista con las valoraciones que ha hecho el usuario
+    @GetMapping({ "/", "/usuario/{idUsuario}" })
+    public String showUsuario(@PathVariable long idUsuario, Model model) {
+        model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(idUsuario));
+        return "ValoracionView/ListValView";
+    }
 
-        @GetMapping("/editar/{id}")
-        public String showEditForm(@PathVariable long id, Model model) {
-            Valoracion valoracion = valoracionService.obtenerPorId(id);
-            // el commandobject del formulario es el empleado con el id solicitado
-            if (valoracion != null) {
-                model.addAttribute("ValoracionForm", valoracion);
-                return "valoracionView/ValFormEdit";
-            }
-            // si no lo encuentra vuelve a la página de inicio.
+    @GetMapping("/nuevo")
+    public String showNuevo(Model model) {
+        model.addAttribute("valoracionForm", new Valoracion());
+        model.addAttribute("listaProductos", productoService.obtenerLista());
+        return "valoracionView/ValFormNew";
+    }
+
+    @PostMapping("/nuevo/submit")
+    public String showNuevoSubmit(
+            @Valid Valoracion valoracionForm,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "redirect:/valoracion/nuevo";
+        valoracionService.añadir(valoracionForm);
+        return "redirect:/valoracion/list";
+    }
+
+    @PostMapping("/editar/submit")
+    public String showEditSubmit(
+            @Valid Valoracion valoracionForm,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "redirect:/valoracion/editar/{id}";
+        valoracionService.editar(valoracionForm);
+        return "redirect:/valoracion/list";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String showEditForm(@PathVariable long id, Model model) {
+        Valoracion valoracion = valoracionService.obtenerPorId(id);
+        // el commandobject del formulario es el empleado con el id solicitado
+        if (valoracion != null) {
+            model.addAttribute("ValoracionForm", valoracion);
+            return "valoracionView/ValFormEdit";
+        }
+        // si no lo encuentra vuelve a la página de inicio.
+        return "redirect:/valoracion/list";
+    }
+
+    @GetMapping("/borrar/{id}")
+    public String showDelete(@PathVariable long id) {
+        if (productoService.findByCategory(id).size() == 0) {
+            valoracionService.borrar(id);
             return "redirect:/valoracion/list";
         }
+        return "redirect:/valoracion/";
 
-        @GetMapping("/borrar/{id}")
-        public String showDelete(@PathVariable long id) {
-            if(productoService.findByCategory(id).size() == 0){
-                valoracionService.borrar(id);
-                return "redirect:/valoracion/list";
-            }
-            return "redirect:/valoracion/";
-            
-        }
+    }
 
-
-    
 }

@@ -1,7 +1,5 @@
 package com.rmc.app.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +16,8 @@ import com.rmc.app.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
-
-
-
 @Controller
-@RequestMapping("/compra") 
+@RequestMapping("/compra")
 public class CompraController {
 
     @Autowired
@@ -30,52 +25,55 @@ public class CompraController {
     @Autowired
     public UsuarioService usuarioService;
 
-        @GetMapping({"/", "/list"})
-        public String showList(Model model){
-            model.addAttribute("listacompra", compraService.obtenerTodos());
-            return "compraView/ListCatView";
-        }
-        @GetMapping({"/usuario/{id}"})
-        public String showPedidos(@PathVariable Long id , Model model){
-            Usuario usuario = usuarioService.obtenerPorId(id);
-            model.addAttribute("listacompra", compraService.obtenerPorUsuario(usuario));
-            return "compraView/ListCompraView";
-        }
-        @GetMapping("/nuevo")
-        public String showNuevo(Model model){
-            model.addAttribute("compraForm", new Compra());
-            return "compraView/CatFormNew";
-        }
-        @PostMapping("/nuevo/submit")
-        public String showNuevoSubmit (
-            @Valid Compra compraForm,
-            BindingResult bindingResult){
-                if(bindingResult.hasErrors())
-                    return "redirect:/compra/nuevo";
-                compraService.añadir(compraForm);
-                    return "redirect:/compra/list";
-        }
-        @PostMapping("/editar/submit")
-        public String showEditSubmit (
-            @Valid Compra compraForm,
-            BindingResult bindingResult){
-                if(bindingResult.hasErrors())
-                    return "redirect:/compra/editar/{id}";
-                compraService.editar(compraForm);
-                    return "redirect:/compra/list";
-        }
+    @GetMapping({ "/", "/list" })
+    public String showList(Model model) {
+        model.addAttribute("listaCompra", compraService.obtenerTodos());
+        return "CompraView/ListCompraView";
+    }
 
-        @GetMapping("/editar/{id}")
-        public String showEditForm(@PathVariable long id, Model model) {
-            Compra compra = compraService.obtenerPorId(id);
-            // el commandobject del formulario es el empleado con el id solicitado
-            if (compra != null) {
-                model.addAttribute("compraForm", compra);
-                return "compraView/CatFormEdit";
-            }
-            // si no lo encuentra vuelve a la página de inicio.
-            return "redirect:/compra/list";
-        }
+    @GetMapping({ "/usuario/{id}" })
+    public String showPedidos(@PathVariable Long id, Model model) {
+        Usuario usuario = usuarioService.obtenerPorId(id);
+        model.addAttribute("listacompra", compraService.obtenerPorUsuario(usuario));
+        return "CompraView/ListCompraView";
+    }
 
-    
+    @GetMapping("/nuevo")
+    public String showNuevo(Model model) {
+        compraService.añadir();
+        return "redirect:/compra/list";
+    }
+
+    // @PostMapping("/nuevo/submit")
+    // public String showNuevoSubmit(
+    // @Valid Compra compraForm,
+    // BindingResult bindingResult) {
+    // if (bindingResult.hasErrors())
+    // return "redirect:/compra/nuevo";
+    // compraService.añadir(compraForm);
+    // return "redirect:/compra/list";
+    // }
+
+    @PostMapping("/editar/submit")
+    public String showEditSubmit(
+            @Valid Compra compraForm,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "redirect:/compra/editar/{id}";
+        compraService.editar(compraForm);
+        return "redirect:/compra/list";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String showEditForm(@PathVariable long id, Model model) {
+        Compra compra = compraService.obtenerPorId(id);
+        // el commandobject del formulario es el empleado con el id solicitado
+        if (compra != null) {
+            model.addAttribute("compraForm", compra);
+            return "CompraView/CompraFormEdit";
+        }
+        // si no lo encuentra vuelve a la página de inicio.
+        return "redirect:/compra/list";
+    }
+
 }

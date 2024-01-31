@@ -17,23 +17,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-public class Caja {
+public class LineaProducto {
     @Id
     @GeneratedValue
     private Long id;
     private Integer cantidadProductos;
 
-    public Caja(Producto producto, Integer cantidadProducto){
+    public LineaProducto(Producto producto, Integer cantidadProducto) {
 
         this.producto = producto;
         this.cantidadProductos = cantidadProducto;
     }
 
     @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Compra compra;
-    
+
     @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Producto producto;
 }

@@ -17,12 +17,12 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of ="id")
+@EqualsAndHashCode(of = "id")
 @Getter
 @Setter
 @Entity
 public class Usuario {
-    
+
     @Id
     @GeneratedValue
     private Long id;
@@ -32,22 +32,16 @@ public class Usuario {
     private String nombreUsuario;
     private String password;
     private String telefono;
-   
 
-    public Usuario(String nombreUsuario, String contrasena){
+    // Borrar
+    public Usuario(String nombreUsuario, String contrasena) {
         this.nombreUsuario = nombreUsuario;
         this.password = contrasena;
     }
-    
 
-    public String getContrasena (){
+    // Borrar
+    public String getContrasena() {
         return password;
     }
 
-    @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
-    private Compra compra;
 }
-
-
-

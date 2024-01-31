@@ -24,11 +24,11 @@ public class Compra {
     @GeneratedValue
     private Long id;
     private String numFactura;
-    private LocalDate fechaFactura;
+    private LocalDate fechaCompra;
     private Integer totalProductos;
     private Double importe;
 
     @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 }

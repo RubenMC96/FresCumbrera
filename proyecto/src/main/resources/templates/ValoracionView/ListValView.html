@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Listado de valoraciones de los productos</h1>
     <table border="1px">
       <thead>
@@ -19,7 +19,7 @@
       </thead>
 
       <tbody>
-        <tr th:each="valoracion : ${listavaloraciones}">
+        <tr th:each="valoracion : ${listaValoracion}">
           <td th:text="${valoracion.id}">Id</td>
           <td th:text="${producto.nombre}">Nombre</td>
           <td th:text="${valoracion.comentario}">Comentario</td>
@@ -40,5 +40,5 @@
     </table>
     <a th:href="@{/inicio}">Inicio</a><br />
     <a th:href="@{/valoracion/nuevo}">Nueva valoracion</a><br />
-</body>
+  </body>
 </html>
