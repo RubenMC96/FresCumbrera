@@ -14,12 +14,24 @@
       th:action="@{/usuario/editar/submit}"
       th:object="${usuarioForm}"
         >
-        <label>Id:<input type="text" readonly id="id" th:field="*{id}" /> </label><br/>
+        <label>Id:<input type="text" id="id" th:field="*{id}" /> </label><br/>
         <label
             >Nombre: <input type="text" id="nombre" th:field="*{nombre}" /></label
         ><br />
         <label
-            >Fecha: <input type="date" id="fecha" th:field="*{fecha}" readonly/></label
+            >Apellidos: <input type="text" id="apellidos" th:field="*{apellidos}" /></label
+        ><br />
+        <label
+            >Email: <input type="text" id="email" th:field="*{email}" /></label
+        ><br />
+        <label
+            >Nombre de usuario: <input type="text" id="nombreUsuario" th:field="*{nombreUsuario}" /></label
+        ><br />
+        <label
+            >Contraseña: <input type="password" id="password" th:field="*{password}" /></label
+        ><br />
+        <label
+            >Telefono: <input type="nunber" id="telefono" th:field="*{telefono}" /></label
         ><br />
         <input type="submit" value="Enviar" />
     </form>

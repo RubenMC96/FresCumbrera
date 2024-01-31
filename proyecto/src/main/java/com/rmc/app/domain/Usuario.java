@@ -1,7 +1,5 @@
 package com.rmc.app.domain;
 
-import java.time.LocalDate;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -31,32 +29,19 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String email;
-    private String dni;
     private String nombreUsuario;
-    private String contrasena;
+    private String password;
     private String telefono;
-    private String calle;
-    private String numero;
-    private String localidad;
-    private String provincia;
-    private Long cp;
-    private String direccion;
-    private LocalDate fechaNacimiento;
+   
 
     public Usuario(String nombreUsuario, String contrasena){
         this.nombreUsuario = nombreUsuario;
-        this.contrasena = contrasena;
+        this.password = contrasena;
     }
     
 
-    public String getDireccion(){
- 
-        direccion = calle + numero + localidad + 
-                    provincia + cp;
-        return direccion;    
-    }
     public String getContrasena (){
-        return contrasena;
+        return password;
     }
 
     @ManyToOne

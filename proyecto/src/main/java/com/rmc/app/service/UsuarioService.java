@@ -10,15 +10,10 @@ import com.rmc.app.domain.Usuario;
 public interface UsuarioService {
 
    
-    public Boolean añadir(Usuario usuario);
+    public Usuario añadir(Usuario usuario);
     public void borrar(Long id);
-    public Boolean editar (Usuario usuario);
+    public Usuario editar (Usuario usuario);
     public Usuario obtenerPorId(Long id);
     public List<Usuario> obtenerLista();
     public Usuario obtenerUsuario(Long id);
-    public void crearUsuario(String username, String password);
-    public Boolean existeUsuario(String email);
-    public Usuario obtenerPorEmail(String email);
-
-
 }

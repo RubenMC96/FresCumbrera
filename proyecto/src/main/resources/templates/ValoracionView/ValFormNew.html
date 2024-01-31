@@ -16,6 +16,16 @@
         >
         <label>Id:<input type="text" id="id" th:field="*{id}" /> </label><br/>
         <label
+        >Productos
+        <select name="productos" th:field="*{productos}">
+          <option
+            th:each="prod : ${listaProductos}"
+            th:value="${prod.id}"
+            th:text="${prod.nombre}"
+          ></option>
+        </select> </label
+      ><br />
+        <label
             >Comentario: <input type="text" id="comentario" th:field="*{comentario}" /></label
         ><br />
         <label

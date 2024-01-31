@@ -29,17 +29,17 @@ public class ValoracionController {
     @Autowired
     public ProductoService productoService;
 
-        @GetMapping({"/", "/valoracion/producto/{idProd}"})
+        @GetMapping({"/", "/producto/{idProd}"})
         public String showProducto(@PathVariable long id, Model model){
             model.addAttribute("listaValoracion", valoracionService.obtenerPorProducto(id));
             return "valoracionView/ListValView";
         }
 
         //Lista con las valoraciones que ha hecho el usuario
-        @GetMapping({"/", "/valoracion/usuario/{idUsuario}"})
+        @GetMapping({"/", "/usuario/{idUsuario}"})
         public String showUsuario(@PathVariable long id, Model model){
             model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(id));
-            return "valoracionView/ListValView";
+            return "ValoracionView/ListValView";
         }
         @GetMapping("/nuevo")
         public String showNuevo(Model model){

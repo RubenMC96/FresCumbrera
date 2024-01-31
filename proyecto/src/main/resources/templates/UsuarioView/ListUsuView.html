@@ -13,7 +13,10 @@
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Fecha de registro</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Nombre Usuario</th>
+          <th>Telefono</th>
         </tr>
       </thead>
 
@@ -21,7 +24,11 @@
         <tr th:each="usuario : ${listaUsuarios}">
           <td th:text="${usuario.id}">Id</td>
           <td th:text="${usuario.nombre}">Nombre</td>
-          <td th:text="${usuario.fecha}">Fecha</td>
+          <td th:text="${usuario.apellidos}">Apellidos</td>
+          <td th:text="${usuario.email}">Email</td>
+          <td th:text="${usuario.nombreUsuario}">Nombre Usuario</td>
+          <td th:text="${usuario.password}" hidden></td>
+          <td th:text="${usuario.telefono}">Telefono</td>
           <td>
             <a th:href="@{/usuario/editar/{id}(id=${usuario.id})}"
               >Editar</a
@@ -35,6 +42,11 @@
           <td>
             <a th:href="@{/valoracion/usuario/{id}(id=${usuario.id})}"
               >Valoraciones</a
+            >
+          </td>
+          <td>
+            <a th:href="@{/compra/usuario/{id}(id=${usuario.id})}"
+              >Compras</a
             >
           </td>
         </tr>

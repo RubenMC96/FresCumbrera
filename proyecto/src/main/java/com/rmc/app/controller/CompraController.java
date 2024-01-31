@@ -32,15 +32,14 @@ public class CompraController {
 
         @GetMapping({"/", "/list"})
         public String showList(Model model){
-            model.addAttribute("listacompra", compraService.obtenerLista());
+            model.addAttribute("listacompra", compraService.obtenerTodos());
             return "compraView/ListCatView";
         }
-        @GetMapping({"/pedidos"})
+        @GetMapping({"/usuario/{id}"})
         public String showPedidos(@PathVariable Long id , Model model){
             Usuario usuario = usuarioService.obtenerPorId(id);
-            Compra compra = compraService.obtenerPorUsuario(usuario);
-            model.addAttribute("listacompra", compraService.obtenerPedidos(compra));
-            return "compraView/ListCatView";
+            model.addAttribute("listacompra", compraService.obtenerPorUsuario(usuario));
+            return "compraView/ListCompraView";
         }
         @GetMapping("/nuevo")
         public String showNuevo(Model model){

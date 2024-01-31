@@ -20,9 +20,11 @@ public class CompraServiceImp implements CompraService{
         compraRepository.save(compra);
         return compra; // podría no devolver nada, o boolean, etc.
     }
-    public List<Compra> obtenerLista() {
+
+    public List<Compra> obtenerTodos() {
         return compraRepository.findAll();
     }
+
     public Compra obtenerPorId(long id) {
         
         Compra compra = compraRepository.findById(id).orElse(null);// debería lanzar excepción si no encontrado
@@ -44,15 +46,11 @@ public class CompraServiceImp implements CompraService{
         
     }
 
-    public Compra obtenerPorCompra(Long id){
-        Compra compra = compraRepository.findById(id).orElse(null);
-        if(compra == null) return null;
-        
-        return compra;
-    }
-
-    public Compra obtenerPorUsuario(Usuario usuario){
+    public List<Compra> obtenerPorUsuario(Usuario usuario){
 
         return compraRepository.findByUsuario(usuario);
+    }
+    public List<Compra> obtenerPedidos(){
+        return compraRepository.findAll();
     }
 }
