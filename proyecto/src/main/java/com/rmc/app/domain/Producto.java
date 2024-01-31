@@ -29,6 +29,9 @@ public class Producto {
     @ManyToOne
     @OnDelete(action=OnDeleteAction.CASCADE)
     private Categoria categoria;
+    @ManyToOne
+    @OnDelete(action=OnDeleteAction.CASCADE)
+    private Compra compra;
 }
 
 

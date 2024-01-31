@@ -1,5 +1,6 @@
 package com.rmc.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,11 @@ public class CompraServiceImp implements CompraService{
 
     @Autowired
     CompraRepository compraRepository;
+    @Autowired
+    Compra compra;
 
-    public Compra añadir(Compra compra) {
+    public Compra añadir(Usuario usuario) {
+        Compra compra = new Compra(0L,"",LocalDate.now(),0,0D, false,usuario);
         compraRepository.save(compra);
         return compra; // podría no devolver nada, o boolean, etc.
     }
@@ -53,4 +57,5 @@ public class CompraServiceImp implements CompraService{
     public List<Compra> obtenerPedidos(){
         return compraRepository.findAll();
     }
+  
 }

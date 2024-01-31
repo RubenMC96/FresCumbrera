@@ -38,9 +38,10 @@ public class CompraController {
         return "CompraView/ListCompraView";
     }
 
-    @GetMapping("/nuevo")
-    public String showNuevo(Model model) {
-        compraService.añadir();
+    @GetMapping("/nuevo/{id}")
+    public String showNuevo(@PathVariable Long id,Model model) {
+        Usuario usuario = usuarioService.obtenerPorId(id);
+        compraService.añadir(usuario);
         return "redirect:/compra/list";
     }
 

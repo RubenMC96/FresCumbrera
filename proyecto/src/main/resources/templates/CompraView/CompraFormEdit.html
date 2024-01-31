@@ -7,9 +7,44 @@
     <title>Compra CRUD</title>
   </head>
   <body>
-    <h1>Añadir productos</h1>
-    <!-- Tenemos que cargar una lista de productos y un input 
-    para la cantidad, un boton de añadir y otro de finaliza
-    que redirige a la a la lista de compras  -->
+    <h1>Editar compra</h1>
+    <form
+      method="post"
+      action="#"
+      th:action="@{/compra/editar/submit}"
+      th:object="${compraForm}"
+        >
+        <label><input type="text" id="id" th:field="*{id}" hidden/> </label><br/>
+        <label
+            ><input type="text" id="numFactura" th:field="*{numFactura}" readonly/></label
+        ><br />
+        <label
+            ><input type="text" id="fechaCompra" th:field="*{fechaCompra}" readonly/></label
+        ><br />
+        <label
+            >Numero total de productos: <input type="text" id="totalProductos" th:field="*{totalProductos}" /></label
+        ><br />
+        <label
+            >Importe: <input type="text" id="importe" th:field="*{importe}" /></label
+        ><br />
+        <label
+            >Finalizado: <input type="checkbox" id="finalizado" th:field="*{finalizado}" /></label
+        ><br />
+        <label
+        >Productos
+        <select name="producto" th:field="*{producto}">
+          <option
+            th:each="producto : ${listaProductos}"
+            th:value="${producto.id}"
+            th:text="${producto.nombre}"
+          ></option>
+        </select> 
+        <input type="number" id="numProducto" th:field="*{numProducto}">
+        <a th:href="@{/compra/a}">Inicio</a><
+        </label
+      ><br />
+        <input type="submit" value="Enviar" />
+    </form>
+    <a th:href="@{/compra/}">Inicio</a><br />
   </body>
 </html>

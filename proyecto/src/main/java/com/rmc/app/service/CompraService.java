@@ -10,12 +10,11 @@ import com.rmc.app.domain.Usuario;
 @Service
 public interface CompraService {
     
-    public Compra añadir(Compra Compra);
+    public Compra añadir(Usuario usuario);
     public List<Compra> obtenerTodos();
     public Compra obtenerPorId(long id);
     public Compra editar(Compra Compra);
     public void borrar(Long id);
     public List<Compra> obtenerPorUsuario(Usuario usuario);
-
     //obtenerPorEstado
 }

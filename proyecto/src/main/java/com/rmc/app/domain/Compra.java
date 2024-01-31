@@ -23,10 +23,12 @@ public class Compra {
     @Id
     @GeneratedValue
     private Long id;
+    @GeneratedValue
     private String numFactura;
     private LocalDate fechaCompra;
-    private Integer totalProductos;
-    private Double importe;
+    private Integer totalProductos = 0;
+    private Double importe = 0D;
+    private Boolean finalizado = false;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
