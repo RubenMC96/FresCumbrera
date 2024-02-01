@@ -11,7 +11,6 @@ import com.rmc.app.Repositories.ProductoRepository;
 import com.rmc.app.Repositories.UsuarioRepository;
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
-import com.rmc.app.domain.Producto;
 
 @Service
 public class LineaProductoServiceImp implements LineaProductoService {
@@ -40,13 +39,9 @@ public class LineaProductoServiceImp implements LineaProductoService {
 
     }
 
-    public void annadir(Long productoId, Integer cantidadProductos) {
+    public void annadir(LineaProducto lineaProducto) {
 
-        Producto producto = productoRepository.findById(productoId).orElse(null);
-        if (producto != null) {
-            LineaProducto lineaProducto = new LineaProducto(producto, cantidadProductos);
-            lineaProductoRepository.save(lineaProducto);
-        }
+        lineaProductoRepository.save(lineaProducto);
 
     }
 
@@ -68,9 +63,9 @@ public class LineaProductoServiceImp implements LineaProductoService {
         lineaProductoRepository.deleteAll();
     }
 
-    public LineaProducto obtenerPorCompra(Compra compra) {
+    public List<LineaProducto> obtenerPorCompra(Compra compra) {
 
-        LineaProducto lineaProducto = lineaProductoRepository.findByCompra(compra);
+        List<LineaProducto> lineaProducto = lineaProductoRepository.findByCompra(compra);
 
         if (lineaProducto != null) {
             return lineaProducto;

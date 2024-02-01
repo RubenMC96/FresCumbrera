@@ -16,12 +16,12 @@ public interface LineaProductoService {
 
     public LineaProducto editar(LineaProducto lineaProducto);
 
-    public void annadir(Long productoId, Integer canticantidadProductos);
+    public void annadir(LineaProducto lineaProducto);
 
     public void borrar(Long id);
 
     public void borrarTodo();
 
-    public LineaProducto obtenerPorCompra(Compra compra);
+    public List<LineaProducto> obtenerPorCompra(Compra compra);
 
 }

@@ -27,12 +27,6 @@ public class Producto {
     private String origen;
 
     @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Categoria categoria;
-    @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
-    private Compra compra;
 }
-
-
-

@@ -16,8 +16,6 @@ public class CompraServiceImp implements CompraService{
 
     @Autowired
     CompraRepository compraRepository;
-    @Autowired
-    Compra compra;
 
     public Compra añadir(Usuario usuario) {
         Compra compra = new Compra(0L,"",LocalDate.now(),0,0D, false,usuario);
@@ -47,7 +45,6 @@ public class CompraServiceImp implements CompraService{
         if(compra != null){
             compraRepository.delete(compra);
         }
-        
     }
 
     public List<Compra> obtenerPorUsuario(Usuario usuario){

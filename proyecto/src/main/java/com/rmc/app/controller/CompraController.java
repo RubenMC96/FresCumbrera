@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
+import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -24,6 +25,8 @@ public class CompraController {
     public CompraService compraService;
     @Autowired
     public UsuarioService usuarioService;
+    @Autowired
+    public LineaProductoService lineaProductoService;
 
     @GetMapping({ "/", "/list" })
     public String showList(Model model) {
@@ -35,14 +38,16 @@ public class CompraController {
     public String showPedidos(@PathVariable Long id, Model model) {
         Usuario usuario = usuarioService.obtenerPorId(id);
         model.addAttribute("listacompra", compraService.obtenerPorUsuario(usuario));
+        model.addAttribute("usuario", usuario);
         return "CompraView/ListCompraView";
     }
 
     @GetMapping("/nuevo/{id}")
-    public String showNuevo(@PathVariable Long id,Model model) {
+    public String showNuevo(@PathVariable Long id) {
         Usuario usuario = usuarioService.obtenerPorId(id);
         compraService.añadir(usuario);
-        return "redirect:/compra/list";
+
+        return "redirect:/compra/usuario/" + id;
     }
 
     // @PostMapping("/nuevo/submit")
@@ -70,11 +75,18 @@ public class CompraController {
         Compra compra = compraService.obtenerPorId(id);
         // el commandobject del formulario es el empleado con el id solicitado
         if (compra != null) {
-            model.addAttribute("compraForm", compra);
-            return "CompraView/CompraFormEdit";
+            model.addAttribute("listacompra", lineaProductoService.obtenerPorCompra(compra));
+            return "LineaCompraView/ListLineaProductoView";
         }
         // si no lo encuentra vuelve a la página de inicio.
         return "redirect:/compra/list";
     }
 
+    @GetMapping("/borrar/{id}")
+    public String showDelete(@PathVariable long id) {
+        Compra compra = compraService.obtenerPorId(id);
+        compraService.borrar(id);
+        return "redirect:/compra/usuario" + compra.getUsuario().getId();
+        // Falta visualizar de nuevo la lista actualizada
+    }
 }

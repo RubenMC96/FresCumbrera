@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista compra</title>
+  </head>
+  <body>
+    <h1>Lineas de productos</h1>
+    <table border="1px">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>IVA</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="linea : ${listacompra}">
+          <td th:text="${linea.id}"></td>
+          <td th:text="${linea.producto.nombre}">Producto</td>
+          <td th:text="${linea.producto.precio}">Precio</td>
+          <td th:text="${linea.cantidadProductos}">Cantidad</td>
+
+          <td>
+            <a th:href="@{/lineaCompra/borrar/{id}(id=${lineaCompra.id})}"
+              >Borrar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a th:href="@{/lineaCompra/nuevo/{id}(id=${compra.id})}"
+      >Añadir productos</a
+    >
+  </body>
+</html>

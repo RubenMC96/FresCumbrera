@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista compra</title>
+</head>
+<body>
+     <h1>Nueva linea</h1>
+    <form
+      method="post"
+      action="#"
+      th:action="@{/lineaProducto/nuevo/submit}"
+      th:object="${lineaForm}"
+    >
+      <label>Id:<input type="text" id="id" th:field="*{id}" /> </label><br />
+      <label><input type="text" id="compra" th:field="*{compra}" hidden/> </label><br />
+      <label
+        >Productos
+        <select name="producto" th:field="*{producto}">
+          <option
+            th:each="prod : ${listaProducto}"
+            th:value="${prod.id}"
+            th:text="${prod.nombre}"
+          ></option>
+        </select> 
+        <label> Cantidad:<input type="number" th:field="*{cantidadProductos}" /> </label><br />
+        </label
+      ><br />
+      <input type="submit" value="Añadir" />
+    </form>
+    <a th:href="@{/producto/}">Inicio</a><br />
+  </body>
+</body>
+</html>

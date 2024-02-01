@@ -23,12 +23,6 @@ public class LineaProducto {
     private Long id;
     private Integer cantidadProductos;
 
-    public LineaProducto(Producto producto, Integer cantidadProducto) {
-
-        this.producto = producto;
-        this.cantidadProductos = cantidadProducto;
-    }
-
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Compra compra;

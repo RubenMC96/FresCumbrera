@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Listado de compras del usuario</h1>
     <table border="1px">
-        <thead>
-          <tr>
-            
-            <th>Numero factura</th>
-            <th>Fecha de compra</th>
-            <th>Total productos</th>
-            <th>Importe</th>
-            <th>Finalizado</th>
-          </tr>
-        </thead>
-  
-        <tbody>
-          <tr th:each="compra : ${listaCompra}">
-            <td th:text="${compra.id}"hidden></td>
-            <td th:text="${compra.numFactura}">Numero factura</td>
-            <td th:text="${compra.fechaCompra}">Fecha de compra</td>
-            <td th:text="${compra.totalProductos}">Total productos</td>
-            <td th:text="${compra.importe}">Importe</td>
-            <td th:text="${compra.finalizado}">Finalizado</td>
+      <thead>
+        <tr>
+          <th>Numero factura</th>
+          <th>Fecha de compra</th>
+          <th>Total productos</th>
+          <th>Importe</th>
+          <th>Finalizado</th>
+        </tr>
+      </thead>
 
-            <td>
-              <a th:href="@{/compra/editar/{id}(id=${compra.id})}"
-                >Editar</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <a th:href="@{/inicio}">Inicio</a><br />
-      <a th:href="@{/usuario/nuevo}">Nuevo usuario</a><br />
-</body>
+      <tbody>
+        <tr th:each="compra : ${listacompra}">
+          <td th:text="${compra.id}" hidden></td>
+          <td th:text="${compra.numFactura}">Numero factura</td>
+          <td th:text="${compra.fechaCompra}">Fecha de compra</td>
+          <td th:text="${compra.totalProductos}">Total productos</td>
+          <td th:text="${compra.importe}">Importe</td>
+          <td th:text="${compra.finalizado}">Finalizado</td>
+
+          <td>
+            <a th:href="@{/compra/editar/{id}(id=${compra.id})}"
+              >Editar compra</a
+            >
+          </td>
+          <td>
+            <a th:href="@{/compra/borrar/{id}(id=${compra.id})}">Borrar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a th:href="@{/compra/nuevo/{id}(id=${usuario.id})}">Nueva Compra</a><br />
+    <a th:href="@{/inicio}">Inicio</a><br />
+  </body>
 </html>
