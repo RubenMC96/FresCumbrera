@@ -42,7 +42,7 @@ public class LineaProductoController {
     }
 
     @GetMapping("/nuevo/{idCompra}")
-    public String showAñadir(@PathVariable long idCompra, @PathVariable Integer cantidadProductos, Model model) {
+    public String showAñadir(@PathVariable long idCompra, Model model) {
         Compra compra = compraService.obtenerPorId(idCompra);
         model.addAttribute("listaProducto", productoService.obtenerLista());
         model.addAttribute("compra", compra);
@@ -57,7 +57,7 @@ public class LineaProductoController {
         if (bindingResult.hasErrors())
             return "redirect:/lineaProducto/nuevo/" + lineaForm.getCompra().getId();
         lineaProductoService.annadir(lineaForm);
-        return "redirect:/lineaProducto/list";
+        return "redirect:/compra/usuario/" + lineaForm.getCompra().getId();
     }
 
     @PostMapping("/editar/submit")

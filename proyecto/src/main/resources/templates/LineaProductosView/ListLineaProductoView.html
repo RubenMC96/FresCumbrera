@@ -26,14 +26,14 @@
           <td th:text="${linea.cantidadProductos}">Cantidad</td>
 
           <td>
-            <a th:href="@{/lineaCompra/borrar/{id}(id=${lineaCompra.id})}"
+            <a th:href="@{/lineaProducto/borrar/{id}(id=${listacompra.id})}"
               >Borrar</a
             >
           </td>
         </tr>
       </tbody>
     </table>
-    <a th:href="@{/lineaCompra/nuevo/{id}(id=${compra.id})}"
+    <a th:href="@{/lineaProducto/nuevo/{id}(id=${compra.id})}"
       >Añadir productos</a
     >
   </body>

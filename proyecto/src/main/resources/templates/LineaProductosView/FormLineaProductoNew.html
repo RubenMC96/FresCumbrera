@@ -24,12 +24,11 @@
             th:text="${prod.nombre}"
           ></option>
         </select> 
-        <label> Cantidad:<input type="number" th:field="*{cantidadProductos}" /> </label><br />
-        </label
-      ><br />
+        </label>
+      <label> Cantidad:<input type="number" th:field="*{cantidadProductos}" /> </label><br />
       <input type="submit" value="Añadir" />
     </form>
-    <a th:href="@{/producto/}">Inicio</a><br />
+    <a th:href="@{/compra/editar/{id}(id=${compra.id})}">Inicio</a><br />
   </body>
 </body>
 </html>

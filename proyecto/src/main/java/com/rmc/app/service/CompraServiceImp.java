@@ -55,4 +55,8 @@ public class CompraServiceImp implements CompraService{
         return compraRepository.findAll();
     }
   
+    // public Compra obtenerCompraPorUsuario(Usuario usuario){
+        
+    // }
+
 }

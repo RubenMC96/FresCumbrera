@@ -38,6 +38,7 @@ public class CompraController {
     public String showPedidos(@PathVariable Long id, Model model) {
         Usuario usuario = usuarioService.obtenerPorId(id);
         model.addAttribute("listacompra", compraService.obtenerPorUsuario(usuario));
+        // model.addAttribute("compra", compraService.obtenerCompraPorUsuario(usuario));
         model.addAttribute("usuario", usuario);
         return "CompraView/ListCompraView";
     }
@@ -76,17 +77,18 @@ public class CompraController {
         // el commandobject del formulario es el empleado con el id solicitado
         if (compra != null) {
             model.addAttribute("listacompra", lineaProductoService.obtenerPorCompra(compra));
-            return "LineaCompraView/ListLineaProductoView";
+            model.addAttribute("compra", compra);
+            return "LineaProductosView/ListLineaProductoView";
         }
         // si no lo encuentra vuelve a la página de inicio.
-        return "redirect:/compra/list";
+        return "redirect:/compra/usuario/" + id;
     }
 
     @GetMapping("/borrar/{id}")
     public String showDelete(@PathVariable long id) {
         Compra compra = compraService.obtenerPorId(id);
         compraService.borrar(id);
-        return "redirect:/compra/usuario" + compra.getUsuario().getId();
+        return "redirect:/compra/usuario/" + compra.getUsuario().getId();
         // Falta visualizar de nuevo la lista actualizada
     }
 }
