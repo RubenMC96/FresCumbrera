@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.rmc.app.domain.Categoria;
 import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.Rol;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CategoriaService;
 import com.rmc.app.service.ProductoService;
@@ -25,7 +26,8 @@ public class AppApplication {
 			UsuarioService usuarioService) {
 
 		return args -> {
-			usuarioService.añadir(new Usuario(0L, "Pepe", "Gomez", "pepe@pepe.com", "pepe1", "1234", "123456789"));
+			usuarioService.añadir(new Usuario(0L, "admin", "1", "admin1@gmail.com", "admin1", "1234", "123456789", Rol.ADMIN));
+			usuarioService.añadir(new Usuario(0L, "user", "1", "user1@gmail.com", "user1", "1234", "123456789", Rol.USER));
 			categoriaService.añadir(new Categoria(0L, "Frutas"));
 			categoriaService.añadir(new Categoria(0L, "Preparados"));
 			productoService

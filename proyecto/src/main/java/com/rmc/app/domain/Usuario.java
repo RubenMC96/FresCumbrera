@@ -1,12 +1,8 @@
 package com.rmc.app.domain;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,6 +28,7 @@ public class Usuario {
     private String nombreUsuario;
     private String password;
     private String telefono;
+    private Rol rol;
 
     // Borrar
     public Usuario(String nombreUsuario, String contrasena) {
