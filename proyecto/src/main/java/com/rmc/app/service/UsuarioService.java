@@ -16,5 +16,6 @@ public interface UsuarioService {
     public Usuario obtenerPorId(Long id);
     public List<Usuario> obtenerLista();
     public Usuario obtenerUsuario(Long id);
-    //public Usuario obtenerUsuarioConectado();
+    public Usuario obtenerUsuarioConectado();
+    public String obtenerRolUsuarioConectado();
 }

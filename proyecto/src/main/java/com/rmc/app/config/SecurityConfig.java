@@ -37,39 +37,37 @@ public class SecurityConfig {
         http.authorizeHttpRequests(
                 auth -> auth
 
-                        
-                        .requestMatchers("/categoria/nuevo/**", "/categoria/editar/**", "/categoria/borrar/**").hasAnyRole("ADMIN", "MANAGER")
-                        .requestMatchers("/categoria/").permitAll()
-
-                        .requestMatchers("/producto/nuevo/**", "/producto/editar/**", "/producto/borrar/**").hasAnyRole("ADMIN", "MANAGER")
-                        .requestMatchers("/producto/list/**").permitAll()
+                        //Permisos categoria
+                        .requestMatchers("/categoria/nuevo/**", "/categoria/editar/**", "/categoria/borrar/**").hasRole("ADMIN")
+                        .requestMatchers("/categoria/list").permitAll()
 
 
-                        .requestMatchers("/usuario/", "/usuario/editar/**", "/usuario/borrar/**").hasAnyRole("ADMIN", "MANAGER")
+                        //Permisos productos
+                        .requestMatchers("/compra/usuario/**" ,"/producto/nuevo/**", "/producto/editar/**", "/producto/borrar/**").hasRole("USER")
+                        .requestMatchers("/compra/list").hasRole("ADMIN")
 
-                        .requestMatchers("/categoria/").hasAnyRole("ADMIN", "MANAGER")
-                        .requestMatchers("/categoria/nuevo/**", "/categoria/editar/**", "/categoria/borrar/**")
-                        .hasRole("ADMIN")
 
-                        .requestMatchers("/valoracion/nuevo/**").hasAnyRole("MANAGER", "ADMIN", "USER")
-                        .requestMatchers("/valoracion/usuario/**", "/valoracion/editar/**", "/valoracion/borrar/**")
-                        .hasAnyRole("MANAGER", "ADMIN")
+                        //Permisos usuario
+                        .requestMatchers("/usuario/list").hasRole("ADMIN")
+                        .requestMatchers("/usuario/nuevo/**").permitAll()
+                        .requestMatchers("/usuario/editar/**", "/usuario/borrar/**").hasAnyRole("ADMIN", "USER")
 
-                        .requestMatchers("/lineaProducto/nuevo/**").hasAnyRole("MANAGER", "ADMIN", "USER")
-                        .requestMatchers("/lineaProducto/usuario/**", "/lineaProducto/editar/**", "/lineaProducto/borrar/**")
-                        .hasAnyRole("MANAGER", "ADMIN")
 
-                        .requestMatchers("/compra/nuevo/**").hasAnyRole("MANAGER", "ADMIN", "USER")
-                        .requestMatchers("/compra/usuario/**", "/compra/editar/**", "/compra/borrar/**")
-                        .hasAnyRole("MANAGER", "ADMIN")
+                        //Permisos valoracion
+                        .requestMatchers("valoracion/producto/**").permitAll()
+                        .requestMatchers("/valoracion/usuario/**", "/valoracion/nuevo/**", "/valoracion/delete/**").hasAnyRole("ADMIN", "USER")
 
-                        .requestMatchers("/usuario/nuevo/**").hasAnyRole("MANAGER", "ADMIN", "USER")
-                        .requestMatchers("/usuario/usuario/**", "/usuario/editar/**", "/usuario/borrar/**")
-                        .hasAnyRole("MANAGER", "ADMIN")
 
-                        .requestMatchers("/", "/public/**", "/categoria/", "/producto/",
-                                "/valoracion/producto/**")
-                        .permitAll()
+                        //Permisos LineaProductos
+                        .requestMatchers("/lineaProducto/list/**", "/lineaProducto/nuevo/**", "/lineaProducto/editar/**", "/lineaProducto/borrar/**").hasRole("USER")
+
+
+                        //Permisos Compra
+                        .requestMatchers("/compra/list").hasRole("ADMIN")
+                        .requestMatchers("/compra/usuario/**", "/compra/nuevo/**", "compra/editar/**", "compra/borrar/**").hasRole("USER")
+
+
+                        .requestMatchers("/inicio").permitAll()
 
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
@@ -79,7 +77,7 @@ public class SecurityConfig {
 
                         .loginProcessingUrl("/login") // ruta post de /signin
 
-                        .failureUrl("/signin")
+                        .failureUrl("/signin?error")
                         .defaultSuccessUrl("/home", true).permitAll())
                 .logout((logout) -> logout
                         .logoutSuccessUrl("/home").permitAll())
@@ -88,4 +86,8 @@ public class SecurityConfig {
         http.exceptionHandling(exceptions -> exceptions.accessDeniedPage("/accessError"));
         return http.build();
     }
+
+
+    
+
 }

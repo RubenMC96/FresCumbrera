@@ -3,7 +3,8 @@ package com.rmc.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,27 @@ public class UsuarioServiceImp implements UsuarioService{
         else return null;
     }  
 
+    public Usuario obtenerUsuarioConectado() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String nombreUsuarioConectado = authentication.getName();
+
+            return usuarioRepository.findByNombre(nombreUsuarioConectado);
+        }
+        return null;
+    }
+
+    public String obtenerRolUsuarioConectado() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String rolUsuarioConectado = authentication.getAuthorities().toString();
+
+            return rolUsuarioConectado;
+        }
+        return null;
+    }
 }
     
  

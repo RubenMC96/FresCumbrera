@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.Rol;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.domain.Valoracion;
 import com.rmc.app.service.ProductoService;
 import com.rmc.app.service.UsuarioService;
@@ -60,35 +62,24 @@ public class ValoracionController {
         return "redirect:/valoracion/producto/" +valoracionForm.getProducto().getId();
     }
 
-    // @PostMapping("/editar/submit")
-    // public String showEditSubmit(
-    //         @Valid Valoracion valoracionForm,
-    //         BindingResult bindingResult) {
-    //     if (bindingResult.hasErrors())
-    //         return "redirect:/valoracion/editar/{id}";
-    //     valoracionService.editar(valoracionForm);
-    //     return "redirect:/valoracion/list";
-    // }
-
-    // @GetMapping("/editar/{id}")
-    // public String showEditForm(@PathVariable long id, Model model) {
-    //     Valoracion valoracion = valoracionService.obtenerPorId(id);
-    //     // el commandobject del formulario es el empleado con el id solicitado
-    //     if (valoracion != null) {
-    //         model.addAttribute("ValoracionForm", valoracion);
-    //         return "valoracionView/ValFormEdit";
-    //     }
-    //     // si no lo encuentra vuelve a la página de inicio.
-    //     return "redirect:/valoracion/list";
-    // }
 
     @GetMapping("/borrar/{idValoracion}")
     public String showDelete(@PathVariable long idValoracion) {
+        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
         Valoracion valoracion = valoracionService.obtenerPorId(idValoracion);
-        if (valoracion != null) {
-            valoracionService.borrar(idValoracion);
-            
+        if(usuarioConectado.getRol() == Rol.USER && usuarioConectado.getId() == valoracion.getUsuario().getId()){
+            if (valoracion != null) {
+                valoracionService.borrar(idValoracion);
+                
+            }
         }
+        else if(usuarioConectado.getRol() == Rol.ADMIN || usuarioConectado.getRol() == Rol.MANAGER){
+            if (valoracion != null) {
+                valoracionService.borrar(idValoracion);
+                
+            }
+        }
+        
         return "redirect:/valoracion/producto/"+ valoracion.getProducto().getId();
         //valoracion puede dar null, revisar por que
     }

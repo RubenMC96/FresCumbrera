@@ -9,4 +9,13 @@ public class MainController {
     public String showInicio(){
         return "Generales/indexView";
     }
+
+    @GetMapping("/signin")
+    public String showLogin() { 
+        return "signinView"; 
+    }
+    @GetMapping("/signout")
+    public String showLogout() { 
+        return "signoutView"; 
+    }
 }
