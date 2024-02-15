@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
@@ -35,19 +36,29 @@ public class LineaProductoController {
 
     @GetMapping({ "/list/{id}" })
     public String showList(@PathVariable long id, Model model) {
-        Compra compra = compraService.obtenerPorId(id);
-        List<LineaProducto> lineaProducto = lineaProductoService.obtenerPorCompra(compra);
-        model.addAttribute("listaLineaProducto", lineaProducto);
-        return "LineaProductoView/ListLineaProductoView";
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        if(usuario.getId() == id){
+            Compra compra = compraService.obtenerPorId(id);
+            List<LineaProducto> lineaProducto = lineaProductoService.obtenerPorCompra(compra);
+            model.addAttribute("listaLineaProducto", lineaProducto);
+            return "LineaProductoView/ListLineaProductoView";
+        }
+        //Si no es el usuario, ¿Dónde va?
+        
     }
 
     @GetMapping("/nuevo/{idCompra}")
     public String showAñadir(@PathVariable long idCompra, Model model) {
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
         Compra compra = compraService.obtenerPorId(idCompra);
-        model.addAttribute("listaProducto", productoService.obtenerLista());
-        model.addAttribute("compra", compra);
-        model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
-        return "LineaProductosView/FormLineaProductoNew";
+        if(usuario.getId() == compra.getUsuario().getId()){
+            model.addAttribute("listaProducto", productoService.obtenerLista());
+            model.addAttribute("compra", compra);
+            model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
+            return "LineaProductosView/FormLineaProductoNew";
+        }
+                //Si no es el usuario, ¿Dónde va?
+
     }
 
     @PostMapping("/nuevo/submit")
