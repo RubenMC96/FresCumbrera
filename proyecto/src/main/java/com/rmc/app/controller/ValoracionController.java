@@ -30,24 +30,26 @@ public class ValoracionController {
     @Autowired
     UsuarioService usuarioService;
 
-    @GetMapping({"/producto/{idProd}" })
+    @GetMapping({ "/producto/{idProd}" })
     public String showProducto(@PathVariable long idProd, Model model) {
+        Producto producto = productoService.obtenerPorId(idProd);
         model.addAttribute("listaValoracion", valoracionService.obtenerPorProducto(idProd));
-        return "valoracionView/ListValView";
+        model.addAttribute("producto", producto);
+        return "ValoracionView/ListValView";
     }
 
     // Lista con las valoraciones que ha hecho el usuario
-    @GetMapping({"/usuario/{idUsuario}" })
+    @GetMapping({ "/usuario/{idUsuario}" })
     public String showUsuario(@PathVariable long idUsuario, Model model) {
         model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(idUsuario));
         return "ValoracionView/ListValView";
     }
 
     @GetMapping("/nuevo/{idProducto}")
-    public String showNuevo(@PathVariable  long idProducto, Model model) {
+    public String showNuevo(@PathVariable long idProducto, Model model) {
         Producto producto = productoService.obtenerPorId(idProducto);
-        //Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        model.addAttribute("valoracionForm", new Valoracion(0L, null,null,null,null,producto));
+        // Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        model.addAttribute("valoracionForm", new Valoracion(0L, null, null, null, null, producto));
         model.addAttribute("producto", producto);
         return "valoracionView/ValFormNew";
     }
@@ -59,29 +61,27 @@ public class ValoracionController {
         if (bindingResult.hasErrors())
             return "redirect:/valoracion/nuevo";
         valoracionService.añadir(valoracionForm);
-        return "redirect:/valoracion/producto/" +valoracionForm.getProducto().getId();
+        return "redirect:/valoracion/producto/" + valoracionForm.getProducto().getId();
     }
-
 
     @GetMapping("/borrar/{idValoracion}")
     public String showDelete(@PathVariable long idValoracion) {
         Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
         Valoracion valoracion = valoracionService.obtenerPorId(idValoracion);
-        if(usuarioConectado.getRol() == Rol.USER && usuarioConectado.getId() == valoracion.getUsuario().getId()){
+        if (usuarioConectado.getRol() == Rol.USER && usuarioConectado.getId() == valoracion.getUsuario().getId()) {
             if (valoracion != null) {
                 valoracionService.borrar(idValoracion);
-                
+
             }
-        }
-        else if(usuarioConectado.getRol() == Rol.ADMIN || usuarioConectado.getRol() == Rol.MANAGER){
+        } else if (usuarioConectado.getRol() == Rol.ADMIN || usuarioConectado.getRol() == Rol.MANAGER) {
             if (valoracion != null) {
                 valoracionService.borrar(idValoracion);
-                
+
             }
         }
-        
-        return "redirect:/valoracion/producto/"+ valoracion.getProducto().getId();
-        //valoracion puede dar null, revisar por que
+
+        return "redirect:/valoracion/producto/" + valoracion.getProducto().getId();
+        // valoracion puede dar null, revisar por que
     }
 
 }
