@@ -36,28 +36,24 @@ public class LineaProductoController {
 
     @GetMapping({ "/list/{id}" })
     public String showList(@PathVariable long id, Model model) {
-        Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        if(usuario.getId() == id){
+   
             Compra compra = compraService.obtenerPorId(id);
             List<LineaProducto> lineaProducto = lineaProductoService.obtenerPorCompra(compra);
             model.addAttribute("listaLineaProducto", lineaProducto);
             return "LineaProductoView/ListLineaProductoView";
-        }
-        //Si no es el usuario, ¿Dónde va?
+       
         
     }
 
     @GetMapping("/nuevo/{idCompra}")
     public String showAñadir(@PathVariable long idCompra, Model model) {
-        Usuario usuario = usuarioService.obtenerUsuarioConectado();
         Compra compra = compraService.obtenerPorId(idCompra);
-        if(usuario.getId() == compra.getUsuario().getId()){
+        
             model.addAttribute("listaProducto", productoService.obtenerLista());
             model.addAttribute("compra", compra);
             model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
             return "LineaProductosView/FormLineaProductoNew";
-        }
-                //Si no es el usuario, ¿Dónde va?
+        
 
     }
 
