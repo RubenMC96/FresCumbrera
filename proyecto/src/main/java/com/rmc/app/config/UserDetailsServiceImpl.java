@@ -12,17 +12,18 @@ import com.rmc.app.domain.Usuario;
 
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
-@Autowired
-private UsuarioRepository usuarioRepository;
-@Override
-public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    Usuario usuario = usuarioRepository.findByNombre(username);
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepository.findByNombreUsuario(username);
         if (usuario == null)
-        throw (new UsernameNotFoundException("Usuario no encontrado!"));
-        return User //org.springframework.security.core.userdetails.User
-        .withUsername(username)
-        .roles(usuario.getRol().toString())
-        .password(usuario.getPassword())
-        .build();
+            throw (new UsernameNotFoundException("Usuario no encontrado!"));
+        return User // org.springframework.security.core.userdetails.User
+                .withUsername(username)
+                .roles(usuario.getRol().toString())
+                .password(usuario.getPassword())
+                .build();
     }
 }
