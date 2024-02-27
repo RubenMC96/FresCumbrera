@@ -74,12 +74,12 @@ public class SecurityConfig {
                                                 .requestMatchers("/valoracion/nuevo/**", "/valoracion/borrar/**")
                                                 .hasAnyRole("USER", "ADMIN")
 
-                                                .requestMatchers("/").permitAll()
+                                                .requestMatchers("/**").permitAll()
 
                                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                                 .permitAll()
                                                 .requestMatchers("/h2-console/**").authenticated()
-                                                .anyRequest().authenticated()
+                                                .anyRequest().permitAll()
 
                 )
                                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
