@@ -36,48 +36,50 @@ public class SecurityConfig {
                                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
                 http.authorizeHttpRequests(
                                 auth -> auth
-
-                                                // Permisos categoria
+                                                /* Permisos de categoria */
+                                                .requestMatchers("/categoria/list").permitAll()
                                                 .requestMatchers("/categoria/nuevo/**", "/categoria/editar/**",
                                                                 "/categoria/borrar/**")
                                                 .hasRole("ADMIN")
-                                                .requestMatchers("/categoria/list").permitAll()
 
-                                                // Permisos productos
-                                                .requestMatchers("/compra/usuario/**", "/producto/nuevo/**",
-                                                                "/producto/editar/**", "/producto/borrar/**")
+                                                /* Permisos de compra */
+                                                .requestMatchers("/compra/list").hasRole("ADMIN")
+                                                .requestMatchers("/compra/usuario/**", "/compra/nuevo/**",
+                                                                "/compra/editar/**", "/compra/borrar/**")
+                                                .hasAnyRole("USER", "ADMIN")
+
+                                                /* Permisos Linea Productos */
+                                                // En Pro se borrará el admin
+                                                .requestMatchers("/lineaProducto/list/**",
+                                                                "/lineaProducto/nuevo/**",
+                                                                "/lineaProducto/editar/**",
+                                                                "/lineaProducto/borrar/**")
+                                                .hasAnyRole("USER", "ADMIN")
+
+                                                /* Permisos producto */
+                                                .requestMatchers("/producto/list/**").permitAll()
+                                                .requestMatchers("/producto/nuevo/**", "producto/editar/**",
+                                                                "/producto/borrar/**")
                                                 .hasRole("ADMIN")
-                                                .requestMatchers("/compra/list").hasRole("USER")
 
-                                                // Permisos usuario
+                                                /* Permisos usuario */
                                                 .requestMatchers("/usuario/list").hasRole("ADMIN")
                                                 .requestMatchers("/usuario/nuevo/**").permitAll()
                                                 .requestMatchers("/usuario/editar/**", "/usuario/borrar/**")
-                                                .hasAnyRole("ADMIN", "USER")
+                                                .hasAnyRole("USER", "ADMIN")
 
-                                                // Permisos valoracion
+                                                /* Permisos valoracion */
                                                 .requestMatchers("/valoracion/producto/**").permitAll()
-                                                .requestMatchers("/valoracion/usuario/**", "/valoracion/nuevo/**",
-                                                                "/valoracion/delete/**")
-                                                .hasAnyRole("ADMIN", "USER")
-
-                                                // Permisos LineaProductos
-                                                .requestMatchers("/lineaProducto/list/**", "/lineaProducto/nuevo/**",
-                                                                "/lineaProducto/editar/**", "/lineaProducto/borrar/**")
-                                                .hasRole("USER")
-
-                                                // Permisos Compra
-                                                .requestMatchers("/compra/list").hasRole("ADMIN")
-                                                .requestMatchers("/compra/usuario/**", "/compra/nuevo/**",
-                                                                "compra/editar/**", "compra/borrar/**")
-                                                .hasRole("USER")
+                                                .requestMatchers("/valoracion/usuario/**").hasRole("ADMIN")
+                                                .requestMatchers("/valoracion/nuevo/**", "/valoracion/borrar/**")
+                                                .hasAnyRole("USER", "ADMIN")
 
                                                 .requestMatchers("/").permitAll()
 
                                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                                 .permitAll()
-                                                .requestMatchers("/h2-console/**").permitAll()
-                                                .anyRequest().permitAll()
+                                                .requestMatchers("/h2-console/**").authenticated()
+                                                .anyRequest().authenticated()
 
                 )
                                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
