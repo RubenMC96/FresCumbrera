@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
-import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
@@ -41,8 +40,6 @@ public class LineaProductoController {
             List<LineaProducto> lineaProducto = lineaProductoService.obtenerPorCompra(compra);
             model.addAttribute("listaLineaProducto", lineaProducto);
             return "LineaProductoView/ListLineaProductoView";
-       
-        
     }
 
     @GetMapping("/nuevo/{idCompra}")
@@ -53,8 +50,6 @@ public class LineaProductoController {
             model.addAttribute("compra", compra);
             model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
             return "LineaProductosView/FormLineaProductoNew";
-        
-
     }
 
     @PostMapping("/nuevo/submit")

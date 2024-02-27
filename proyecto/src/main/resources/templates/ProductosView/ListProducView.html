@@ -35,6 +35,7 @@
           <th>Editar</th>
           <th>Borrar</th>
           <th>Valoraciones</th>
+          <th>Comprar</th>
         </tr>
       </thead>
       
@@ -47,6 +48,7 @@
           <td><a th:href="@{/producto/editar/{id}(id=${producto.id})}">Editar</a></td>
           <td><a th:href="@{/producto/borrar/{id}(id=${producto.id})}">Borrar</a></td>
           <td><a th:href="@{/valoracion/producto/{id}(id=${producto.id})}">Valoraciones</a></td>
+          <td><a th:href="@{/}"></a></td>
         </tr>
       </tbody>
     </table>
