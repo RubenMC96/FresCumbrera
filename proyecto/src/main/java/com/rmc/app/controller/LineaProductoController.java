@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
@@ -33,23 +34,29 @@ public class LineaProductoController {
     @Autowired
     public UsuarioService usuarioService;
 
-    @GetMapping({ "/list/{id}" })
+    @GetMapping({ "/list/" })
     public String showList(@PathVariable long id, Model model) {
-   
-            Compra compra = compraService.obtenerPorId(id);
-            List<LineaProducto> lineaProducto = lineaProductoService.obtenerPorCompra(compra);
-            model.addAttribute("listaLineaProducto", lineaProducto);
-            return "LineaProductoView/ListLineaProductoView";
+        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+
+        Compra compra = compraService.obtenerCompraActiva(usuarioConectado);
+        model.addAttribute("listaLineaProducto", compra);
+        return "LineaProductoView/ListLineaProductoView";
     }
 
     @GetMapping("/nuevo/{idCompra}")
     public String showAñadir(@PathVariable long idCompra, Model model) {
         Compra compra = compraService.obtenerPorId(idCompra);
-        
-            model.addAttribute("listaProducto", productoService.obtenerLista());
-            model.addAttribute("compra", compra);
-            model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
-            return "LineaProductosView/FormLineaProductoNew";
+
+        model.addAttribute("listaProducto", productoService.obtenerLista());
+        model.addAttribute("compra", compra);
+        model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
+        return "LineaProductosView/FormLineaProductoNew";
+    }
+
+    @GetMapping("/nuevoLinea/{idProducto}/{cantidad}")
+    public String showNewline(@PathVariable long idProducto, Integer cantidad) {
+        lineaProductoService.addNuevaLinea(idProducto, cantidad);
+        return "redirect:/producto/list";
     }
 
     @PostMapping("/nuevo/submit")

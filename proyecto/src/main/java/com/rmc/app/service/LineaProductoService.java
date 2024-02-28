@@ -24,4 +24,6 @@ public interface LineaProductoService {
 
     public List<LineaProducto> obtenerPorCompra(Compra compra);
 
+    public LineaProducto addNuevaLinea(Long id, Integer cantidad);
+
 }

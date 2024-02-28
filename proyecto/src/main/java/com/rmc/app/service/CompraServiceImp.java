@@ -11,14 +11,13 @@ import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.Usuario;
 
 @Service
-public class CompraServiceImp implements CompraService{
-
+public class CompraServiceImp implements CompraService {
 
     @Autowired
     CompraRepository compraRepository;
 
     public Compra añadir(Usuario usuario) {
-        Compra compra = new Compra(0L,"",LocalDate.now(),0,0D, false,usuario);
+        Compra compra = new Compra(0L, "", LocalDate.now(), 0, 0D, false, usuario);
         compraRepository.save(compra);
         return compra; // podría no devolver nada, o boolean, etc.
     }
@@ -28,35 +27,48 @@ public class CompraServiceImp implements CompraService{
     }
 
     public Compra obtenerPorId(long id) {
-        
+
         Compra compra = compraRepository.findById(id).orElse(null);// debería lanzar excepción si no encontrado
-        if(compra != null){
-        return compra;
+        if (compra != null) {
+            return compra;
         }
         return null;
-         
+
     }
+
     public Compra editar(Compra compra) {
-          
+
         return compraRepository.save(compra);
     }
+
     public void borrar(Long id) {
         Compra compra = compraRepository.findById(id).orElse(null);
-        if(compra != null){
+        if (compra != null) {
             compraRepository.delete(compra);
         }
     }
 
-    public List<Compra> obtenerPorUsuario(Usuario usuario){
+    public List<Compra> obtenerPorUsuario(Usuario usuario) {
 
         return compraRepository.findByUsuario(usuario);
     }
-    public List<Compra> obtenerPedidos(){
+
+    public List<Compra> obtenerPedidos() {
         return compraRepository.findAll();
     }
-  
-    // public Compra obtenerCompraPorUsuario(Usuario usuario){
-        
-    // }
+
+    public Compra obtenerCompraActiva(Usuario usuario) {
+
+        List<Compra> compras = compraRepository.findByUsuario(usuario);
+        Compra compraActiva;
+        for (Compra compra : compras) {
+
+            if (compra.getFinalizado() == false) {
+                compraActiva = compra;
+                return compraActiva;
+            }
+        }
+        return null;// falta un neew compra
+    }
 
 }

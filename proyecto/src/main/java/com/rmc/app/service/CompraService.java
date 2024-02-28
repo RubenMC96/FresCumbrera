@@ -22,6 +22,5 @@ public interface CompraService {
 
     public List<Compra> obtenerPorUsuario(Usuario usuario);
 
-    // public Compra obtenerCompraPorUsuario(Usuario usuario);
-    // obtenerPorEstado
+    public Compra obtenerCompraActiva(Usuario usuario);
 }

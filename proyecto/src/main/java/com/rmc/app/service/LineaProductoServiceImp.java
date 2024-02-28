@@ -11,6 +11,8 @@ import com.rmc.app.Repositories.ProductoRepository;
 import com.rmc.app.Repositories.UsuarioRepository;
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
+import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.Usuario;
 
 @Service
 public class LineaProductoServiceImp implements LineaProductoService {
@@ -23,6 +25,12 @@ public class LineaProductoServiceImp implements LineaProductoService {
     ProductoRepository productoRepository;
     @Autowired
     CompraRepository compraRepository;
+    @Autowired
+    UsuarioService usuarioService;
+    @Autowired
+    CompraService compraService;
+    @Autowired
+    ProductoService productoService;
 
     public List<LineaProducto> obtenerLista() {
         return lineaProductoRepository.findAll();
@@ -72,4 +80,15 @@ public class LineaProductoServiceImp implements LineaProductoService {
         } else
             return null;
     }
+
+    public LineaProducto addNuevaLinea(Long id, Integer cantidad) {
+
+        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+        Compra compra = compraService.obtenerCompraActiva(usuarioConectado);
+        Producto producto = productoService.obtenerPorId(id);
+        LineaProducto lineaProducto = lineaProductoRepository.save(
+                new LineaProducto(null, cantidad, compra, producto));
+        return lineaProducto;
+    }
+
 }
