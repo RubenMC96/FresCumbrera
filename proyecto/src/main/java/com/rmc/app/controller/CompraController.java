@@ -1,5 +1,7 @@
 package com.rmc.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Compra;
+import com.rmc.app.domain.LineaProducto;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
@@ -35,21 +38,36 @@ public class CompraController {
     }
 
     @GetMapping({ "/usuario/{id}" })
-    public String showPedidos(@PathVariable Long id, Model model) {
-        Usuario usuario = usuarioService.obtenerPorId(id);
-        model.addAttribute("listacompra", compraService.obtenerPorUsuario(usuario));
+    public String showPedidos(Model model) {
+        model.addAttribute("listaCompra", compraService.obtenerPorUsuario());
         // model.addAttribute("compra", compraService.obtenerCompraPorUsuario(usuario));
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
         model.addAttribute("usuario", usuario);
         return "CompraView/ListCompraView";
     }
 
-    @GetMapping("/nuevo/{id}")
-    public String showNuevo(@PathVariable Long id) {
-        Usuario usuario = usuarioService.obtenerPorId(id);
-        compraService.añadir(usuario);
+    // @PostMapping("/nuevo/{listaCompra}")
+    // public String showNuevo(@PathVariable List<LineaProducto> listaCompra, BindingResult bindingResult) {
+    //     if(bindingResult.hasErrors())
+    //             return "redirect:/usuario/nuevo";
+    //     else{
+    //         Usuario usuario = usuarioService.obtenerUsuarioConectado();
 
-        return "redirect:/compra/usuario/" + id;
-    }
+    //         Compra compra = compraService.crearCompra(listaCompra);
+    //         compraService.añadir(compra);
+    //         return "redirect:/compra/usuario/" + usuario.getId();
+    //     }
+    @GetMapping("/nuevo")
+    public String showNuevo() {
+        
+            List<LineaProducto> lineasCompra = lineaProductoService.obtenerPorUsuario();
+
+            Compra compra = compraService.crearCompra(lineasCompra);
+            Usuario usuario = usuarioService.obtenerUsuarioConectado();
+            compraService.añadir(compra);
+            lineaProductoService.borrarTodo();
+            return "redirect:/compra/usuario/" + usuario.getId();
+        }
 
     // @PostMapping("/nuevo/submit")
     // public String showNuevoSubmit(
@@ -76,7 +94,7 @@ public class CompraController {
         Compra compra = compraService.obtenerPorId(id);
         // el commandobject del formulario es el empleado con el id solicitado
         if (compra != null) {
-            model.addAttribute("listacompra", lineaProductoService.obtenerPorCompra(compra));
+            //model.addAttribute("listacompra", lineaProductoService.obtenerPorCompra(compra));
             model.addAttribute("compra", compra);
             return "LineaProductosView/ListLineaProductoView";
         }

@@ -14,15 +14,15 @@
       th:action="@{/usuario/editar/submit}"
       th:object="${usuarioForm}"
         >
-        <label>Id:<input type="text" id="id" th:field="*{id}" /> </label><br/>
+        <label>Id:<input type="text" id="id" th:field="*{id}" hidden /> </label><br/>
         <label
-            >Nombre: <input type="text" id="nombre" th:field="*{nombre}" /></label
+            >Nombre: <input type="text" id="nombre" th:field="*{nombre}" readonly/></label
         ><br />
         <label
-            >Apellidos: <input type="text" id="apellidos" th:field="*{apellidos}" /></label
+            >Apellidos: <input type="text" id="apellidos" th:field="*{apellidos}" readonly/></label
         ><br />
         <label
-            >Email: <input type="text" id="email" th:field="*{email}" /></label
+            >Email: <input type="text" id="email" th:field="*{email}" readonly/></label
         ><br />
         <label
             >Nombre de usuario: <input type="text" id="nombreUsuario" th:field="*{nombreUsuario}" /></label

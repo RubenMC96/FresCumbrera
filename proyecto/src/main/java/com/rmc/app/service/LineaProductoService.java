@@ -22,8 +22,10 @@ public interface LineaProductoService {
 
     public void borrarTodo();
 
-    public List<LineaProducto> obtenerPorCompra(Compra compra);
+    //public List<LineaProducto> obtenerPorCompra(Compra compra);
 
-    public LineaProducto addNuevaLinea(Long id, Integer cantidad);
+    //public LineaProducto addNuevaLinea(Long id, Integer cantidad);
 
+    public List<LineaProducto> obtenerPorUsuario();
+    public Double obtenerImporte(List<LineaProducto> lineas);
 }

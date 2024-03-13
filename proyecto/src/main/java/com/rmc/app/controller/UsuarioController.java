@@ -91,6 +91,15 @@ public class UsuarioController {
            
     }
 
+    @GetMapping("/editarPerfil")
+    public String showEditPerfil(Model model){
+
+        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+        model.addAttribute("editForm", usuarioConectado);
+
+        return "UsuarioView/UsuFormEdit";
+    }
+
     @GetMapping("/borrar/{id}")
     public String showDelete(@PathVariable long id){
         Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();

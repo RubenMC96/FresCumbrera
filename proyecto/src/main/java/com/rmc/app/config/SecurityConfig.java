@@ -74,6 +74,9 @@ public class SecurityConfig {
                                                 .requestMatchers("/valoracion/nuevo/**", "/valoracion/borrar/**")
                                                 .hasAnyRole("USER", "ADMIN")
 
+                                                /*Permisos contacto */
+                                                .requestMatchers("/contacto/**").permitAll()
+
                                                 .requestMatchers("/**").permitAll()
 
                                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())

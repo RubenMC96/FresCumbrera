@@ -25,20 +25,12 @@
           <td th:text="${compra.fechaCompra}">Fecha de compra</td>
           <td th:text="${compra.totalProductos}">Total productos</td>
           <td th:text="${compra.importe}">Importe</td>
-          <td th:text="${compra.finalizado}">Finalizado</td>
-
-          <td>
-            <a th:href="@{/compra/editar/{id}(id=${compra.id})}"
-              >Editar compra</a
-            >
-          </td>
           <td>
             <a th:href="@{/compra/borrar/{id}(id=${compra.id})}">Borrar</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <a th:href="@{/compra/nuevo/{id}(id=${usuario.id})}">Nueva Compra</a><br />
     <a th:href="@{/inicio}">Inicio</a><br />
   </body>
 </html>

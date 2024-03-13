@@ -47,8 +47,24 @@
           <td th:text="${producto.precio}">Precio</td>
           <td><a th:href="@{/producto/editar/{id}(id=${producto.id})}">Editar</a></td>
           <td><a th:href="@{/producto/borrar/{id}(id=${producto.id})}">Borrar</a></td>
+          <!-- <label
+              >Cantidad: <input type="number" min="1" max="10" id="cantidadProductos" th:field="*{producto.lineaProducto.cantidadProductos}"/></label
+            ><br />
+          <td><a th:href="@{/lineaProducto/annadir/{id}(id=${producto.id})}">Añadir a carrito</a></td> -->
           <td><a th:href="@{/valoracion/producto/{id}(id=${producto.id})}">Valoraciones</a></td>
-          <td><a th:href="@{/}"></a></td>
+          <td>
+              <form
+                method="post"
+                action="#"
+                th:action="@{/lineaProducto/annadir/{id}(id=${producto.id})}"
+                th:object="${lineaForm}">
+                <label
+                  >Cantidad: <input type="number" min="1" max="10" id="cantidad" th:field="*{cantidadProductos}" /></label
+                ><br />
+                <input type="submit" value="Añadir" />
+            </form>
+          </td>
+          
         </tr>
       </tbody>
     </table>

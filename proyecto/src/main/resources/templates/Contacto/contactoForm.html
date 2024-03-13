@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacta con nosotros</title>
+</head>
+<body>
+    <form
+      method="post"
+      action="#"
+      th:action="@{/contacto/submit}"
+      th:object="${contactoForm}"
+    >
+        <label>Nombre:
+            <input type="text" value="nombre"/>
+        </label><br/>
+        <label>Email:
+            <input type="email" value="email"/>
+        </label><br/><br/>
+        <textarea name="mensaje" rows="25" cols="35">
+            ¿En qué podemos ayudarte?
+        </textarea>
+      <input type="submit" value="Añadir" />
+    </form>
+</body>
+</html>

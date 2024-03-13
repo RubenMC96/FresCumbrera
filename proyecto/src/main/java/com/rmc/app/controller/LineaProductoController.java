@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
-import com.rmc.app.domain.Usuario;
+import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.DTO.listaLineasCompra;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
@@ -35,39 +35,55 @@ public class LineaProductoController {
     public UsuarioService usuarioService;
 
     @GetMapping({ "/list/" })
-    public String showList(@PathVariable long id, Model model) {
-        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+    public String showList(Model model) {
 
-        Compra compra = compraService.obtenerCompraActiva(usuarioConectado);
-        model.addAttribute("listaLineaProducto", compra);
-        return "LineaProductoView/ListLineaProductoView";
+        List <LineaProducto> lineas = lineaProductoService.obtenerPorUsuario();
+        model.addAttribute("listaLineaProducto", lineas);
+        //model.addAttribute("listaLineaProductoForm", new listaLineasCompra());
+        Double importe = lineaProductoService.obtenerImporte(lineas);
+        model.addAttribute("importe", importe);
+        return "LineaProductosView/ListLineaProductoView";
     }
 
-    @GetMapping("/nuevo/{idCompra}")
-    public String showAñadir(@PathVariable long idCompra, Model model) {
-        Compra compra = compraService.obtenerPorId(idCompra);
+    // @GetMapping("/nuevo/{idCompra}")
+    // public String showAñadir(@PathVariable long idCompra, Model model) {
+    //     Compra compra = compraService.obtenerPorId(idCompra);
 
-        model.addAttribute("listaProducto", productoService.obtenerLista());
-        model.addAttribute("compra", compra);
-        model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
-        return "LineaProductosView/FormLineaProductoNew";
-    }
+    //     model.addAttribute("listaProducto", productoService.obtenerLista());
+    //     model.addAttribute("compra", compra);
+    //     model.addAttribute("lineaForm", new LineaProducto(null, null, compra, null));
+    //     return "LineaProductosView/FormLineaProductoNew";
+    // }
 
-    @GetMapping("/nuevoLinea/{idProducto}/{cantidad}")
-    public String showNewline(@PathVariable long idProducto, Integer cantidad) {
-        lineaProductoService.addNuevaLinea(idProducto, cantidad);
+    @PostMapping("/annadir/{idProducto}")
+    public String showAnnadirLinea(@PathVariable Long idProducto, @Valid LineaProducto lineaForm,
+                                    BindingResult bindingResult){
+
+        Producto producto = productoService.obtenerPorId(idProducto);                                
+        LineaProducto linea = new LineaProducto(0L, lineaForm.getCantidadProductos(),null ,producto);
+        lineaProductoService.annadir(linea);
+
         return "redirect:/producto/list";
+
     }
 
-    @PostMapping("/nuevo/submit")
-    public String showNuevoSubmit(
-            @Valid LineaProducto lineaForm,
-            BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "redirect:/lineaProducto/nuevo/" + lineaForm.getCompra().getId();
-        lineaProductoService.annadir(lineaForm);
-        return "redirect:/compra/usuario/" + lineaForm.getCompra().getId();
-    }
+
+
+    // @GetMapping("/nuevoLinea/{idProducto}/{cantidad}")
+    // public String showNewline(@PathVariable long idProducto, Integer cantidad) {
+    //     lineaProductoService.addNuevaLinea(idProducto, cantidad);
+    //     return "redirect:/producto/list";
+    // }
+
+    // @PostMapping("/nuevo/submit")
+    // public String showNuevoSubmit(
+    //         @Valid LineaProducto lineaForm,
+    //         BindingResult bindingResult) {
+    //     if (bindingResult.hasErrors())
+    //         return "redirect:/lineaProducto/nuevo/" + lineaForm.getCompra().getId();
+    //     lineaProductoService.annadir(lineaForm);
+    //     return "redirect:/compra/usuario/" + lineaForm.getCompra().getId();
+    // }
 
     @PostMapping("/editar/submit")
     public String showEditSubmit(
@@ -94,7 +110,7 @@ public class LineaProductoController {
     @GetMapping("/borrar/{id}")
     public String showDelete(@PathVariable long id) {
         lineaProductoService.borrar(id);
-        return "redirect:/lineaProducto/list";
+        return "redirect:/lineaProducto/list/";
 
     }
 
@@ -102,7 +118,7 @@ public class LineaProductoController {
     public String showDeleteAll(Model model) {
         lineaProductoService.borrarTodo();
         model.addAttribute("mensaje", "La lineaProducto está vacía");
-        return "redirect:/lineaProducto/list";
+        return "redirect:/lineaProducto/list/";
 
     }
 

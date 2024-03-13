@@ -38,7 +38,7 @@
 
         <!-- menú común para el público -->
         <li class="nav-item"><a th:href="@{/inicio}"><button>Inicio</button></a></li>
-        <li class="nav-item"><a th:href="@{/contacto}"><button>Contacta</button></a>
+        <li class="nav-item"><a th:href="@{/contacto/}"><button>Contacta</button></a>
         </li>
         <li>
           <a th:href="@{/public/somos}"><button>¿Quienes somos?</button></a>
@@ -52,13 +52,10 @@
         </li>
 
         <li>
-          <a th:href="@{/usuario/list}"><button>Usuarios</button></a>
+          <a th:href="@{/usuario/list/}"><button>Usuarios</button></a>
         </li>
         <li>
           <a th:href="@{/lineaProducto/list/}"><button>Carrito</button></a>
-        </li>
-        <li>
-          <a href="@{/lineaProducto/list/{id}}"><button>Linea Productos</button></a>
         </li>
 
         <!-- menú: Iniciar sesión (solo si no autenticado) -->
@@ -76,7 +73,7 @@
             aria-haspopup="true" aria-expanded="false">
             <span sec:authentication="name"></span></a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" th:href="@{/usuario/editarUsuario}">Editar perfil</a></li>
+            <li><a class="dropdown-item" th:href="@{/usuario/editarPerfil}">Editar perfil</a></li>
             <li><a class="dropdown-item" th:href="@{/usuario/editarPassword}">Cambiar Contraseña</a></li>
             <li>
               <form th:action="@{/logout}" method="post">

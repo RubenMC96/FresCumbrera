@@ -11,7 +11,6 @@ import com.rmc.app.Repositories.ProductoRepository;
 import com.rmc.app.Repositories.UsuarioRepository;
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
-import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.Usuario;
 
 @Service
@@ -47,8 +46,12 @@ public class LineaProductoServiceImp implements LineaProductoService {
 
     }
 
-    public void annadir(LineaProducto lineaProducto) {
+    public void annadir(LineaProducto linea) {
 
+        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+
+        LineaProducto lineaProducto = new LineaProducto(0L, linea.getCantidadProductos(), usuarioConectado, linea.getProducto());
+        
         lineaProductoRepository.save(lineaProducto);
 
     }
@@ -71,24 +74,45 @@ public class LineaProductoServiceImp implements LineaProductoService {
         lineaProductoRepository.deleteAll();
     }
 
-    public List<LineaProducto> obtenerPorCompra(Compra compra) {
+    // public List<LineaProducto> obtenerPorCompra(Compra compra) {
 
-        List<LineaProducto> lineaProducto = lineaProductoRepository.findByCompra(compra);
+    //     List<LineaProducto> lineaProducto = lineaProductoRepository.findByCompra(compra);
 
-        if (lineaProducto != null) {
-            return lineaProducto;
-        } else
-            return null;
-    }
+    //     if (lineaProducto != null) {
+    //         return lineaProducto;
+    //     } else
+    //         return null;
+    // }
 
-    public LineaProducto addNuevaLinea(Long id, Integer cantidad) {
+    // public LineaProducto addNuevaLinea(Long id, Integer cantidad) {
+
+    //     Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+    //     Compra compra = compraService.obtenerCompraActiva(usuarioConectado);
+    //     Producto producto = productoService.obtenerPorId(id);
+    //     LineaProducto lineaProducto = lineaProductoRepository.save(
+    //             new LineaProducto(null, cantidad, compra, producto));
+    //     return lineaProducto;
+    // }
+
+    public List<LineaProducto> obtenerPorUsuario(){
 
         Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
-        Compra compra = compraService.obtenerCompraActiva(usuarioConectado);
-        Producto producto = productoService.obtenerPorId(id);
-        LineaProducto lineaProducto = lineaProductoRepository.save(
-                new LineaProducto(null, cantidad, compra, producto));
+
+        List <LineaProducto> lineaProducto = lineaProductoRepository.findByUsuario(usuarioConectado);
+
         return lineaProducto;
+    }
+
+    public Double obtenerImporte(List<LineaProducto> lineas){
+
+        Double importe = 0D;
+
+        for(LineaProducto linea : lineas){
+
+            importe += linea.getProducto().getPrecio() * linea.getCantidadProductos();
+        }
+
+        return importe;
     }
 
 }

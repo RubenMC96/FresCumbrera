@@ -25,7 +25,7 @@ public class LineaProducto {
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Compra compra;
+    private Usuario usuario;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

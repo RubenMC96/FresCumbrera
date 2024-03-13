@@ -19,7 +19,7 @@ public class AppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AppApplication.class, args);
 	}
-
+ 
 	@Bean
 	public CommandLineRunner initData(CategoriaService categoriaService, ProductoService productoService,
 			UsuarioService usuarioService) {

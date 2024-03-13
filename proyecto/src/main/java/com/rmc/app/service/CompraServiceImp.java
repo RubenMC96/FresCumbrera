@@ -1,6 +1,7 @@
 package com.rmc.app.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +9,20 @@ import org.springframework.stereotype.Service;
 
 import com.rmc.app.Repositories.CompraRepository;
 import com.rmc.app.domain.Compra;
+import com.rmc.app.domain.LineaProducto;
 import com.rmc.app.domain.Usuario;
+import com.rmc.app.domain.DTO.listaLineasCompra;
 
 @Service
 public class CompraServiceImp implements CompraService {
 
     @Autowired
     CompraRepository compraRepository;
+    @Autowired
+    UsuarioService usuarioService;
 
-    public Compra añadir(Usuario usuario) {
-        Compra compra = new Compra(0L, "", LocalDate.now(), 0, 0D, false, usuario);
+    public Compra añadir(Compra compra) {
+        
         compraRepository.save(compra);
         return compra; // podría no devolver nada, o boolean, etc.
     }
@@ -48,8 +53,8 @@ public class CompraServiceImp implements CompraService {
         }
     }
 
-    public List<Compra> obtenerPorUsuario(Usuario usuario) {
-
+    public List<Compra> obtenerPorUsuario() {
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
         return compraRepository.findByUsuario(usuario);
     }
 
@@ -57,18 +62,62 @@ public class CompraServiceImp implements CompraService {
         return compraRepository.findAll();
     }
 
-    public Compra obtenerCompraActiva(Usuario usuario) {
+    // public Compra obtenerCompraActiva(Usuario usuario) {
 
-        List<Compra> compras = compraRepository.findByUsuario(usuario);
-        Compra compraActiva;
-        for (Compra compra : compras) {
+    //     List<Compra> compras = compraRepository.findByUsuario(usuario);
+    //     Compra compraActiva;
+    //     for (Compra compra : compras) {
 
-            if (compra.getFinalizado() == false) {
-                compraActiva = compra;
-                return compraActiva;
+    //         if (compra.getFinalizado() == false) {
+    //             compraActiva = compra;
+    //             return compraActiva;
+    //         }
+    //     }
+    //     return null;// falta un neew compra
+    // }
+
+    // public Compra crearCompra(listaLineasCompra listaLinea){
+
+    // if(listaLinea == null){
+    //     return null;
+    // }   
+    // else{
+    //     Usuario usuario = usuarioService.obtenerUsuarioConectado();
+    //     LocalDateTime fecha = LocalDateTime.now();
+    //     LocalDate fechaCompra = LocalDate.now();
+    //     String numFactura = usuario.getNombre() + fecha;
+    //     Integer numProductos = 0;
+    //     for(LineaProducto linea : listaLinea.getListaLineaProducto()){
+    //         numProductos += linea.getCantidadProductos();
+    //     }
+    //     Double importe = 0D;
+    //     for(LineaProducto linea : listaLinea.getListaLineaProducto()){
+    //         linea.getProducto().getPrecio();
+    //     }
+    
+    //     Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe);
+    
+    //         return compra;
+    // } 
+ 
+    // }
+
+    public Compra crearCompra(List<LineaProducto> listaCompra){
+
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        LocalDateTime fecha = LocalDateTime.now();
+        LocalDate fechaCompra = LocalDate.now();
+        String numFactura = usuario.getNombre() + fecha;
+        Integer numProductos = 0;
+        for(LineaProducto linea : listaCompra){
+               numProductos += linea.getCantidadProductos();
             }
-        }
-        return null;// falta un neew compra
-    }
+        Double importe = 0D;
+        for(LineaProducto linea : listaCompra){
+                 importe += linea.getProducto().getPrecio() * linea.getCantidadProductos();
+            }
 
+        Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe, usuario);
+        return compra;
+    }
 }

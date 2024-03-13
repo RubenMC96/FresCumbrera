@@ -27,8 +27,15 @@ public class Compra {
     private LocalDate fechaCompra;
     private Integer totalProductos;
     private Double importe;
-    private Boolean finalizado;
+    //private Boolean finalizado;
 
+    public Compra(Long id,String numFactura,LocalDate fechaCompra,Integer totalProductos, Double importe){
+        this.id = id;
+        this.numFactura = numFactura;
+        this.fechaCompra = fechaCompra;
+        this.totalProductos = totalProductos;
+        this.importe = importe;
+    };
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;

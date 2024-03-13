@@ -6,35 +6,46 @@
     <title>Lista compra</title>
   </head>
   <body>
-    <h1>Lineas de productos</h1>
-    <table border="1px">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Producto</th>
-          <th>Precio</th>
-          <th>IVA</th>
-          <th>Cantidad</th>
-        </tr>
-      </thead>
+    <!-- <form
+    method="post"
+    action="#"
+    th:action="@{/compra/nuevo}"
+    th:object="${listaLineaProductoForm}"
+    > -->
+      <h1>Lineas de productos</h1>
+      <table border="1px">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>IVA</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr th:each="linea : ${listacompra}">
-          <td th:text="${linea.id}"></td>
-          <td th:text="${linea.producto.nombre}">Producto</td>
-          <td th:text="${linea.producto.precio}">Precio</td>
-          <td th:text="${linea.cantidadProductos}">Cantidad</td>
+        <tbody>
+          <tr th:each="linea : ${listaLineaProducto}">
+            <td th:text="${linea.id}"></td>
+            <td th:text="${linea.producto.nombre}">Producto</td>
+            <td th:text="${linea.producto.precio}">Precio</td>
+            <td th:text="${linea.cantidadProductos}">Cantidad</td>
 
-          <td>
-            <a th:href="@{/lineaProducto/borrar/{id}(id=${listacompra.id})}"
-              >Borrar</a
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <a th:href="@{/lineaProducto/nuevo/{id}(id=${compra.id})}"
-      >Añadir productos</a
-    >
+            <td>
+              <a th:href="@{/lineaProducto/borrar/{id}(id=${linea.id})}"
+                >Borrar</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p th:text="${importe}"></p>
+      <!-- <input type="submit" value="Comprar"> -->
+      <a th:href="@{/compra/nuevo}"
+                >Comprar</a
+              >
+    <!-- </form> -->
+    <a th:href="@{/lineaProducto/borrar}">Borrar carrito</a><br />
+    <a th:href="@{/inicio}">Inicio</a>
   </body>
 </html>

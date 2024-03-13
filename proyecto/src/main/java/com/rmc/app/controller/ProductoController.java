@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Categoria;
 import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.DTO.LineaProductoDTO;
 import com.rmc.app.service.CategoriaService;
+import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
 
 import jakarta.validation.Valid;
@@ -29,12 +31,16 @@ public class ProductoController {
     public ProductoService productoService;
     @Autowired
     public CategoriaService categoriaService;
+    @Autowired
+    public LineaProductoService lineaProductoService;
 
 
     @GetMapping({"/", "/list"})
     public String showList(Model model){
+
         model.addAttribute("listaProductos", productoService.obtenerLista());
         model.addAttribute("listaCategorias", categoriaService.obtenerLista());
+        model.addAttribute("lineaForm", new LineaProductoDTO());
         model.addAttribute("categoriaSeleccionada", new Categoria(0L,"Todas"));
         return "ProductosView/ListProducView";
     }
