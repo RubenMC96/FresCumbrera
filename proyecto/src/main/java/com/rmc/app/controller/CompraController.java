@@ -1,5 +1,6 @@
 package com.rmc.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.rmc.app.domain.LineaProducto;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
+import com.rmc.app.service.ProductoService;
 import com.rmc.app.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -30,6 +32,8 @@ public class CompraController {
     public UsuarioService usuarioService;
     @Autowired
     public LineaProductoService lineaProductoService;
+    @Autowired
+    public ProductoService productoService;
 
     @GetMapping({ "/", "/list" })
     public String showList(Model model) {
@@ -46,6 +50,18 @@ public class CompraController {
         return "CompraView/ListCompraView";
     }
 
+    @GetMapping("/detalles/{idCompra}")
+    public String showDetallePedido(@PathVariable int idCompra ,Model model){
+
+        Compra compra = compraService.obtenerPorId(idCompra);
+        List<LineaProducto> lineasCompra = lineaProductoService.obtenerPorUsuario();
+
+        model.addAttribute("detallesCompra", compra);
+        model.addAttribute("productos", lineasCompra);
+        return "CompraView/DetallesCompraView";
+    }
+
+
     // @PostMapping("/nuevo/{listaCompra}")
     // public String showNuevo(@PathVariable List<LineaProducto> listaCompra, BindingResult bindingResult) {
     //     if(bindingResult.hasErrors())
@@ -61,11 +77,23 @@ public class CompraController {
     public String showNuevo() {
         
             List<LineaProducto> lineasCompra = lineaProductoService.obtenerPorUsuario();
+            List<LineaProducto> productosComprar = new ArrayList<>();
+            for(LineaProducto producto: lineasCompra){
+                if(producto.getProducto().getStock() > 0 && producto.getProducto().getStock() >= producto.getCantidadProductos()){
+                     productosComprar.add(producto);
+                     productoService.actualizarStock(producto.getId() ,producto.getProducto().getStock() - producto.getCantidadProductos());
 
-            Compra compra = compraService.crearCompra(lineasCompra);
+                }
+            }            
+            
+            if(!productosComprar.isEmpty()){
+                Compra compra = compraService.crearCompra(productosComprar);
+                compraService.añadir(compra);
+                lineaProductoService.borrarTodo();
+            }
+            
             Usuario usuario = usuarioService.obtenerUsuarioConectado();
-            compraService.añadir(compra);
-            lineaProductoService.borrarTodo();
+
             return "redirect:/compra/usuario/" + usuario.getId();
         }
 

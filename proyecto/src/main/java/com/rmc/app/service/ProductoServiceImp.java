@@ -48,4 +48,12 @@ public class ProductoServiceImp implements ProductoService{
 
         return proRepo.findByCategoria(categoria);
     }
+
+    public void actualizarStock(Long idProducto,Integer nuevoStock){
+        Producto producto = proRepo.findById(idProducto).orElse(null);
+        if(producto != null){
+            producto.setStock(nuevoStock);
+        }
+
+    }
 }

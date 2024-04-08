@@ -1,5 +1,6 @@
 package com.rmc.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,14 @@ public class ValoracionServiceImp implements ValoracionService {
 
     @Autowired
     ProductoRepository proRepo;
+    
+    @Autowired
+    UsuarioService usuarioService;
 
     public Valoracion añadir(Valoracion valoracion){
-        valRepo.save(valoracion);
+        
+        Valoracion valoracionSave = new Valoracion(valoracion.getId(),valoracion.getComentario(),valoracion.getPuntuacion(),valoracion.getFechaPublicacion(),valoracion.getUsuario(), valoracion.getProducto());
+        valRepo.save(valoracionSave);
         return valoracion;
     }
     public Valoracion obtenerPorId(long id){
@@ -68,6 +74,11 @@ public class ValoracionServiceImp implements ValoracionService {
             return null;
         }
 
+    }
+
+    public Valoracion crearValoracion(Producto producto, Usuario usuario ){
+        Valoracion valoracion = new Valoracion(0L, null, null, LocalDate.now(), usuario, producto);
+        return valoracion;
     }
 
     

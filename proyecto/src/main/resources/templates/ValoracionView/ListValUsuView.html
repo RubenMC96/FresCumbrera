@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <h1>Listado de valoraciones de los productos</h1>
+  <h1>Listado de valoraciones</h1>
   <table border="1px">
     <thead>
       <tr>
@@ -17,7 +17,6 @@
         <th>Comentario</th>
         <th>Puntuacion</th>
         <th>Fecha de publicacion</th>
-        <th>Usuario</th>
       </tr>
     </thead>
 
@@ -28,7 +27,6 @@
         <td th:text="${valoracion.comentario}">Comentario</td>
         <td th:text="${valoracion.puntuacion}">Puntuacion</td>
         <td th:text="${valoracion.fechaPublicacion}">Fecha</td>
-        <td th:text="${valoracion.usuario}">Usuario</td>
         <td>
           <a th:href="@{/valoracion/borrar/{id}(id=${valoracion.id})}">Borrar</a>
         </td>
@@ -36,7 +34,6 @@
     </tbody>
   </table>
   <a th:href="@{/inicio}">Inicio</a><br />
-  <a th:href="@{/valoracion/nuevo/{id}(id=${producto.id})}">Nueva valoracion</a><br />
 </body>
 
 </html>

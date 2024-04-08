@@ -42,15 +42,16 @@ public class ValoracionController {
     @GetMapping({ "/usuario/{idUsuario}" })
     public String showUsuario(@PathVariable long idUsuario, Model model) {
         model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(idUsuario));
-        return "ValoracionView/ListValView";
+        return "ValoracionView/ListValUsuView";
     }
 
     @GetMapping("/nuevo/{idProducto}")
     public String showNuevo(@PathVariable long idProducto, Model model) {
         Producto producto = productoService.obtenerPorId(idProducto);
-        // Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        model.addAttribute("valoracionForm", new Valoracion(0L, null, null, null, null, producto));
-        model.addAttribute("producto", producto);
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        Valoracion valoracion = valoracionService.crearValoracion(producto, usuario);
+        model.addAttribute("valoracionForm", valoracion);
+        //model.addAttribute("producto", producto);
         return "valoracionView/ValFormNew";
     }
 

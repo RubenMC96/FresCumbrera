@@ -2,6 +2,7 @@ package com.rmc.app.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ import org.springframework.stereotype.Service;
 import com.rmc.app.Repositories.CompraRepository;
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
+import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.Usuario;
-import com.rmc.app.domain.DTO.listaLineasCompra;
+import com.rmc.app.domain.DTO.ProductoDTO;
 
 @Service
 public class CompraServiceImp implements CompraService {
@@ -117,7 +119,19 @@ public class CompraServiceImp implements CompraService {
                  importe += linea.getProducto().getPrecio() * linea.getCantidadProductos();
             }
 
-        Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe, usuario);
+        /*List<ProductoDTO> listaProductos = new ArrayList<>();
+        for(LineaProducto lista : listaCompra){
+            ProductoDTO productoDTO = new ProductoDTO(lista.getProducto().getId(),lista.getProducto().getNombre());
+            listaProductos.add(productoDTO);
+        }*/
+
+        
+        // List<Producto> listaProductos = new ArrayList<>();
+        // for(LineaProducto lista : listaCompra){
+        //     listaProductos.add(lista.getProducto());
+        // }
+        
+        Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe,usuario);
         return compra;
     }
 }

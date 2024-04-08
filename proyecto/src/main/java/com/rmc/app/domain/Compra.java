@@ -1,9 +1,12 @@
 package com.rmc.app.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import com.rmc.app.domain.DTO.ProductoDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +30,12 @@ public class Compra {
     private LocalDate fechaCompra;
     private Integer totalProductos;
     private Double importe;
-    //private Boolean finalizado;
+    //private List<ProductoDTO> listaProductos;
+
+    
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Usuario usuario;
 
     public Compra(Long id,String numFactura,LocalDate fechaCompra,Integer totalProductos, Double importe){
         this.id = id;
@@ -35,8 +43,6 @@ public class Compra {
         this.fechaCompra = fechaCompra;
         this.totalProductos = totalProductos;
         this.importe = importe;
+        //this.listaProductos = lista;
     };
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Usuario usuario;
 }

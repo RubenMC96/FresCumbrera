@@ -30,9 +30,9 @@ public class AppApplication {
 			categoriaService.añadir(new Categoria(0L, "Frutas"));
 			categoriaService.añadir(new Categoria(0L, "Preparados"));
 			productoService
-					.añadir(new Producto(1L, "Fresas", true, 3D, "Huelva", categoriaService.obtenerPorNombre("Fruta")));
+					.añadir(new Producto(1L, "Fresas", true, 3D, "Huelva",10, categoriaService.obtenerPorNombre("Fruta")));
 			productoService.añadir(
-					new Producto(1L, "Batidos", true, 10D, "España", categoriaService.obtenerPorNombre("Preparados")));
+					new Producto(1L, "Batidos", true, 10D, "España",5,categoriaService.obtenerPorNombre("Preparados")));
 		};
 	}
 

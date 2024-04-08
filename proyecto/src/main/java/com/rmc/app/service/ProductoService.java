@@ -15,4 +15,5 @@ public interface ProductoService {
     public Producto editar(Producto producto);
     public void borrar(Long id);
     public List<Producto> findByCategory(Long idCat);
+    public void actualizarStock(Long idProducto ,Integer nuevoStock);
 }

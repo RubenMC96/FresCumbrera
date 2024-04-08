@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/src/main/java/com/rmc/ejerciciosT6/controller/EmpleadoController.java"></script>
-    <title>Document</title>
+    <title>Editar producto</title>
   </head>
   <body>
     <h1>Editar producto</h1>
@@ -25,7 +25,8 @@
           id="oferta"
           th:field="*{oferta}" /></label
       ><br />
-      <label> Precio:<input type="text" th:field="*{precio}" /> </label>
+      <label> Precio:<input type="text" th:field="*{precio}" /> </label><br/>
+      <label> Stock:<input type="number" th:field="*{stock}" /> </label>
 
       <input type="submit" value="Enviar" />
     </form>

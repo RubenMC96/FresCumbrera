@@ -25,6 +25,7 @@ public class Producto {
     private Boolean oferta;
     private Double precio;
     private String origen;
+    private Integer stock;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

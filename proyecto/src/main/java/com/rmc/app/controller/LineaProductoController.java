@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.LineaProducto;
 import com.rmc.app.domain.Producto;
-import com.rmc.app.domain.DTO.listaLineasCompra;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
@@ -38,11 +37,18 @@ public class LineaProductoController {
     public String showList(Model model) {
 
         List <LineaProducto> lineas = lineaProductoService.obtenerPorUsuario();
-        model.addAttribute("listaLineaProducto", lineas);
-        //model.addAttribute("listaLineaProductoForm", new listaLineasCompra());
-        Double importe = lineaProductoService.obtenerImporte(lineas);
-        model.addAttribute("importe", importe);
-        return "LineaProductosView/ListLineaProductoView";
+        if(lineas != null && !lineas.isEmpty()){
+            model.addAttribute("listaLineaProducto", lineas);
+            Double importe = lineaProductoService.obtenerImporte(lineas);
+            model.addAttribute("importe", importe);
+            return "LineaProductosView/ListLineaProductoView";
+        }
+        else{
+            model.addAttribute("listaVacia", "El carrito está vacío, visita nuestra fantática sección de productos");
+            return "LineaProductosView/ListaVacia";
+        }
+        
+        
     }
 
     // @GetMapping("/nuevo/{idCompra}")
@@ -59,9 +65,11 @@ public class LineaProductoController {
     public String showAnnadirLinea(@PathVariable Long idProducto, @Valid LineaProducto lineaForm,
                                     BindingResult bindingResult){
 
-        Producto producto = productoService.obtenerPorId(idProducto);                                
+        Producto producto = productoService.obtenerPorId(idProducto); 
+        
         LineaProducto linea = new LineaProducto(0L, lineaForm.getCantidadProductos(),null ,producto);
         lineaProductoService.annadir(linea);
+        
 
         return "redirect:/producto/list";
 

@@ -81,7 +81,7 @@ public class SecurityConfig {
 
                                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                                 .permitAll()
-                                                .requestMatchers("/h2-console/**").authenticated()
+                                                .requestMatchers("/h2-console/**").permitAll()
                                                 .anyRequest().permitAll()
 
                 )
