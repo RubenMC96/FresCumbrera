@@ -55,8 +55,10 @@ public class CompraServiceImp implements CompraService {
         }
     }
 
-    public List<Compra> obtenerPorUsuario() {
-        Usuario usuario = usuarioService.obtenerUsuarioConectado();
+    public List<Compra> obtenerPorUsuario(Long id) {
+        //Puede que en la app final tenga que volver a obtener el usuario conectado.
+        //Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        Usuario usuario = usuarioService.obtenerPorId(id);
         return compraRepository.findByUsuario(usuario);
     }
 

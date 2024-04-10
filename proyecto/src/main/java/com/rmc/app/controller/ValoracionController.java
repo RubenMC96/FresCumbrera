@@ -13,6 +13,7 @@ import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.Rol;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.domain.Valoracion;
+import com.rmc.app.domain.DTO.ValoracionDTO;
 import com.rmc.app.service.ProductoService;
 import com.rmc.app.service.UsuarioService;
 import com.rmc.app.service.ValoracionService;
@@ -47,22 +48,25 @@ public class ValoracionController {
 
     @GetMapping("/nuevo/{idProducto}")
     public String showNuevo(@PathVariable long idProducto, Model model) {
-        Producto producto = productoService.obtenerPorId(idProducto);
-        Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        Valoracion valoracion = valoracionService.crearValoracion(producto, usuario);
-        model.addAttribute("valoracionForm", valoracion);
-        //model.addAttribute("producto", producto);
+        //Producto producto = productoService.obtenerPorId(idProducto);
+        //Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        //Valoracion valoracion = valoracionService.crearValoracion(producto, usuario);
+        //System.out.println(valoracion);
+        ValoracionDTO valoracionDTO = new ValoracionDTO(null, null, idProducto);
+        model.addAttribute("valoracionForm", valoracionDTO);
         return "valoracionView/ValFormNew";
     }
 
     @PostMapping("/nuevo/submit")
     public String showNuevoSubmit(
-            @Valid Valoracion valoracionForm,
+            @Valid ValoracionDTO valoracionForm,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "redirect:/valoracion/nuevo";
-        valoracionService.añadir(valoracionForm);
-        return "redirect:/valoracion/producto/" + valoracionForm.getProducto().getId();
+            Valoracion valoracion = valoracionService.crearValoracion(valoracionForm);
+        valoracionService.añadir(valoracion);
+        System.out.println(valoracionForm.getIdProducto());
+        return "redirect:/valoracion/producto/" + valoracionForm.getIdProducto();
     }
 
     @GetMapping("/borrar/{idValoracion}")

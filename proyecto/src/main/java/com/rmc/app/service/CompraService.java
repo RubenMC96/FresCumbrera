@@ -22,7 +22,7 @@ public interface CompraService {
 
     public void borrar(Long id);
 
-    public List<Compra> obtenerPorUsuario();
+    public List<Compra> obtenerPorUsuario(Long id);
 
     //public Compra obtenerCompraActiva(Usuario usuario);
 

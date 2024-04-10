@@ -11,15 +11,16 @@
 <body>
   <h1>Nueva valoracion</h1>
   <form method="post" action="#" th:action="@{/valoracion/nuevo/submit}" th:object="${valoracionForm}">
-    <label><input type="text" id="id" th:field="*{id}" hidden /> </label><br />
-    <label><input type="text" id="id" th:field="*{producto}" hidden /> </label><br />
+    
+    <!-- <label><input type="text" id="id" th:field="*{producto}" hidden /> </label><br /> -->
     >Comentario:
     <input type="text" id="comentario" th:field="*{comentario}" /></label><br />
     <label>Puntuación:
       <input type="number" id="puntuacion" th:field="*{puntuacion}" /></label><br />
-    <label>
-      <input type="date" id="fecha" th:field="*{fechaPublicacion}" hidden /></label><br />
-    <input type="submit" value="Enviar" />
+    <!-- <label>
+      <input type="date" id="fecha" th:field="*{fechaPublicacion}" hidden /></label><br /> -->
+      <label><input type="text" id="idProducto" th:field="*{idProducto}" hidden /> </label><br />
+      <input type="submit" value="Enviar" />
   </form>
   <a th:href="@{/valoracion/}">Inicio</a><br />
 </body>

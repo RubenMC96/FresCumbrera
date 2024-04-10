@@ -12,6 +12,7 @@ import com.rmc.app.Repositories.ValoracionRepository;
 import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.domain.Valoracion;
+import com.rmc.app.domain.DTO.ValoracionDTO;
 
 @Service
 public class ValoracionServiceImp implements ValoracionService {
@@ -28,10 +29,13 @@ public class ValoracionServiceImp implements ValoracionService {
     @Autowired
     UsuarioService usuarioService;
 
+    @Autowired
+    ProductoService productoService;
+
     public Valoracion añadir(Valoracion valoracion){
         
-        Valoracion valoracionSave = new Valoracion(valoracion.getId(),valoracion.getComentario(),valoracion.getPuntuacion(),valoracion.getFechaPublicacion(),valoracion.getUsuario(), valoracion.getProducto());
-        valRepo.save(valoracionSave);
+        //Valoracion valoracionSave = new Valoracion(valoracion.getId(),valoracion.getComentario(),valoracion.getPuntuacion(),valoracion.getFechaPublicacion(),valoracion.getUsuario(), valoracion.getProducto());
+        valRepo.save(valoracion);
         return valoracion;
     }
     public Valoracion obtenerPorId(long id){
@@ -76,8 +80,10 @@ public class ValoracionServiceImp implements ValoracionService {
 
     }
 
-    public Valoracion crearValoracion(Producto producto, Usuario usuario ){
-        Valoracion valoracion = new Valoracion(0L, null, null, LocalDate.now(), usuario, producto);
+    public Valoracion crearValoracion(ValoracionDTO valoracionDTO){
+        Usuario usuario = usuarioService.obtenerUsuarioConectado();
+        Producto producto = productoService.obtenerPorId(valoracionDTO.getIdProducto());
+        Valoracion valoracion = new Valoracion(0L, valoracionDTO.getComentario(), valoracionDTO.getPuntuacion(), LocalDate.now(), usuario, producto);
         return valoracion;
     }
 

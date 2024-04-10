@@ -42,8 +42,9 @@ public class CompraController {
     }
 
     @GetMapping({ "/usuario/{id}" })
-    public String showPedidos(Model model) {
-        model.addAttribute("listaCompra", compraService.obtenerPorUsuario());
+    public String showPedidos(@PathVariable Long id ,Model model) {
+        //Puede que en la app final tenga que volver a obtener el usuario conectado.
+        model.addAttribute("listaCompra", compraService.obtenerPorUsuario(id));
         // model.addAttribute("compra", compraService.obtenerCompraPorUsuario(usuario));
         Usuario usuario = usuarioService.obtenerUsuarioConectado();
         model.addAttribute("usuario", usuario);

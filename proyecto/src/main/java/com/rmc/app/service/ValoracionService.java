@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.Usuario;
 import com.rmc.app.domain.Valoracion;
+import com.rmc.app.domain.DTO.ValoracionDTO;
 
 @Service
 public interface ValoracionService {
@@ -17,7 +18,7 @@ public interface ValoracionService {
     public void borrar(Long id);
     public List<Valoracion> obtenerPorUsuario(Long id);
     public List<Valoracion> obtenerPorProducto(Long id);
-    public Valoracion crearValoracion(Producto producto, Usuario usuario);
+    public Valoracion crearValoracion(ValoracionDTO valoracionDTO);
     
 }
 

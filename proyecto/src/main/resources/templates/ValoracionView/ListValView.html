@@ -28,7 +28,7 @@
         <td th:text="${valoracion.comentario}">Comentario</td>
         <td th:text="${valoracion.puntuacion}">Puntuacion</td>
         <td th:text="${valoracion.fechaPublicacion}">Fecha</td>
-        <td th:text="${valoracion.usuario}">Usuario</td>
+        <td th:text="${valoracion.usuario.nombre}">Usuario</td>
         <td>
           <a th:href="@{/valoracion/borrar/{id}(id=${valoracion.id})}">Borrar</a>
         </td>
