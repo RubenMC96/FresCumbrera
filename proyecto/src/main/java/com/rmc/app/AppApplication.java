@@ -20,20 +20,20 @@ public class AppApplication {
 		SpringApplication.run(AppApplication.class, args);
 	}
  
-	@Bean
-	public CommandLineRunner initData(CategoriaService categoriaService, ProductoService productoService,
-			UsuarioService usuarioService) {
+	// @Bean
+	// public CommandLineRunner initData(CategoriaService categoriaService, ProductoService productoService,
+	// 		UsuarioService usuarioService) {
 
-		return args -> {
-			usuarioService.añadir(new Usuario(0L, "admin", "1", "admin1@gmail.com", "admin1", "1234", "123456789", Rol.ADMIN));
-			usuarioService.añadir(new Usuario(0L, "user", "1", "user1@gmail.com", "user1", "1234", "123456789", Rol.USER));
-			categoriaService.añadir(new Categoria(0L, "Frutas"));
-			categoriaService.añadir(new Categoria(0L, "Preparados"));
-			productoService
-					.añadir(new Producto(1L, "Fresas", true, 3D, "Huelva",10, categoriaService.obtenerPorNombre("Fruta")));
-			productoService.añadir(
-					new Producto(1L, "Batidos", true, 10D, "España",5,categoriaService.obtenerPorNombre("Preparados")));
-		};
-	}
+	// 	return args -> {
+	// 		usuarioService.añadir(new Usuario(0L, "admin", "1", "admin1@gmail.com", "admin1", "1234", "123456789", Rol.ADMIN));
+	// 		usuarioService.añadir(new Usuario(0L, "user", "1", "user1@gmail.com", "user1", "1234", "123456789", Rol.USER));
+	// 		categoriaService.añadir(new Categoria(0L, "Frutas"));
+	// 		categoriaService.añadir(new Categoria(0L, "Preparados"));
+	// 		productoService
+	// 				.añadir(new Producto(1L, "Fresas", true, 3D, "Huelva",10, categoriaService.obtenerPorNombre("Fruta")));
+	// 		productoService.añadir(
+	// 				new Producto(1L, "Batidos", true, 10D, "España",5,categoriaService.obtenerPorNombre("Preparados")));
+	// 	};
+	// }
 
 }
