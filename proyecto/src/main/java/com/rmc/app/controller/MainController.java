@@ -33,6 +33,10 @@ public class MainController {
 
         return "Contacto/enviado";
     }
+    @GetMapping("/autoRegistro")
+    public String showAutoRegistro(){
+        return "UsuarioView/UsuAutoRegistro";
+    }
 
     @GetMapping("/signin")
     public String showLogin() {

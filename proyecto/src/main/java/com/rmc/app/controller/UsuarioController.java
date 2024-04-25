@@ -53,21 +53,26 @@ public class UsuarioController {
 
     @GetMapping("/editar/{id}")
     public String ShowEdit(@PathVariable long id, Model model){
-        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
-        Usuario usuario = usuarioService.obtenerPorId(id);
-        if(usuarioConectado.getRol() == Rol.USER && usuarioConectado.getId() == usuario.getId()){
-            if(usuario != null){
-                model.addAttribute("usuarioForm", usuario);
-                return "UsuarioView/UsuFormEdit";
-            }
-        }
-        else{
-            if(usuario != null){
-                model.addAttribute("usuarioForm", usuario);
-                return "UsuarioView/UsuFormEdit";
-            }
-        }
-        return null;
+        //Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+        //Usuario usuario = usuarioService.obtenerPorId(id);
+
+
+
+        // if(usuarioConectado.getRol() == Rol.USER && usuarioConectado.getId() == usuario.getId()){
+        //     if(usuario != null){
+        //         model.addAttribute("usuarioForm", usuario);
+        //         return "UsuarioView/UsuFormEdit";
+        //     }
+        // }
+        // else{
+        //     if(usuario != null){
+        //         model.addAttribute("usuarioForm", usuario);
+        //         return "UsuarioView/UsuFormEdit";
+        //     }
+        // }
+        //return null;
+
+        return("UsuarioWiew/UsuFormEdit");
 
     }
 
