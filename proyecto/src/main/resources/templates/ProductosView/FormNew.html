@@ -3,20 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/src/main/java/com/rmc/ejerciciosT6/controller/EmpleadoController.java"></script>
+    <script src="/js/validacionProducto.js"defer></script>
     <title>Nuevo producto</title>
   </head>
   <body>
     <h1>Nuevo producto</h1>
     <form
+      id="myForm"
       method="post"
       action="#"
       th:action="@{/producto/nuevo/submit}"
       th:object="${productoForm}"
     >
-      <label>Id:<input type="text" id="id" th:field="*{id}" /> </label><br />
+      <label><input type="text" id="id" th:field="*{id}" hidden/> </label><br />
       <label
-        >Nombre: <input type="text" id="nombre" th:field="*{nombre}" /></label
+        >Nombre: <input type="text" id="nombre" maxlength="40"
+        placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" required/>
+        <p id="avisoNombre"></p>
+        </label
       ><br />
       <label
         >En oferta:<input
@@ -25,8 +29,12 @@
           th:field="*{oferta}"
         /> </label
       ><br />
-      <label> Precio:<input type="text" th:field="*{precio}" /> </label><br />
-      <label> Stock:<input type="number" th:field="*{stock}" /> </label><br />
+      <label> Precio:<input type="text" id="precio" min="0" pattern="^\d+(\.\d{1,2})?$" th:field="*{precio}" required/>
+        <p id="avisoPrecio"></p>
+      </label><br />
+      <label> Stock:<input type="number" id="stock" min="0" pattern="^\d+$" th:field="*{stock}" required/> 
+        <p id="avisoStock"></p>
+      </label><br />
       <label
         >Categoria
         <select name="categoria" th:field="*{categoria}">
@@ -37,7 +45,7 @@
           ></option>
         </select> </label
       ><br />
-      <input type="submit" value="Enviar" />
+      <input type="submit" value="Enviar" id="enviar" />
     </form>
     <a th:href="@{/producto/}">Inicio</a><br />
   </body>

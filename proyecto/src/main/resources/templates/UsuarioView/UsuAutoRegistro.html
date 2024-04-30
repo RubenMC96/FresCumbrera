@@ -5,7 +5,7 @@ xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto registro</title>
-    <!-- <script src="/proyecto/src/main/resources/static/js/validacionForm.js" defer></script> -->
+    <script src="/js/validacionUsuario.js" defer></script>
 </head>
 <body>
     <div id="caja">
@@ -61,6 +61,8 @@ xmlns:th="http://www.thymeleaf.org">
                 <input 
                 type="text" 
                 id="nombreUsuario"
+                pattern="^[a-zA-Z0-9._-/*]+$"
+                required
                 >
                 <p id="avisoNombUsuario"></p>
 
@@ -93,9 +95,9 @@ xmlns:th="http://www.thymeleaf.org">
         </form>
     </div>
     
-    <th:block id="scripts">
-        <script type="application/javascript" th:src="@{/proyecto/src/main/resources/static/js/validacion.js}" ></script>
+    <!-- <th:block id="scripts">
+        <script type="application/javascript" th:src="@{/js/validacion.js.js}" ></script>
     </th:block>
-    
+     -->
 </body>
 </html>

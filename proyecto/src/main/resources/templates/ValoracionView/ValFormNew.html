@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="/src/main/java/com/rmc/ejerciciosT6/controller/EmpleadoController.java"></script>
+  <script src="/js/validacionValoracion.js" defer></script>
   <title>Document</title>
 </head>
 
@@ -16,7 +16,7 @@
     >Comentario:
     <input type="text" id="comentario" th:field="*{comentario}" /></label><br />
     <label>Puntuación:
-      <input type="number" id="puntuacion" th:field="*{puntuacion}" /></label><br />
+      <input type="number" id="puntuacion" min="0" max="5" th:field="*{puntuacion}" /></label><br />
     <!-- <label>
       <input type="date" id="fecha" th:field="*{fechaPublicacion}" hidden /></label><br /> -->
       <label><input type="text" id="idProducto" th:field="*{idProducto}" hidden /> </label><br />

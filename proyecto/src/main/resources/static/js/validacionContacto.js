@@ -1,12 +1,8 @@
 document.getElementById("enviar").addEventListener("click", validar, false);
 
 const AVISONOMBRE = document.getElementById("avisoNombre");
-const AVISOAPELLIDOS = document.getElementById("avisoApellidos");
 const AVISOEMAIL = document.getElementById("avisoEmail");
-const AVISOTELEFONO = document.getElementById("avisoTelefono");
-const AVISONOMBUSUARIO = document.getElementById("avisoNombUsuario");
-const AVISOCONTRASENA = document.getElementById("avisoContrasena");
-const AVISOCONTRASENA2 = document.getElementById("avisoContrasena2");
+const AVISOMENSAJE = document.getElementById("avisoMensaje");
 
 
 function validarNombre(){
@@ -18,20 +14,6 @@ function validarNombre(){
         }
         if(elemento.validity.patternMismatch){
             error(elemento, "<b>!</b> El nombre debe tener entre 1 y 40 caracteres")
-        }
-        return false;
-    }
-    return true;
-}
-function validarApellidos(){
-    let elemento = document.getElementById("apellidos");
-
-    if(!elemento.checkValidity()){
-        if(elemento.validity.valueMissing){
-            error(elemento, "<b>!</b> Introduce tu apellido")
-        }
-        if(elemento.validity.patternMismatch){
-            error(elemento, "<b>!</b> El nombre debe tener entre 1 y 80 caracteres")
         }
         return false;
     }
@@ -51,66 +33,19 @@ function validarEmail(){
     }
     
 }
-function validarTelefono(){
-    let regerxTelefono = /^\d{9}$/;
-    let elemento = document.getElementById("telefono");
+function validarMensaje(){
+    let regexMensaje = /^[\p{L}\p{M}\p{N}\p{Zs}.-]+$/u;
 
-    if(regerxTelefono.test(elemento.value)){
+    let elemento = document.getElementById("mensaje");
+
+    if(regexMensaje.test(elemento.value)){
         return true;
     }
     else{
-        error(elemento, "El telefono falta o es inválido. Inténtelo de nuevo.")
+        error(elemento, "<b>!</b> Falta el comentario o es inválida. Inténtelo de nuevo.")
         return false;
     }
-}
-
-function validarNombUsu(){
-    let regexNombreUsuario = /^[A-Za-z][A-Za-z0-9_]{3,}$/;
-    let elemento = document.getElementById("nombreUsuario");
-
-    if(regexNombreUsuario.test(elemento.value)){
-        return true;
-    }
-    else{
-        error(elemento, "Nombre de usuario vacío no válido, debe de comenzar por una letra y un tamaño mínimo de 3 caracteres");
-        return false;
-    }
-
-}
-
-function validarContrasena(){
-
-    let elemento = document.getElementById("contrasena");
-
-    if(!elemento.checkValidity()){
-        if(elemento.validity.valueMissing){
-            error(elemento,"La contraseña no puede estar vacía");
-        }
-        if(elemento.validity.patternMismatch){
-            error(elemento, "La contraseña debe de contener al menos 6 caracteres");
-        }
-        return false;
-    }
-    return true;
-
-}
-function validarContrasenas(){
-
-    let contrasena1 = document.getElementById("contrasena");
-    let contrasena2 = document.getElementById("contrasena2");
-
-    if(contrasena2.lenght == 0){
-        error(contrasena2, "Confirme la contraseña");
-        return false;
-    }
-    if(contrasena1.value === contrasena2.value){
-        return true;
-    }
-    else{
-        error(contrasena2, "Las contraseñas con coinciden");
-        return false;
-    }
-
+    
 }
 
 function validar(e){
@@ -133,6 +68,7 @@ function validar(e){
         contrasenaValida &&
         contrasenasValidas){
             alert('formulario enviado');
+            document.getElementById("myForm").submit();
             return true;
         }
         else{
@@ -191,7 +127,7 @@ function borrarError(){
     for(let i = 0; i < formulario.length; i++){
         formulario.elements[i].className = "";
     }
-    for(let i = 0; i < avisos-length; i++){
+    for(let i = 0; i < avisos.length; i++){
         avisos[i].className = "normal";
         avisos[i].innerHTML = "";
     }
