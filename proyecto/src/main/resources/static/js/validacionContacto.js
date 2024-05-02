@@ -53,20 +53,13 @@ function validar(e){
     e.preventDefault();
 
     let nombreValido = validarNombre();
-    let apellidosValido = validarApellidos();
     let emailValido = validarEmail();
-    let telefonoValido = validarTelefono();
-    let nombreUsuarioValido = validarNombUsu();
-    let contrasenaValida = validarContrasena();
-    let contrasenasValidas = validarContrasenas();
+    let apellidosValido = validarApellidos();
 
     if(nombreValido && 
-        apellidosValido && 
-        emailValido && 
-        telefonoValido &&
-        nombreUsuarioValido &&
-        contrasenaValida &&
-        contrasenasValidas){
+        emailValido &&
+        apellidosValido 
+        ){
             alert('formulario enviado');
             document.getElementById("myForm").submit();
             return true;
@@ -87,30 +80,15 @@ function error(elemento, mensaje){
             AVISONOMBRE.innerHTML = mensaje;
             AVISONOMBRE.className = "mensajeError";
             break;
-        case "apellidos":
-            AVISOAPELLIDOS.innerHTML = mensaje;
-            AVISOAPELLIDOS.className = "mensajeError";
-            break;
         case "email":
             AVISOEMAIL.innerHTML = mensaje;
             AVISOEMAIL.className = "mensajeError";
             break;
-        case "telefono":
-            AVISOTELEFONO.innerHTML = mensaje;
-            AVISOTELEFONO.className = "mensajeError";
+        case "apellidos":
+            AVISOAPELLIDOS.innerHTML = mensaje;
+            AVISOAPELLIDOS.className = "mensajeError";
             break;
-        case "nombreUsuario":
-            AVISONOMBUSUARIO.innerHTML = mensaje;
-            AVISONOMBUSUARIO.className = "mensajeError";
-            break;
-        case "contrasena":
-            AVISOCONTRASENA.innerHTML = mensaje;
-            AVISOCONTRASENA.className = "mensajeError";
-            break;
-        case "contrasena2":
-            AVISOCONTRASENA2.innerHTML = mensaje;
-            AVISOCONTRASENA2.className = "mensajeError";
-            break;
+        
     }
 }
 
