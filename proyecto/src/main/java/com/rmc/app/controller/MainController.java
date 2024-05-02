@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.rmc.app.domain.Contacto;
 
 import jakarta.validation.Valid;
-
+/**
+ * 
+ */
 @Controller
 public class MainController {
     @GetMapping({ "/", "/inicio" })
