@@ -10,7 +10,9 @@ import com.rmc.app.domain.Contacto;
 import com.rmc.app.domain.DTO.UsuarioAutoDTO;
 
 import jakarta.validation.Valid;
-
+/**
+ * 
+ */
 @Controller
 public class MainController {
     @GetMapping({ "/", "/inicio" })
