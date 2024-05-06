@@ -67,6 +67,7 @@ public class SecurityConfig {
                                                 .requestMatchers("/usuario/nuevo/**").permitAll()
                                                 .requestMatchers("/usuario/editar/**", "/usuario/borrar/**")
                                                 .hasAnyRole("USER", "ADMIN")
+                                                .requestMatchers("/usuario/editarPerfil").hasAnyRole("USER", "ADMIN")
 
                                                 /* Permisos valoracion */
                                                 .requestMatchers("/valoracion/producto/**").permitAll()

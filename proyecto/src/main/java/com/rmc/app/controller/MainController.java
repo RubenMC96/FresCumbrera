@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rmc.app.domain.Contacto;
+import com.rmc.app.domain.DTO.UsuarioAutoDTO;
 
 import jakarta.validation.Valid;
 
@@ -34,7 +35,8 @@ public class MainController {
         return "Contacto/enviado";
     }
     @GetMapping("/autoRegistro")
-    public String showAutoRegistro(){
+    public String showAutoRegistro(Model model){
+        model.addAttribute("usuarioForm", new UsuarioAutoDTO());
         return "UsuarioView/UsuAutoRegistro";
     }
 
@@ -46,5 +48,10 @@ public class MainController {
     @GetMapping("/signout")
     public String showLogout() {
         return "Log/logOutView";
+    }
+
+    @GetMapping("/somos/")
+    public String showSomos(){
+        return "Somos/quienesSomos";
     }
 }

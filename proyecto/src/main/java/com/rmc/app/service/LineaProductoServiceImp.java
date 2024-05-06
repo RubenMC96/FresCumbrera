@@ -9,7 +9,6 @@ import com.rmc.app.Repositories.CompraRepository;
 import com.rmc.app.Repositories.LineaProductoRepository;
 import com.rmc.app.Repositories.ProductoRepository;
 import com.rmc.app.Repositories.UsuarioRepository;
-import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
 import com.rmc.app.domain.Usuario;
 

@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/js/validacionUsuario.js" defer></script>
-    <title>Editar usuario</title>
+    <title>Editar perfil</title>
   </head>
   <body>
-    <h1>Editar usuario</h1>
+    <h1>Editar perfil</h1>
     <form
       id="myForm"
       method="post"
       action="#"
-      th:action="@{/usuario/editar/submit}"
+      th:action="@{/usuario/editarPerfil/submit}"
       th:object="${usuarioForm}"
         >
         <label><input type="text" id="id" th:field="*{id}" hidden /> </label><br/>

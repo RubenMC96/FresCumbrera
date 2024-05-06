@@ -2,7 +2,6 @@ package com.rmc.app.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +10,7 @@ import org.springframework.stereotype.Service;
 import com.rmc.app.Repositories.CompraRepository;
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
-import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.Usuario;
-import com.rmc.app.domain.DTO.ProductoDTO;
 
 @Service
 public class CompraServiceImp implements CompraService {

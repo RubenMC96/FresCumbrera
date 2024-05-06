@@ -10,7 +10,11 @@ xmlns:th="http://www.thymeleaf.org">
 <body>
     <div id="caja">
         <h1>Nuevo usuario</h1>
-        <form id="myForm">
+        <form id="myForm"
+        method="post"
+        action="#"
+        th:action="@{/usuario/autoRegistro/submit}"
+        th:object="${usuarioForm}">
             <div id="divNombre">
                 <label for="nombre">Nombre:</label>
                 <input 
@@ -19,6 +23,7 @@ xmlns:th="http://www.thymeleaf.org">
                 maxlength="40"
                 placeholder="Nombre"
                 pattern="^[a-zA-Z\s]{1,50}$"
+                th:field="*{nombre}"
                 required>
                 <p id="avisoNombre"></p>
             </div><br/>
@@ -30,6 +35,7 @@ xmlns:th="http://www.thymeleaf.org">
                 id="apellidos"
                 maxlength="80"
                 pattern="^[a-zA-Z\s]{1,50}$"
+                th:field="*{apellidos}"
                 required
                 >
                 <p id="avisoApellidos"></p>
@@ -40,6 +46,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <input 
                 type="email" 
                 id="email" 
+                th:field="*{email}"
                 required>
                 <p id="avisoEmail"></p>
 
@@ -51,6 +58,7 @@ xmlns:th="http://www.thymeleaf.org">
                 id="telefono"
                 maxlength="9"
                 minlength="9"
+                th:field="*{telefono}"
                 required
                 >
                 <p id="avisoTelefono"></p>
@@ -62,6 +70,7 @@ xmlns:th="http://www.thymeleaf.org">
                 type="text" 
                 id="nombreUsuario"
                 pattern="^[a-zA-Z0-9._-/*]+$"
+                th:field="*{nombreUsuario}"
                 required
                 >
                 <p id="avisoNombUsuario"></p>
@@ -76,6 +85,7 @@ xmlns:th="http://www.thymeleaf.org">
                 minlength="5"
                 pattern="^[\s\S]{5,20}$"
                 placeholder="Contraseña entre 5 y 30 caracteres"
+                th:field="*{password}"
                 required>
                 <p id="avisoContrasena"></p>
 
@@ -93,11 +103,15 @@ xmlns:th="http://www.thymeleaf.org">
             </div>
             <button type="submit" id="enviar">Continuar</button>
         </form>
+        <a th:href="@{/inicio}">Inicio</a><br />
+
     </div>
     
     <!-- <th:block id="scripts">
         <script type="application/javascript" th:src="@{/js/validacion.js.js}" ></script>
     </th:block>
      -->
+     
+
 </body>
 </html>

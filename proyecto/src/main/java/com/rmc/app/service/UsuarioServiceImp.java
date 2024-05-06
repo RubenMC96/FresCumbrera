@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rmc.app.Repositories.UsuarioRepository;
+import com.rmc.app.domain.Rol;
 import com.rmc.app.domain.Usuario;
 
 @Service
@@ -97,4 +98,21 @@ public class UsuarioServiceImp implements UsuarioService {
         }
         return null;
     }
+
+    public Usuario añadirAutoRegistro(Usuario autoRegistro){
+
+        String passCryString = passwordEncoder.encode(autoRegistro.getPassword());
+        autoRegistro.setPassword(passCryString);
+        try {
+            Usuario usuario = new Usuario(0L,autoRegistro.getNombre(), autoRegistro.getApellidos(), autoRegistro.getEmail(), autoRegistro.getNombreUsuario(), autoRegistro.getPassword(), autoRegistro.getTelefono(),Rol.USER);
+            return usuarioRepository.save(usuario);
+
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
+    }
+
 }

@@ -1,12 +1,9 @@
 package com.rmc.app.domain;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import com.rmc.app.domain.DTO.ProductoDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

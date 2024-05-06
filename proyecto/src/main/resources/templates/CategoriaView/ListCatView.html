@@ -7,12 +7,13 @@
     <title>Categoria CRUD</title>
   </head>
   <body>
-    <h1>Listado de productos de la tienda</h1>
+    <h1>Listado de categorias de la tienda</h1>
     <table border="1px">
       <thead>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
+          <th>Descripcion</th>
         </tr>
       </thead>
 
@@ -20,6 +21,7 @@
         <tr th:each="categoria : ${listaCategoria}">
           <td th:text="${categoria.id}">Id</td>
           <td th:text="${categoria.nombre}">Nombre</td>
+          <td th:text="${categoria.descripcion}">Descripcion</td>
           <td>
             <a th:href="@{/categoria/editar/{id}(id=${categoria.id})}"
               >Editar</a

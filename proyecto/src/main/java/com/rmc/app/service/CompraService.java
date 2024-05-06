@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.rmc.app.domain.Compra;
 import com.rmc.app.domain.LineaProducto;
-import com.rmc.app.domain.Usuario;
-import com.rmc.app.domain.DTO.listaLineasCompra;
 
 @Service
 public interface CompraService {

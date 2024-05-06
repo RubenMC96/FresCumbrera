@@ -18,4 +18,10 @@ public class Categoria {
     @GeneratedValue
     private Long id;
     private String nombre;
+    private String descripcion;
+
+    public Categoria(Long id, String nombre){
+        this.id = id;
+        this.nombre = nombre;
+    }
 }

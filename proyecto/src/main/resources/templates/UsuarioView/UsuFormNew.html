@@ -9,12 +9,13 @@
   <body>
     <h1>Nuevo usuario</h1>
     <form
+    id="myForm"
       method="post"
       action="#"
       th:action="@{/usuario/nuevo/submit}"
       th:object="${usuarioForm}"
         >
-        <input type="text" id="id" th:field="*{id}" /><br/>
+        <input type="text" id="id" th:field="*{id}" hidden/><br/>
         <label
             >Nombre: <input type="text" id="nombre" maxlength="40" placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$"
             th:field="*{nombre}" required/>
@@ -57,7 +58,7 @@
             >Telefono: <input type="nunber" id="telefono" maxlength="9"
             minlength="9" th:field="*{telefono}"  required/></label
         ><br />
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Enviar" id="enviar"/>
     </form>
     <a th:href="@{/usuario/}">Inicio</a><br />
   </body>

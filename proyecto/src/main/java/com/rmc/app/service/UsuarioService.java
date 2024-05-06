@@ -18,4 +18,5 @@ public interface UsuarioService {
     public Usuario obtenerUsuario(Long id);
     public Usuario obtenerUsuarioConectado();
     public String obtenerRolUsuarioConectado();
+    public Usuario añadirAutoRegistro(Usuario autoRegistro);
 }
