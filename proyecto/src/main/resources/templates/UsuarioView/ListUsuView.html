@@ -17,6 +17,7 @@
           <th>Email</th>
           <th>Nombre Usuario</th>
           <th>Telefono</th>
+          <th>Rol</th>
         </tr>
       </thead>
 
@@ -29,6 +30,7 @@
           <td th:text="${usuario.nombreUsuario}">Nombre Usuario</td>
           <td th:text="${usuario.password}" hidden></td>
           <td th:text="${usuario.telefono}">Telefono</td>
+          <td th:text="${usuario.rol}">Rol</td>
           <td>
             <a th:href="@{/usuario/editar/{id}(id=${usuario.id})}"
               >Editar</a

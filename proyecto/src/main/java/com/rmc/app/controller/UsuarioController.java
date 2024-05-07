@@ -72,6 +72,7 @@ public class UsuarioController {
         
         if(usuarioConectado.getRol() == Rol.ADMIN){
             model.addAttribute("usuarioForm", usuario);
+            System.out.println(usuario);
             return "UsuarioView/UsuFormEdit";
         }
         return null;
@@ -90,16 +91,19 @@ public class UsuarioController {
     @PostMapping("/editarPerfil/submit")
         public String showPerfilEditSubmit(
             @Valid Usuario usuarioForm,
-            BindingResult bindingResult
-        ){
+            BindingResult bindingResult){
+
             Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
             System.out.println("Nombre " + usuarioConectado.getNombre() + "Rol" + usuarioConectado.getRol());
        
                 if(bindingResult.hasErrors()){
                     return "redirect:/usuario/editarPerfil";
                 }  
-                usuarioService.añadir(usuarioForm);
+                else{
+                    usuarioService.añadir(usuarioForm);
                     return "redirect:/inicio";
+                }
+               
         }
     
 
@@ -114,6 +118,8 @@ public class UsuarioController {
             if(bindingResult.hasErrors()){
                 return "redirect:/usuario/editar/{id}";
             }
+            System.out.println(usuarioForm);
+
             usuarioService.añadir(usuarioForm);
                 return "redirect:/usuario/list";
         }

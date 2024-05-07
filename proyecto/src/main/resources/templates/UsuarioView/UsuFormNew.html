@@ -40,7 +40,8 @@
         <label
             >Contraseña: <input type="password" id="password" maxlength="20"
             minlength="5" pattern="^[\s\S]{5,20}$"
-            placeholder="Contraseña entre 5 y 30 caracteres" th:field="*{password}" placeholder="Contraseña entre 5 y 30 caracteres"
+            placeholder="Contraseña entre 5 y 30 caracteres" 
+            th:field="*{password}"
             required/>
             <p id="avisoContrasena"></p>
             </label
@@ -55,8 +56,16 @@
         <p id="avisoContrasena2"></p>
       <br />
         <label
-            >Telefono: <input type="nunber" id="telefono" maxlength="9"
+            >Telefono: <input type="text" id="telefono" maxlength="9"
             minlength="9" th:field="*{telefono}"  required/></label
+        ><br />
+        <label
+            >Rol: <select name="lenguaje" id="lenguaje">
+              <option value="0">Administrador</option>
+              <option value="1">Manager</option>
+              <option value="2">Usuario</option>
+            </select>
+              <required/></label
         ><br />
         <input type="submit" value="Enviar" id="enviar"/>
     </form>

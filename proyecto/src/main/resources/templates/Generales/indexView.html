@@ -74,7 +74,6 @@
             <span sec:authentication="name"></span></a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" th:href="@{/usuario/editarPerfil}">Editar perfil</a></li>
-            <li><a class="dropdown-item" th:href="@{/usuario/editarPassword}">Cambiar Contraseña</a></li>
             <li>
               <form th:action="@{/logout}" method="post">
                 <button class="dropdown-item" type="submit">Cerrar sesión POST</button>
