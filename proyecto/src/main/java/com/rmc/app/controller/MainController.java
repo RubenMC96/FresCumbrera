@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 public class MainController {
     @GetMapping({ "/", "/inicio" })
     public String showInicio() {
-        return "Generales/indexView";
+        return "Generales/index";
     }
 
     @GetMapping("/contacto/")

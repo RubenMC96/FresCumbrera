@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(223, 203, 134);
+}
+#navbarNav{
+/* background-color: rgb(37, 37, 37); */
+border-radius: 0 0 5% 5%;
+}
+
+#carousel{
+    margin-top: 10em;
+    height: 30em;
+    margin-bottom: 10em;
+}
+#cabecera{
+    height: 15%;
+}
+#footerContainer{
+    width: 100%;
+}
+
+#footer{
+    /* background-color: black; */
+    position: absolute;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    padding: 20px;
+    margin-top: 10em;
+}
+.row{
+    color: #e0e0e0;
+}
+#autenticado{
+    margin-right: 0;
+}
+#caja{
+    list-style: none;
+    
+}
