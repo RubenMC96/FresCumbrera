@@ -1,9 +1,29 @@
 body{
-    background-color: rgb(223, 203, 134);
+    background: rgb(123,31,162);
+background: -moz-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+background: -webkit-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1);
 }
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */
 border-radius: 0 0 5% 5%;
+align-content:space-around;
+
+}
+
+#logo{
+    height: 10em;
+    width: 15em;
+}
+.carrito {
+    position: absolute; /* Esto hace que el elemento se posicione en relación al primer ancestro posicionado */
+    right: 0; /* Esto coloca el elemento al borde derecho del contenedor */
+}
+
+#imgCaja{
+    height: 5em;
+    width: 10em;
 }
 
 #carousel{
@@ -25,6 +45,14 @@ border-radius: 0 0 5% 5%;
     padding: 20px;
     margin-top: 10em;
 }
+#divGif{
+    margin-block-end: auto;
+    
+}
+#gif{
+    height: 15em;
+    width: 15em;
+}
 .row{
     color: #e0e0e0;
 }
@@ -35,3 +63,6 @@ border-radius: 0 0 5% 5%;
     list-style: none;
     
 }
+
+
+  
