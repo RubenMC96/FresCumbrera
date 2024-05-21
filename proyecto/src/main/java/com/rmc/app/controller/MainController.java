@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 public class MainController {
     @GetMapping({ "/", "/inicio" })
     public String showInicio() {
-        return "Generales/index";
+        return "Generales/indexView";
     }
 
     @GetMapping("/contacto/")
@@ -44,7 +44,7 @@ public class MainController {
 
     @GetMapping("/signin")
     public String showLogin() {
-        return "Log/loginView";
+        return "Log/login";
     }
 
     @GetMapping("/signout")

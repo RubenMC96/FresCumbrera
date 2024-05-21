@@ -1,4 +1,10 @@
 body{
+    /* background: rgb(123,31,162);
+    background: -moz-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+    background: -webkit-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+    background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
+
     background: rgb(120,0,2);
     background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
     background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
@@ -16,24 +22,26 @@ align-content:space-around;
     height: 10em;
     width: 15em;
 }
-.carrito {
-    position: absolute; /* Esto hace que el elemento se posicione en relación al primer ancestro posicionado */
-    right: 0; /* Esto coloca el elemento al borde derecho del contenedor */
-}
 
-#imgCaja{
-    height: 5em;
-    width: 10em;
-}
-
-#carousel{
-    margin-top: 10em;
-    height: 30em;
-    margin-bottom: 10em;
-}
 #cabecera{
     height: 15%;
 }
+
+.container {
+    margin-top: 5em;
+    margin-bottom: 10em;
+}
+.form-control {
+    width: 50%; /* O cualquier otro valor que desees */
+    height: auto; /* Ajusta la altura según sea necesario */
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+  }
+
+.dropdown-menu{
+    margin-top: 10em;
+    margin-bottom: 10em;
+}
+
 #footerContainer{
     width: 100%;
 }
@@ -55,13 +63,6 @@ align-content:space-around;
 }
 .row{
     color: #e0e0e0;
-}
-#autenticado{
-    margin-right: 0;
-}
-#caja{
-    list-style: none;
-    
 }
 
 #rrss{
