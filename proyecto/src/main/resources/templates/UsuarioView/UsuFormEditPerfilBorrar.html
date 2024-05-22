@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/validacionUsuario.js" defer></script>
+    <title>Editar perfil</title>
+  </head>
+  <body>
+    <h1>Editar perfil</h1>
+    <form
+      id="myForm"
+      method="post"
+      action="#"
+      th:action="@{/usuario/editarPerfil/submit}"
+      th:object="${usuarioForm}"
+        >
+        <label><input type="text" id="id" th:field="*{id}" hidden /> </label><br/>
+        <label
+            >Nombre: <input type="text" id="nombre" th:field="*{nombre}" readonly/>
+            </label
+        ><br />
+        <label
+            >Apellidos: <input type="text" id="apellidos"
+            th:field="*{apellidos}" readonly/>
+            </label
+        ><br />
+        <label
+            >Email: <input type="text" id="email" th:field="*{email}" readonly/>
+            </label
+        ><br />
+        <label
+            >Nombre de usuario: <input type="text" id="nombreUsuario" pattern="^[a-zA-Z0-9._-/*]+$"
+            th:field="*{nombreUsuario}"/>
+            <p id="avisoNombUsuario"></p>
+
+            </label
+        ><br />
+        <label
+            >Contraseña: <input type="password" id="contrasena" maxlength="20"
+            minlength="5"
+            pattern="^[\s\S]{5,20}$"
+            placeholder="Contraseña entre 5 y 30 caracteres" th:field="*{password}"/>
+            <p id="avisoContrasena"></p>
+            </label
+        ><br />
+        <label for = "contrasena2">Confirmar contrasena</label>
+          <input 
+          type="password"
+          id="contrasena2"
+          maxlength="20"
+          minlength="5">
+          <p id="avisoContrasena2"></p>
+        <br />
+        <label
+            >Telefono: <input type="text" id="telefono" maxlength="9"
+            minlength="9"
+            th:field="*{telefono}"/>
+            <p id="avisoTelefono"></p>
+            </label
+        ><br />
+        <input type="submit" value="Enviar" id="enviar"/>
+    </form>
+    <a th:href="@{/usuario/borrarPerfil}">Borrar cuenta</a><br />
+    <a th:href="@{/usuario/}">Inicio</a><br />
+  </body>
+</html>

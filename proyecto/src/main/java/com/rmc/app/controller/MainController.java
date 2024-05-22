@@ -44,7 +44,7 @@ public class MainController {
 
     @GetMapping("/signin")
     public String showLogin() {
-        return "Log/login";
+        return "Log/loginView";
     }
 
     @GetMapping("/signout")

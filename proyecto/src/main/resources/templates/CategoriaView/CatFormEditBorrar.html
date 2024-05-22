@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/validacionCategoria.js" defer></script>
+    <title>Editar categoria</title>
+  </head>
+  <body>
+    <h1>Editar categoria</h1>
+    <form
+      id="myForm"
+      method="post"
+      action="#"
+      th:action="@{/categoria/editar/submit}"
+      th:object="${categoriaForm}"
+        >
+        <label><input type="text" readonly id="id" th:field="*{id}" hidden/> </label><br/>
+        <label
+            >Nombre: <input type="text" id="nombre" value="nombre"  maxlength="40"
+            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}"required />
+            <p id="avisoNombre"></p>
+            </label
+        ><br />
+        <label
+            >Descripcion: <input type="text"  value="descripcion" id="descripcion" maxlength="280"
+            placeholder="Descripcion" pattern="^[a-zA-Z\s]{1,280}$" th:field="*{descripcion}"/>
+            <p id="avisoDescripcion"></p>
+            </label
+        ><br />
+        <input type="submit" value="Enviar" id="enviar"/>
+    </form>
+    <a th:href="@{/categoria/}">Inicio</a><br />
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="/js/validacionValoracion.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Nueva valoracion</h1>
+  <form method="post" action="#" th:action="@{/valoracion/nuevo/submit}" th:object="${valoracionForm}">
+    
+    <!-- <label><input type="text" id="id" th:field="*{producto}" hidden /> </label><br /> -->
+    >Comentario:
+    <input type="text" id="comentario" th:field="*{comentario}" /></label><br />
+    <label>Puntuación:
+      <input type="number" id="puntuacion" min="0" max="5" th:field="*{puntuacion}" /></label><br />
+    <!-- <label>
+      <input type="date" id="fecha" th:field="*{fechaPublicacion}" hidden /></label><br /> -->
+      <label><input type="text" id="idProducto" th:field="*{idProducto}" hidden /> </label><br />
+      <input type="submit" value="Enviar" />
+  </form>
+  <a th:href="@{/valoracion/}">Inicio</a><br />
+</body>
+
+</html>
