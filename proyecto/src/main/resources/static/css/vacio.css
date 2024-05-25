@@ -1,0 +1,80 @@
+body{
+    /* background: rgb(123,31,162);
+    background: -moz-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+    background: -webkit-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+    background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
+
+    /* background: rgb(120,0,2);
+    background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
+    background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
+    background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
+background-color: rgb(231, 216, 187);
+
+
+}
+
+#logo{
+    height: 8em;
+    width: 8em;
+}
+
+#cabecera{
+    height: 8em;
+    width: 90%;
+    margin: 2% 5% 2% 5%;
+    border-radius: 2em;
+}
+
+.container {
+    display: flex; /* Activa Flexbox en el contenedor */
+    justify-content: center; /* Centra horizontalmente los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    padding: 2em; /* Aplica un relleno alrededor del contenedor para dar espacio */
+  }
+  
+  .col-ms-12,
+  .col-md-6,
+  .col-lg-6 {
+    margin: 2em; /* Aplica un margen de 5em alrededor de cada elemento hijo */
+  }
+  
+
+
+#footerContainer{
+    width: 100%;
+}
+
+#footer{
+    position: absolute;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    padding: 20px;
+    margin-top: 10em;
+}
+#divGif{
+    margin-block-end: auto;
+    
+}
+#gif{
+    height: 15em;
+    width: 15em;
+}
+.row{
+    color: #e0e0e0;
+}
+
+#rrss{
+    margin-right: 2em;
+}
+
+#instagram{
+    color: white;
+}
+#linkedin{
+    color: white;
+}
+#youtube{
+    color: white;
+}
+  
