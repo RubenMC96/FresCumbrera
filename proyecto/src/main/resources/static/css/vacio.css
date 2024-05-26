@@ -16,14 +16,15 @@ background-color: rgb(231, 216, 187);
 }
 
 #logo{
-    height: 8em;
-    width: 8em;
+    height: 7em;
+    width: 7em;
 }
 
 #cabecera{
-    height: 8em;
+    height: auto;
     width: 90%;
     margin: 2% 5% 2% 5%;
+    align-items: center;    
     border-radius: 2em;
 }
 

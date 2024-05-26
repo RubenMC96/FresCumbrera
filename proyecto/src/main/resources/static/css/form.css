@@ -5,11 +5,13 @@ body{
     background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
 
-    background: rgb(120,0,2);
+    /* background: rgb(120,0,2);
     background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
     background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
     background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
+
+    background-image: url('/images/fondoWeb.png');
 }
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */
@@ -19,12 +21,16 @@ align-content:space-around;
 }
 
 #logo{
-    height: 10em;
-    width: 15em;
+    height: 7em;
+    width: 7em;
 }
 
 #cabecera{
-    height: 15%;
+    height: auto;
+    width: 90%;
+    margin: 2% 5% 2% 5%;
+    align-items: center;    
+    border-radius: 2em;
 }
 
 .form{
@@ -32,17 +38,18 @@ align-content:space-around;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 5em 2em 2em 2em;
+    margin: 15em 2em 2em 8em;
     width: 50%;
 }
 
 .container {
-    margin-top: 5em;
+    margin-top: 0em;
     margin-bottom: 10em;
 }
 
 .titulo{
     font-size: 3em;
+    color: #DB1A35;
 }
 
 #formulario{
@@ -54,7 +61,14 @@ align-content:space-around;
     width: 100%; /* O cualquier otro valor que desees */
     height: auto; /* Ajusta la altura según sea necesario */
     font-size: 18px; /* Aumenta el tamaño de la fuente */
-  }
+}
+.form-label {
+    color: #DB1A35; /* Cambia 'red' al color que prefieras */
+}
+
+input[type="text"]::placeholder {
+    color: #9FBC8F; /* Cambia 'green' al color que prefieras para el placeholder */
+}
 
 .dropdown-menu{
     margin-top: 10em;

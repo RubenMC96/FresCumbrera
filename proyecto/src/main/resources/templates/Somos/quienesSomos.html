@@ -21,28 +21,96 @@
   <body>
     <header data-bs-theme="dark">
       <nav
-        class="navbar navbar-dark bg-dark navbar-expand-lg"
+        class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top"
         id="cabecera"
       >
         <div class="container-fluid">
           <a class="navbar-brand" th:href="@{/inicio}"
-            ><img src="/images/logo.png" id="logo"/>
-          </a>
+            ><img src="/images/logo.png" id="logo"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            data-bs-theme="dark"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse bg-dark"  id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Suscríbete</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/categoria/}">Categorias</a>
+              </li>
+              <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <a class="nav-link" th:href="@{/signin}">Login</a>
+              </li>
+              <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <a class="nav-link" th:href="@{/autoRegistro}">Resgistro</a>
+              </li>
+              
+              <!-- menú: nombre-usuario (solo si autenticado) -->
+              <li
+                class="nav-item ms-md-auto dropdown"
+                sec:authorize="isAuthenticated()"
+                id="autenticado"
+              >
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span sec:authentication="name"></span
+                ></a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li>
+                    <a class="dropdown-item" th:href="@{/usuario/editarPerfil}"
+                      >Editar perfil</a
+                    >
+                  </li>
+                  <li>
+                    <form th:action="@{/logout}" method="post">
+                      <button class="dropdown-item" type="submit">
+                        Cerrar sesión POST
+                      </button>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="carrito">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/logo-caja.png" alt="Carrito" id="imgCaja"></a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
 
-    <div class="contenedor-flex">
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" id="container">
 
       <div class="form" id="elemento">
 
-        <h1 class="titulo">Somos</h1>
+        <!-- <h1 class="titulo">Somos</h1> -->
   
-        <div class="container">
-          <div>
-            
-          </div>
-          <h2>FresCumbrera</h2>
+        <div>
+ 
+          <h2><strong>FresCumbrera</strong></h2><br>
           
             <p>
               <strong>Una historia familiar con sabor a tradición</strong><br>
@@ -57,25 +125,15 @@
             En FresCumbrera, creemos en la importancia de la tradición y los valores familiares. 
             Por eso, en todo lo que hacemos, nos guiamos por la pasión por la tierra, el respeto 
             por el medio ambiente y el compromiso con la calidad.
-            <!-- <strong>Nuestros productos</strong>
-            <ul>
-              <li><img src="/images/imgFresas.png" alt="Fresas"><strong>Fresas</strong></li>
-              <li><img src="/images/imgFrambuesas.png" alt="Frambuesas"><strong>Frambuesas</strong></li>
-              <li><img src="/images/imgArandanos.png" alt="Arandanos"><strong>Arándanos</strong></li>
-              <li><img src="/images/imgMoras.png" alt="Moras"><strong>Moras</strong></li>
-            </ul> -->
-
-
 
           </p>
-        </div>
       </div>
-
-      <div class="imagen" id="elemento2">
-        <img src="/images/fondoWeb.png" alt="imagen" id="imagenAside">
-      </div>
-  
     </div>
+    </div>
+
+    <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="elemento2">
+      <img src="/images/fondoWeb.png" alt="imagen" id="imagenAside">
+    </div> -->
     
     
 

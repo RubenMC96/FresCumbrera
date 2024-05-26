@@ -17,14 +17,17 @@ border-radius: 0 0 5% 5%;
 align-content:space-around;
 
 }
-
 #logo{
-    height: 10em;
-    width: 15em;
+    height: 7em;
+    width: 7em;
 }
 
 #cabecera{
-    height: 15%;
+    height: auto;
+    width: 90%;
+    margin: 2% 5% 2% 5%;
+    align-items: center;    
+    border-radius: 2em;
 }
 
 .container {
