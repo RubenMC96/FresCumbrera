@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Nuevo usuario</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,11 +16,10 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/somos.css" />
   </head>
   <body>
-    <!-- data-bs-theme="dark" -->
-    <!-- <header data-bs-theme="dark">
+    <header data-bs-theme="dark">
       <nav
         class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top"
         id="cabecera"
@@ -57,6 +56,7 @@
                 <a class="nav-link" th:href="@{/autoRegistro}">Resgistro</a>
               </li>
               
+              <!-- menú: nombre-usuario (solo si autenticado) -->
               <li
                 class="nav-item ms-md-auto dropdown"
                 sec:authorize="isAuthenticated()"
@@ -100,36 +100,94 @@
           </div>
         </div>
       </nav>
-    </header> -->
+    </header>
 
-    <div class="container" id="formulario">
-      <h1 class="inicio">Inicio de sesión</h1>
-      <div  class="error" th:if="${param.error}"><b>Credenciales incorrectas</b></div>
-      <!-- <div th:if="${param.logout}">Te has desconectado</div> -->
-      <form class="px-4 py-3" th:action="@{/login}" method="post">
-        <div class="mb-3">
-          <label for="exampleDropdownFormEmail1" class="form-label"><b>Nombre de usuario</b></label>
-          <input type="text" name="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Nombre de usuario">
-        </div>
-        <div class="mb-3">
-          <label for="exampleDropdownFormPassword1" class="form-label"><b>Contraseña</b></label>
-          <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña">
-        </div>
-        <div class="mb-3">
-          <div class="form-check">
-            <input type="checkbox" name='remember-me' class="form-check-input" id="dropdownCheck">
-            <label class="form-check-label" for="dropdownCheck">
-              <b>Recuerdame</b>
-            </label> 
-          </div>
-        </div>
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" id="container">
 
-        <button type="submit" class="btn btn-success">Iniciar</button>
-        <a class="btn btn-danger" th:href="@{/inicio}">Volver</a>
-      </form>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" th:href="@{/autoRegistro}"><b>¿Nuevo aquí? ¡Regístrate!</b></a>
+      <div class="form" id="elemento">
+
+        <!-- <h1 class="titulo">Somos</h1> -->
+  
+        <div>
+ 
+          
+            <p>
+              <strong>¿Cómo funciona nuestro sistema de suscripción mensual?</strong><br>
+              ¡Disfruta de la frescura de temporada en tu casa cada mes!<br><br>
+          </p>
+            <p>
+              Con nuestro sistema de suscripción mensual, recibirás cómodamente en tu domicilio una selección de nuestros mejores productos de temporada.
+          </p>
+          <p>
+            <strong>¿Qué incluye la suscripción?
+
+            </strong><br> Cada mes, recibirás una caja con:<br><br>
+            <ul>
+              <li>Una variedad de frutos rojos frescos y de temporada, cuidadosamente seleccionados por nuestros expertos.</li>
+              <li>Recetas deliciosas y fáciles de preparar para que puedas aprovechar al máximo tus productos.
+              </li>
+              <li>Consejos de conservación para que tus frutos rojos se mantengan frescos durante más tiempo.
+              </li>
+              <li>Sorpresas y regalos exclusivos para nuestros suscriptores.
+              </li>
+            </ul>
+        </p>
+
+        <p><strong>¿Cómo me suscribo?</strong>
+          Suscribirte es muy sencillo:
+        </p>
+        <ul>
+          <li>Elige tu plan:
+            <li>Plan Individual: Ideal para una persona.
+            </li>
+            <li>Plan Familiar: Perfecto para compartir con toda la familia.
+            </li>
+          </li>
+          <li>Selecciona la frecuencia de entrega:
+            <li>Semanal
+            </li>
+            <li>Quincenal
+            </li>
+            <li>Mensual</li>
+          </li>
+        </ul>
+        <p><strong>Crea tu cuenta y proporciona tus datos de envío.
+        </strong></p>
+        <p><strong>Elige tu método de pago.
+
+        </strong></p>
+        <p><strong>¡Listo! Ya puedes empezar a disfrutar de la frescura de temporada en tu casa.
+
+        </strong></p>
+
+        <p><strong>¿Cuáles son las ventajas de suscribirse?
+
+        </strong>
+        Suscribirte a nuestro sistema de suscripción mensual tiene muchas ventajas:
+
+      </p>
+      <ul>
+        <li>Recibirás productos frescos y de temporada cada mes.
+        </li>
+        <li>Disfrutarás de una gran variedad de frutos rojos diferentes.
+        </li>
+        <li>Ahorrarás tiempo y dinero en la compra de la fruta.
+        </li>
+        <li>Recibirás recetas deliciosas y fáciles de preparar.
+        </li>
+        <li>Serás el primero en recibir nuestras novedades y ofertas exclusivas.
+        </li>
+      </ul>
+
+      </div>
     </div>
+    </div>
+
+    <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="elemento2">
+      <img src="/images/fondoWeb.png" alt="imagen" id="imagenAside">
+    </div> -->
+    
+    
 
     <!-- <div class="container"> -->
     <footer class="mt-auto py-5 bg-dark" id="footer">

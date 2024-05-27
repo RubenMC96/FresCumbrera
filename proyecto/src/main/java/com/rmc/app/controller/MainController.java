@@ -56,4 +56,12 @@ public class MainController {
     public String showSomos(){
         return "Somos/quienesSomos";
     }
+    @GetMapping("/preguntas/")
+    public String showPreguntas(){
+        return "Somos/preguntas";
+    }
+    @GetMapping("/funciona/")
+    public String showFunciona(){
+        return "Somos/funciona";
+    }
 }

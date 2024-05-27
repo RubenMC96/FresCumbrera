@@ -1,0 +1,66 @@
+body{
+    background-image: url('/images/fondoWeb.png');
+}
+
+
+#logo{
+    height: 7em;
+    width: 7em;
+}
+
+#cabecera{
+    height: auto;
+    width: 90%;
+    margin: 2% 5% 2% 5%;
+    align-items: center;    
+    border-radius: 2em;
+}
+
+
+#container{
+    margin: 15em 2em 2em 3em;
+    width: 90%;
+}
+
+.titulo{
+
+    color: #BEA16E;
+}
+
+
+#footerContainer{
+    width: 100%;
+}
+
+#footer{
+    /* background-color: black; */
+    position: absolute;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    padding: 20px;
+    margin-top: 10em;
+}
+#divGif{
+    margin-block-end: auto;
+    
+}
+#gif{
+    height: 15em;
+    width: 15em;
+}
+.row{
+    color: #e0e0e0;
+}
+
+#rrss{
+    margin-right: 2em;
+}
+
+#instagram{
+    color: white;
+}
+#linkedin{
+    color: white;
+}
+#youtube{
+    color: white;
+}

@@ -5,11 +5,12 @@ body{
     background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
 
-    background: rgb(120,0,2);
+    /* background: rgb(120,0,2);
     background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
     background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
     background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
+    background-image: url("/images/fondoWeb.png");
 }
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */
@@ -30,10 +31,25 @@ align-content:space-around;
     border-radius: 2em;
 }
 
+
+
+
 .container {
     margin-top: 5em;
-    margin-bottom: 10em;
+    margin-bottom: 8em;
+    color: #317433;
 }
+.inicio{
+
+    color: #76799B;
+
+}
+.error{
+
+    color: #DB1A35;
+
+}
+
 .form-control {
     width: 50%; /* O cualquier otro valor que desees */
     height: auto; /* Ajusta la altura según sea necesario */
@@ -43,6 +59,14 @@ align-content:space-around;
 .dropdown-menu{
     margin-top: 10em;
     margin-bottom: 10em;
+}
+
+.dropdown-item{
+    color: #37229C;
+}
+.form-control::placeholder{
+
+    color: #e38096;
 }
 
 #footerContainer{
