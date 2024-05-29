@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.rmc.app.Repositories.CategoriaRepository;
 import com.rmc.app.domain.Categoria;
+import com.rmc.app.domain.Producto;
 
 @Service
 public class CategoriaServiceImp implements CategoriaService{
@@ -54,4 +55,5 @@ public class CategoriaServiceImp implements CategoriaService{
 
         return catRepo.findByNombre(nombre);
     }
+
 }

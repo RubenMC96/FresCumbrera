@@ -113,15 +113,15 @@
         <tr>
           <th>Nombre</th>
           <th>Descripcion</th>
-          <th>Editar</th>
-          <th>Borrar</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
         <tr th:each="categoria : ${listaCategoria}">
-          <td class="titulo" th:text="${categoria.id}" hidden>Id</td>
-          <td th:text="${categoria.nombre}">Nombre</td>
+          <td th:text="${categoria.id}" hidden>Id</td>
+          <td><a class="btn btn-success" th:text="${categoria.nombre}" th:href="@{/categoria/listProductos/{id}(id=${categoria.id})}"></a></td>
           <td th:text="${categoria.descripcion}">Descripcion</td>
           <td>
             <a class="btn btn-info" th:href="@{/categoria/editar/{id}(id=${categoria.id})}"

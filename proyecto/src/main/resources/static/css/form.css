@@ -12,6 +12,8 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
 
     background-image: url('/images/fondoWeb.png');
+    background-repeat: round;
+
 }
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */

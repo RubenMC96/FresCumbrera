@@ -41,6 +41,9 @@ public class SecurityConfig {
                                                 .requestMatchers("/categoria/nuevo/**", "/categoria/editar/**",
                                                                 "/categoria/borrar/**")
                                                 .hasRole("ADMIN")
+                                                .requestMatchers("/categoria/productos/**").hasAnyRole("ADMIN")
+                                                .requestMatchers("/categoria/listProductos/**").permitAll()
+
 
                                                 /* Permisos de compra */
                                                 .requestMatchers("/compra/list").hasRole("ADMIN")

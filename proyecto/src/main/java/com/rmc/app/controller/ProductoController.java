@@ -39,9 +39,9 @@ public class ProductoController {
     public String showList(Model model){
 
         model.addAttribute("listaProductos", productoService.obtenerLista());
-        model.addAttribute("listaCategorias", categoriaService.obtenerLista());
+        // model.addAttribute("listaCategorias", categoriaService.obtenerLista());
         model.addAttribute("lineaForm", new LineaProductoDTO());
-        model.addAttribute("categoriaSeleccionada", new Categoria(0L,"Todas"));
+        // model.addAttribute("categoriaSeleccionada", new Categoria(0L,"Todas"));
         return "ProductosView/ListProducView";
     }
     @GetMapping("/list/{idCat}")

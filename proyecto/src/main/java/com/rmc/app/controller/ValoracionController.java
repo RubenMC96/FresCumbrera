@@ -1,5 +1,6 @@
 package com.rmc.app.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,8 +43,14 @@ public class ValoracionController {
     // Lista con las valoraciones que ha hecho el usuario
     @GetMapping({ "/usuario/{idUsuario}" })
     public String showUsuario(@PathVariable long idUsuario, Model model) {
-        model.addAttribute("listaValoracion", valoracionService.obtenerPorUsuario(idUsuario));
-        return "ValoracionView/ListValUsuView";
+        List<Valoracion> valoraciones = valoracionService.obtenerPorUsuario(idUsuario);
+        if(valoraciones != null && !valoraciones.isEmpty()){
+            model.addAttribute("listaValoracion", valoraciones);
+            return "ValoracionView/ListValUsuView";
+        }else{
+            model.addAttribute("listaVacia", "No ha realizado ninguna valoración, visita nuestra fantática sección de productos y ¡coméntanos qué opinas!");
+            return "ValoracionView/ListaValVacia";
+        }
     }
 
     @GetMapping("/nuevo/{idProducto}")

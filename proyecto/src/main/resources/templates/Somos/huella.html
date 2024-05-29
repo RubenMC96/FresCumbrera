@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Usuario CRUD</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuevo usuario</title>
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-    defer
-  ></script>
-<link rel="stylesheet" href="/css/tables.css">
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <link rel="stylesheet" href="/css/somos.css" />
   </head>
   <body>
-
     <header data-bs-theme="dark">
       <nav
         class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top"
@@ -104,65 +102,125 @@
       </nav>
     </header>
 
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" id="container">
+
+      <div class="form" id="elemento">
+
+        <!-- <h1 class="titulo">Somos</h1> -->
+  
+        <div>
+ 
+          
+            <p>
+              <strong>
+                Huella de carbono: Nuestro compromiso con la transparencia y la acción</strong><br>
+                En FresCumbrera, estamos comprometidos con la medición, reducción y compensación de nuestra huella de carbono. 
+                Creemos que es importante ser transparentes sobre nuestro impacto ambiental y tomar medidas para reducirlo.<br><br>
+          </p>
+            
+          <p>
+            <strong>¿Qué es la huella de carbono?
 
 
-    <div class="table-responsive" id="container">
 
-      <h1 class="titulo">Listado de usuario</h1>
-    <table class="table" border="1px">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Apellidos</th>
-          <th>Email</th>
-          <th>Nombre Usuario</th>
-          <th>Telefono</th>
-          <th>Rol</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
+            </strong><br> 
+            La huella de carbono es la cantidad total de gases de efecto invernadero (GEI) que emitimos a la atmósfera, 
+            a sea directamente por nuestras actividades o indirectamente a través de la cadena de suministro. 
+            Los GEI, como el dióxido de carbono (CO2), el metano y el óxido nitroso, atrapan el calor en la atmósfera 
+            y contribuyen al cambio climático.<br><br>
+         
+        </p>
 
-      <tbody>
-        <tr th:each="usuario : ${listaUsuarios}">
-          <td th:text="${usuario.id}" hidden>Id</td>
-          <td th:text="${usuario.nombre}">Nombre</td>
-          <td th:text="${usuario.apellidos}">Apellidos</td>
-          <td th:text="${usuario.email}">Email</td>
-          <td th:text="${usuario.nombreUsuario}">Nombre Usuario</td>
-          <td th:text="${usuario.password}" hidden></td>
-          <td th:text="${usuario.telefono}">Telefono</td>
-          <td th:text="${usuario.rol}">Rol</td>
-          <td>
-            <a class="btn btn-success" th:href="@{/usuario/editar/{id}(id=${usuario.id})}"
-              >Editar</a
-            >
-          </td>
-          <td>
-            <a class="btn btn-success" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}"
-              >Borrar</a
-            >
-          </td>
-          <td>
-            <a class="btn btn-success" th:href="@{/valoracion/usuario/{id}(id=${usuario.id})}"
-              >Valoraciones</a
-            >
-          </td>
-          <td>
-            <a class="btn btn-success" th:href="@{/compra/usuario/{id}(id=${usuario.id})}"
-              >Compras</a
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <a class="btn btn-danger" th:href="@{/inicio}">Inicio</a>
-    <a class="btn btn-success" th:href="@{/usuario/nuevo}">Nuevo usuario</a><br />
+        <p><strong>¿Cómo calculamos nuestra huella de carbono?
+        </strong>
+        Calculamos nuestra huella de carbono anualmente siguiendo los estándares del Greenhouse Gas Protocol (GHG Protocol). 
+        Para ello, tomamos en cuenta todas nuestras emisiones directas e indirectas, incluyendo:
+      </p>
+      <ul>
+        <li><strong>Emisiones directas: </strong> Emisiones procedentes de nuestras propias operaciones, como el consumo de energía en nuestras instalaciones, el uso de vehículos y las emisiones fugitivas de refrigerantes.</li>
+        <li><strong>Emisiones indirectas de alcance 1: </strong> Emisiones procedentes de la generación de electricidad que compramos.
+        </li>
+        <li><strong>Emisiones indirectas de alcance 2:</strong> Emisiones procedentes de la producción de bienes y servicios que compramos, como envases, transporte y materiales de oficina.
+        </li>
+        <li><strong>Emisiones indirectas de alcance 3:</strong> Emisiones procedentes de las actividades de nuestros clientes y proveedores, como el uso de nuestros productos y el transporte de nuestros productos.
+        </li>
+      </ul>
 
+      <p><strong>¿Cuál es nuestra huella de carbono?
+      </strong>
+      En FresCumbrera, nuestra huella de carbono total fue de [Cantidad de toneladas de CO2 equivalente]. Esta cifra se desglosa de la siguiente manera:
+    </p>
+    <ul>
+      <li><strong>Emisiones directas:</strong> [Cantidad de toneladas de CO2 equivalente]
+      </li>
+      <li><strong>Emisiones indirectas de alcance 1:</strong> [Cantidad de toneladas de CO2 equivalente]
+
+      </li>
+      <li><strong>Emisiones indirectas de alcance 2:</strong> [Cantidad de toneladas de CO2 equivalente]
+
+      </li>
+      <li><strong>Emisiones indirectas de alcance 3:</strong> [Cantidad de toneladas de CO2 equivalente]
+
+      </li>
+    </ul>
+
+    <p><strong>¿Qué estamos haciendo para reducir nuestra huella de carbono?
+    </strong>
+    1.Reducción del consumo de energía: Invertimos en eficiencia energética y utilizamos fuentes de energía renovables. <br>
+    2.Reducción de las emisiones de transporte: Optimizamos nuestras rutas de transporte y utilizamos vehículos más eficientes. <br>
+    3.Gestión de residuos: Reducimos, reutilizamos y reciclamos nuestros residuos. <br>
+    4.Compra responsable: Compramos productos y servicios de proveedores con prácticas sostenibles. <br>
+    5.Compromiso con nuestros clientes y proveedores: Colaboramos con nuestros clientes y proveedores para reducir su impacto ambiental.
+
+  </p>
+  <p><strong>¿Cómo compensamos nuestra huella de carbono?
+
+  </strong>
+  Compensamos las emisiones que no podemos reducir invirtiendo en proyectos de reducción de emisiones en otras partes del mundo. Estos proyectos pueden incluir:
+  <ul>
+    <li><strong>Proyectos de eficiencia energética: </strong> Invertimos en la construcción de parques eólicos, solares y otras instalaciones de energía renovable.
+    </li>
+    <li><strong>Proyectos de energía renovable:</strong> Ayudamos a las comunidades a mejorar la eficiencia energética de sus hogares y negocios.
+    <li><strong>Proyectos de reforestación: </strong>  Plantamos árboles en áreas deforestadas para absorber CO2 de la atmósfera.
+    </li>
+  </ul>
+</p>
+
+<p>
+  <strong>¿Qué puedes hacer tú como cliente para ayudar?
+  </strong>
+  Puedes ayudarnos a reducir nuestra huella de carbono eligiendo nuestros productos y servicios, y siguiendo estos consejos:
+
+<ul><li>Reduce tu consumo de energía: Apaga las luces y los aparatos electrónicos cuando no los estés usando.
+</li></ul>
+<ul><li>Utiliza transporte sostenible: Camina, usa la bicicleta o el transporte público siempre que sea posible.
+</li></ul>
+<ul><li>Come menos carne: La producción de carne es una de las principales fuentes de emisiones de GEI.
+</li></ul>
+<ul><li>Recicla y composta: Reduce, reutiliza y recicla tus residuos.
+</li></ul>
+</p>
+
+<p>
+  <b>  Juntos, podemos reducir nuestro impacto ambiental y construir un futuro más sostenible. <br> <br></b>
+  <strong>
+
+
+
+FresCumbrera: La tradición del sabor, con responsabilidad.
+
+</strong></p>
+    </div>
+    </div>
     </div>
 
+    <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="elemento2">
+      <img src="/images/fondoWeb.png" alt="imagen" id="imagenAside">
+    </div> -->
+    
+    
+
+    <!-- <div class="container"> -->
     <footer class="mt-auto py-5 bg-dark" id="footer">
       <div class="row">
         <div class="col-6 col-md-2 mb-3">
@@ -209,6 +267,24 @@
           </ul>
         </div>
 
+        <!-- <div class="col-md-5 offset-md-1 mb-3">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of what's new and exciting from us.</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden"
+                >Email address</label
+              >
+              <input
+                id="newsletter1"
+                type="text"
+                class="form-control"
+                placeholder="Email address"
+              />
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div> -->
         <div class="col-md-5 offset-md-1 mb-3" id="divGif">
           <img src="/images/gif.gif" alt="" id="gif">
         </div>
@@ -243,6 +319,5 @@
         </ul>
       </div>
     </footer>
-    
   </body>
 </html>

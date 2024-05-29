@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.LineaProducto;
 import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.Usuario;
 import com.rmc.app.service.CompraService;
 import com.rmc.app.service.LineaProductoService;
 import com.rmc.app.service.ProductoService;
@@ -66,6 +67,7 @@ public class LineaProductoController {
                                     BindingResult bindingResult){
 
         Producto producto = productoService.obtenerPorId(idProducto); 
+
         
         LineaProducto linea = new LineaProducto(0L, lineaForm.getCantidadProductos(),null ,producto);
         lineaProductoService.annadir(linea);

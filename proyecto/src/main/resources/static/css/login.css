@@ -11,6 +11,8 @@ body{
     background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
     background-image: url("/images/fondoWeb.png");
+    background-repeat: round;
+
 }
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */

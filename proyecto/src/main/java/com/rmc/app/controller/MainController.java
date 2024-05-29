@@ -64,4 +64,16 @@ public class MainController {
     public String showFunciona(){
         return "Somos/funciona";
     }
+    @GetMapping("/planet/")
+    public String showPlaneta(){
+        return "Somos/planet";
+    }
+    @GetMapping("/huella/")
+    public String showHuella(){
+        return "Somos/huella";
+    }
+    @GetMapping("/envases/")
+    public String showEnvases(){
+        return "Somos/envases";
+    }
 }

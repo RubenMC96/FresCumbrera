@@ -104,15 +104,21 @@
 
     <div class="form">
 
-      <h1 class="titulo">Editar perfil</h1>
+      <h1 class="titulo">Gestion de cuenta</h1>
 
       <div class="container" id="formulario">
+
+        
+        
         <form class="row g-3"
             id="myForm"
             method="post"
             action="#"
             th:action="@{/usuario/editarPerfil/submit}"
             th:object="${usuarioForm}">
+            <a class="btn btn-success" th:href="@{/compra/usuario/{id}(id=${usuarioForm.id})}"
+        >Sus compras</a>        
+        <a class="btn btn-success" th:href="@{/valoracion/usuario/{id}(id=${usuarioForm.id})}">Sus valoraciones</a> <br> <br>
 
           <div class="col-md-12">
             <label for="id" class="form-label"></label>

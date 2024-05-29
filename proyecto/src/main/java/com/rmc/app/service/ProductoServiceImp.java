@@ -40,14 +40,18 @@ public class ProductoServiceImp implements ProductoService{
         if(producto != null)
         proRepo.delete(producto);
     }
+    
     public List<Producto> findByCategory(Long idCat){
         
         Categoria categoria = catRepo.findById(idCat).orElse(null);
 
         if(categoria == null) return null;
 
-        return proRepo.findByCategoria(categoria);
+        List<Producto> productos = proRepo.findByCategoria(categoria);
+
+        return productos;
     }
+
 
     public void actualizarStock(Long idProducto,Integer nuevoStock){
         Producto producto = proRepo.findById(idProducto).orElse(null);

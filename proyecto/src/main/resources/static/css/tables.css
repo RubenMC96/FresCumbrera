@@ -1,5 +1,12 @@
 body{
     background-image: url('/images/fondoWeb.png');
+    /* background-repeat: round; */
+    
+    /* background-repeat: no-repeat;
+  background-position: center; Centra la imagen de fondo */
+  background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
+  background-position: top left; 
+  background-size: 25%;
 }
 
 
@@ -27,6 +34,19 @@ body{
     color: #BEA16E;
 }
 
+.table{
+    width: 99%;
+}
+
+.importe{
+
+    background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 5em;
+    width: fit-content;
+    padding: 1em 1em 1em 1em;
+    text-align: center;
+
+}
 
 #footerContainer{
     width: 100%;

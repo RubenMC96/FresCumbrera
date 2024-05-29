@@ -48,10 +48,13 @@ public class LineaProductoServiceImp implements LineaProductoService {
     public void annadir(LineaProducto linea) {
 
         Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
-
-        LineaProducto lineaProducto = new LineaProducto(0L, linea.getCantidadProductos(), usuarioConectado, linea.getProducto());
+        Integer cantidad = linea.getCantidadProductos();
+        if(cantidad == null){
+            LineaProducto lineaProducto = new LineaProducto(0L, linea.getCantidadProductos(), usuarioConectado, linea.getProducto());
+            lineaProductoRepository.save(lineaProducto);
+        }
         
-        lineaProductoRepository.save(lineaProducto);
+        
 
     }
 

@@ -2,6 +2,9 @@ package com.rmc.app.controller;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rmc.app.domain.Categoria;
+import com.rmc.app.domain.Producto;
+import com.rmc.app.domain.DTO.LineaProductoDTO;
 import com.rmc.app.service.CategoriaService;
 import com.rmc.app.service.ProductoService;
 
@@ -33,6 +38,21 @@ public class CategoriaController {
         public String showList(Model model){
             model.addAttribute("listaCategoria", categoriaService.obtenerLista());
             return "CategoriaView/ListCatView";
+        }
+        @GetMapping({"/listProductos/{id}"})
+        public String showListProductos(@PathVariable long id ,Model model){
+
+            List<Producto> productos = new ArrayList<>();
+            productos = productoService.findByCategory(id);
+
+            if (productos != null) {
+                model.addAttribute("listaProductos", productos);
+                model.addAttribute("lineaForm", new LineaProductoDTO());
+
+                return "ProductosView/ListProducView";
+            }
+            // si no lo encuentra vuelve a la página de inicio.
+            return "redirect:/categoria/list";
         }
         @GetMapping("/nuevo")
         public String showNuevo(Model model){
