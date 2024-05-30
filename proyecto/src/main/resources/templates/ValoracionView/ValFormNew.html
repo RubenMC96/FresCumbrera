@@ -113,7 +113,8 @@
             action="#"
             th:action="@{/valoracion/nuevo/submit}" 
             th:object="${valoracionForm}">
-  
+
+            <input type="text" th:field="*{idProducto}" hidden/>  
           <div class="col-md-12">
             <label for="comentario" class="form-label">Valoración</label>
             <input type="text" class="form-control" id="comentario" maxlength="40"
