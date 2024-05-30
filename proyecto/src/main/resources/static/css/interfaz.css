@@ -18,14 +18,14 @@ align-content:space-around;
 }
 .carrito {
     position: absolute; /* Esto hace que el elemento se posicione en relación al primer ancestro posicionado */
-    right: 0; /* Esto coloca el elemento al borde derecho del contenedor */
+    right: 2em; /* Esto coloca el elemento al borde derecho del contenedor */
     list-style: none;
 
 }
 
 #imgCaja{
-    height: 5em;
-    width: 10em;
+    height: 6em;
+    width: 8em;
 }
 
 

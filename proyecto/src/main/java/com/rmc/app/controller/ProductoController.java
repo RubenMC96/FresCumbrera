@@ -66,8 +66,10 @@ public class ProductoController {
         BindingResult bindingResult){
             if(bindingResult.hasErrors())
                 return "redirect:/producto/nuevo";
+
+            Long idCategoria = productoForm.getCategoria().getId();
             productoService.añadir(productoForm);
-                return "redirect:/producto/list";
+                return "redirect: /categoria/listProductos/" + idCategoria;
     }
     @PostMapping("/editar/submit")
     public String showEditSubmit (
@@ -85,6 +87,7 @@ public class ProductoController {
         // el commandobject del formulario es el empleado con el id solicitado
         if (producto != null) {
             model.addAttribute("productoForm", producto);
+            model.addAttribute("listaCategorias", categoriaService.obtenerLista());
             return "ProductosView/FormEdit";
         }
         // si no lo encuentra vuelve a la página de inicio.

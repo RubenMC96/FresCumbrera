@@ -23,12 +23,12 @@ align-content:space-around;
 }
 
 #logo{
-    height: 7em;
-    width: 7em;
+    height: 5em;
+    width: 5em;
 }
 
 #cabecera{
-    height: auto;
+    height: 20%;
     width: 90%;
     margin: 2% 5% 2% 5%;
     align-items: center;    

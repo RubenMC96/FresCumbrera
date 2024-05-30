@@ -49,7 +49,7 @@ public class LineaProductoServiceImp implements LineaProductoService {
 
         Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
         Integer cantidad = linea.getCantidadProductos();
-        if(cantidad == null){
+        if(cantidad != null){
             LineaProducto lineaProducto = new LineaProducto(0L, linea.getCantidadProductos(), usuarioConectado, linea.getProducto());
             lineaProductoRepository.save(lineaProducto);
         }
