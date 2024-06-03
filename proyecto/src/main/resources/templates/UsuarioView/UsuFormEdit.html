@@ -49,6 +49,9 @@
               <li class="nav-item">
                 <a class="nav-link" th:href="@{/categoria/}">Categorias</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/usuario/}" sec:authorize="hasRole('ADMIN')">Usuarios</a>
+              </li>
               <li class="nav-item" sec:authorize="!isAuthenticated()">
                 <a class="nav-link" th:href="@{/signin}">Login</a>
               </li>
@@ -92,12 +95,14 @@
                 </ul>
               </li>
             </ul>
-            <ul class="carrito">
+            <!-- <ul class="carrito">
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/logo-caja.png" alt="Carrito" id="imgCaja"></a>
+                <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/caja.png" alt="Carrito" id="imgCaja"></a>
               </li>
-            </ul>
+            </ul> -->
           </div>
+          <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/caja.png" alt="Carrito" id="imgCaja"></a>
+
         </div>
       </nav>
     </header>
@@ -287,4 +292,6 @@
       </div>
     </footer>
   </body>
+  <script src="/js/validacionUsuario.js"></script>
+
 </html>

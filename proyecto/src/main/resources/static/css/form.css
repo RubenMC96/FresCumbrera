@@ -1,24 +1,15 @@
 body{
-    /* background: rgb(123,31,162);
-    background: -moz-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    background: -webkit-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
-
-    /* background: rgb(120,0,2);
-    background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
-
     background-image: url('/images/fondoWeb.png');
-    background-repeat: round;
-
+    background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
+    background-position: top left; 
+    background-size: 25%;
 }
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */
 border-radius: 0 0 5% 5%;
 align-content:space-around;
+height: 20%;
+width: 90%;
 
 }
 
@@ -34,7 +25,16 @@ align-content:space-around;
     align-items: center;    
     border-radius: 2em;
 }
+.carrito {
+    position: absolute; /* Esto hace que el elemento se posicione en relación al primer ancestro posicionado */
+    right: 2em; /* Esto coloca el elemento al borde derecho del contenedor */
+    list-style: none;
 
+}
+#imgCaja{
+    height: 6em;
+    width: 8em;
+}
 .form{
     display: flex;
     flex-direction: column;
@@ -42,14 +42,18 @@ align-content:space-around;
     justify-content: center;
     margin: 15em 2em 2em 8em;
     width: 50%;
+    background-color: rgba(255, 255, 255, 0.7); /* Color rojo con 50% de opacidad */
+    border-radius: 5em;
 }
 
 .container {
-    margin-top: 0em;
-    margin-bottom: 10em;
+    margin: 15em 2em 2em 3em;
+    width: 90%;
 }
 
 .titulo{
+    margin-left: 1em;
+    padding-top: 1em;
     font-size: 3em;
     color: #DB1A35;
 }
@@ -60,17 +64,24 @@ align-content:space-around;
 }
 
 .form-control {
-    width: 100%; /* O cualquier otro valor que desees */
-    height: auto; /* Ajusta la altura según sea necesario */
-    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    width: 100%; 
+    height: auto; 
+    font-size: 18px; 
 }
 .form-label {
-    color: #DB1A35; /* Cambia 'red' al color que prefieras */
+    color: #DB1A35; 
 }
 
 input[type="text"]::placeholder {
-    color: #9FBC8F; /* Cambia 'green' al color que prefieras para el placeholder */
+    color: #9FBC8F; 
 }
+input[type="email"]::placeholder {
+    color: #9FBC8F;
+}
+textarea::placeholder {
+    color: #9FBC8F; 
+}
+
 
 .dropdown-menu{
     margin-top: 10em;

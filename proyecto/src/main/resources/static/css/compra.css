@@ -1,21 +1,18 @@
 body{
-    background-image: url('/images/fondoWeb.png');
-    /* background-repeat: round; */
-    
-    /* background-repeat: no-repeat;
-  background-position: center; Centra la imagen de fondo */
-  background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
-  background-position: top left; 
-  background-size: 25%;
-}
 
+    background-image: url('/images/fondoWeb.png');
+    background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
+    background-position: top left; 
+    background-size: 25%;
+}
 #navbarNav{
-    /* background-color: rgb(37, 37, 37); */
-    border-radius: 0 0 5% 5%;
-    align-content:space-around;
-    height: 20%;
+/* background-color: rgb(37, 37, 37); */
+border-radius: 0 0 5% 5%;
+align-content:space-around;
+height: 20%;
     width: 90%;
-    }
+
+}
 
 #logo{
     height: 5em;
@@ -41,33 +38,9 @@ body{
 }
 
 
-#container{
-    margin: 15em 2em 2em 3em;
-    width: 90%;
-}
 
-.titulo{
 
-    color: #DB1A35;
-}
 
-.table{
-    width: 99%;
-}
-
-.importe{
-
-    background-color: rgb(255, 255, 255, 0.8);
-    border-radius: 5em;
-    width: fit-content;
-    padding: 1em 1em 1em 1em;
-    text-align: center;
-
-}
-
-#footerContainer{
-    width: 100%;
-}
 
 #footer{
     /* background-color: black; */
@@ -101,3 +74,4 @@ body{
 #youtube{
     color: white;
 }
+  

@@ -1,23 +1,33 @@
 body{
-    /* background: rgb(123,31,162);
-    background: -moz-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    background: -webkit-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
-
-    /* background: rgb(120,0,2);
-    background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
     background-image: url('/images/fondoWeb.png');
-    background-repeat: round;
+    background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
+    background-position: top left; 
+    background-size: 25%;
 
 }
+#navbarNav{
+    /* background-color: rgb(37, 37, 37); */
+    border-radius: 0 0 5% 5%;
+    align-content:space-around;
+    height: 20%;
+        width: 90%;
+    
+    }
 
 #logo{
     height: 5em;
     width: 5em;
+}
+
+.carrito {
+    position: absolute; /* Esto hace que el elemento se posicione en relación al primer ancestro posicionado */
+    right: 2em; /* Esto coloca el elemento al borde derecho del contenedor */
+    list-style: none;
+
+}
+#imgCaja{
+    height: 6em;
+    width: 8em;
 }
 
 #cabecera{

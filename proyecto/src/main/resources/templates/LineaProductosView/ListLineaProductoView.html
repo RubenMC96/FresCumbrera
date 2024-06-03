@@ -52,7 +52,6 @@
               <li class="nav-item">
                 <a class="nav-link" th:href="@{/categoria/}">Categorias</a>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link" th:href="@{/usuario/}" sec:authorize="hasRole('ADMIN')">Usuarios</a>
               </li>
@@ -99,12 +98,14 @@
                 </ul>
               </li>
             </ul>
-            <ul class="carrito">
+            <!-- <ul class="carrito">
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/logo-caja.png" alt="Carrito" id="imgCaja"></a>
+                <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/caja.png" alt="Carrito" id="imgCaja"></a>
               </li>
-            </ul>
+            </ul> -->
           </div>
+          <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/caja.png" alt="Carrito" id="imgCaja"></a>
+
         </div>
       </nav>
     </header>
@@ -129,7 +130,6 @@
             <td th:text="${linea.producto.nombre}">Producto</td>
             <td th:text="${linea.producto.precio}">Precio</td>
             <td th:text="${linea.cantidadProductos}">Cantidad</td>
-
             <td>
               <a class="btn btn-danger" th:href="@{/lineaProducto/borrar/{id}(id=${linea.id})}"
                 >Borrar</a
