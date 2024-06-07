@@ -11,6 +11,7 @@ public interface UsuarioService {
 
    
     public Usuario añadir(Usuario usuario);
+    public Usuario editarUsuario(Usuario usuario);
     public void borrar(Long id);
     public Usuario editar (Usuario usuario);
     public Usuario obtenerPorId(Long id);

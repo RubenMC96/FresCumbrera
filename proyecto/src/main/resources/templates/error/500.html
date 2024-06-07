@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preguntas frecuentes</title>
+    <title>FresCumbrera</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,11 +16,11 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <link rel="stylesheet" href="/css/somos.css" />
+    <link rel="stylesheet" href="/css/interfaz.css" />
     <link rel="icon" href="/images/logo.png" type="image/x-icon">
 
   </head>
-  <body>
+  <body class="bg-dark">
     <header data-bs-theme="dark">
       <nav
         class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top"
@@ -103,94 +103,23 @@
               </li>
             </ul> -->
           </div>
-          <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/caja.png" alt="Carrito" id="imgCaja"></a>
-
+          <a class="nav-link" th:href="@{/lineaProducto/list/}"><img src="/images/caja.png" alt="Carrito" id="imgCaja"></a> <br> <br>
         </div>
       </nav>
     </header>
-    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" id="container">
-
-      <div class="form" id="elemento">
-
-        <!-- <h1 class="titulo">Somos</h1> -->
-  
-        <div class="texto">
- 
-          <h2><strong>Preguntas frecuentes</strong></h2><br>
-          
-            <p>
-              <strong>¿Qué tipo de frutos rojos venden?</strong><br>
-              Ofrecemos una amplia variedad de frutos rojos frescos y de temporada, entre los que destacan: </p><br>
-              <ul>
-                <li>Fresas</li>
-                <li>Arándanos<li>
-                <li>Frambuesas<li>
-                <li>Moras</li>
-              </ul>
- 
-
-          
-            <strong>¿Cómo puedo comprar sus productos?</strong><br>
-            <p>Puede comprar nuestros productos de las siguientes maneras:</p>
-            <ul>
-              <li>En nuestra tienda física: [Dirección de la tienda]</li>
-            </ul>
 
 
-            <strong>¿Hacen envíos a domicilio?</strong><br>
-            <p>Sí, hacemos envíos a domicilio en toda España. Los gastos de envío varían en función del peso y el destino del pedido.</p> <br> <br>
-
-            <strong>¿Qué métodos de pago aceptan?</strong><br>
-            <p>Aceptamos los siguientes métodos de pago:</p>
-            <ul>
-              <li>Efectivo</li>
-              <li>Tarjeta de crédito</li>
-              <li>Tarjeta de débito</li>
-              <li>PayPal</li>
-              <li>Transferencia bancaria</li>
-            </ul>
-            <br> <br>
-
-            <strong>¿Tienen un programa de fidelización?
-
-            </strong><br>
-            <p>Sí, tenemos un programa de fidelización para nuestros clientes más habituales. Con este programa, puede acumular puntos por cada compra que realice y canjearlos por descuentos en sus próximas compras.</p>
-
-
-            <strong>¿Puedo visitar sus campos?
-
-            </strong><br>
-            <p>Sí, organizamos visitas guiadas a nuestros campos para que pueda conocer cómo cultivamos nuestros frutos rojos. Para más información, contacte con nosotros.</p>
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-    </div>
+    <div>
+        <h1>Ups... parece que ha habido un error</h1>
+        <p>Se ha producido un problema en el lado del servidor
+            Por favor vuelve a la página pincipal.
+        </p>
+        <a class="btn-success" th:href="@{/inicio}">Volver a la página principal</a>
     </div>
 
-    <!-- <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="elemento2">
-      <img src="/images/fondoWeb.png" alt="imagen" id="imagenAside">
-    </div> -->
-    
-    
 
+
+   
     <!-- <div class="container"> -->
     <footer class="mt-auto py-5 bg-dark" id="footer">
       <div class="row">
@@ -198,13 +127,13 @@
           <h5>Ayuda</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Preguntas frecuentes</a>
+              <a th:href="@{/preguntas/}" class="nav-link p-0 text-white">Preguntas frecuentes</a>
             </li>
             <li class="nav-item mb-2">
               <a th:href="@{/contacto/}" class="nav-link p-0 text-white">Contacto</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Cómo funciona</a>
+              <a th:href="@{/funciona/}" class="nav-link p-0 text-white">Cómo funciona</a>
             </li>
           </ul>
         </div>
@@ -216,7 +145,7 @@
               <a th:href="@{/somos/}" class="nav-link p-0 text-white">¿Quienes somos?</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Colaboraciones</a>
+              <a th:href="@{/colaboraciones/}" class="nav-link p-0 text-white">Colaboraciones</a>
             </li>
             <li class="nav-item mb-2">
             </li>
@@ -227,35 +156,17 @@
           <h5>Sostenibilidad</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Care of planet</a>
+              <a th:href="@{/planet/}" class="nav-link p-0 text-white">Care of planet</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Envases sostenibles</a>
+              <a th:href="@{/envases/}" class="nav-link p-0 text-white">Envases sostenibles</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Huella de carbono</a>
+              <a th:href="@{/huella/}" class="nav-link p-0 text-white">Huella de carbono</a>
             </li>
           </ul>
         </div>
 
-        <!-- <div class="col-md-5 offset-md-1 mb-3">
-          <form>
-            <h5>Subscribe to our newsletter</h5>
-            <p>Monthly digest of what's new and exciting from us.</p>
-            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden"
-                >Email address</label
-              >
-              <input
-                id="newsletter1"
-                type="text"
-                class="form-control"
-                placeholder="Email address"
-              />
-              <button class="btn btn-primary" type="button">Subscribe</button>
-            </div>
-          </form>
-        </div> -->
         <div class="col-md-5 offset-md-1 mb-3" id="divGif">
           <img src="/images/gif.gif" alt="" id="gif">
         </div>

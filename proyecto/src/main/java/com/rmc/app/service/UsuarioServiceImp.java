@@ -44,14 +44,28 @@ public class UsuarioServiceImp implements UsuarioService {
     }
 
     public Usuario editar(Usuario usuario) {
-        String passCryString = passwordEncoder.encode(usuario.getPassword());
-        usuario.setPassword(passCryString);
-        try {
-            return usuarioRepository.save(usuario);
-        } catch (DataIntegrityViolationException e) {
-            e.printStackTrace();
-            return null;
-        }
+        if(usuario.getPassword() != null){
+            String passCryString = passwordEncoder.encode(usuario.getPassword());
+            usuario.setPassword(passCryString);
+            }
+            else{
+                Usuario usu = usuarioRepository.findById(usuario.getId()).orElse(null);
+                String pass = usu.getPassword();
+                usuario.setPassword(pass);
+            }
+           if(usuario.getRol() == null){
+                Usuario usu = usuarioRepository.findById(usuario.getId()).orElse(null);
+                Rol rol = usu.getRol();
+                usuario.setRol(rol);
+           }
+            try {
+                
+
+                return usuarioRepository.save(usuario);
+            } catch (DataIntegrityViolationException e) {
+                e.printStackTrace();
+                return null;
+            }
     }
 
     public Usuario obtenerPorId(Long id) {
@@ -114,5 +128,31 @@ public class UsuarioServiceImp implements UsuarioService {
 
 
     }
+
+    public Usuario editarUsuario(Usuario usuario){
+
+        if(usuario.getPassword() != null){
+        String passCryString = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(passCryString);
+        }
+        else{
+            Usuario usu = usuarioRepository.findById(usuario.getId()).orElse(null);
+            String pass = usu.getPassword();
+            Rol rol = usu.getRol();
+            usuario.setRol(rol);
+            usuario.setPassword(pass);
+        }
+       
+        try {
+            Usuario usu = usuarioRepository.findById(usuario.getId()).orElse(null);
+            Rol rol = usu.getRol();
+            usuario.setRol(rol);
+            return usuarioRepository.save(usuario);
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

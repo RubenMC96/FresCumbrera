@@ -1,17 +1,8 @@
 body{
-    /* background: rgb(123,31,162);
-    background: -moz-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    background: -webkit-linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    background: linear-gradient(45deg, rgba(123,31,162,1) 0%, rgba(233,30,99,1) 51%, rgba(244,67,54,1) 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7b1fa2",endColorstr="#f44336",GradientType=1); */
-
-    /* background: rgb(120,0,2);
-    background: -moz-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    background: -webkit-linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    background: linear-gradient(60deg, rgba(120,0,2,1) 1%, rgba(197,10,34,1) 30%, rgba(131,124,158,1) 95%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#780002",endColorstr="#837c9e",GradientType=1); */
-    background-image: url("/images/fondoWeb.png");
-    background-repeat: round;
+    background-image: url('/images/fondoWeb.png');
+    background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
+    background-position: top left; 
+    background-size: 25%;
 
 }
 #navbarNav{
@@ -51,9 +42,20 @@ align-content:space-around;
     color: #DB1A35;
 
 }
-
+#formulario{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2em 2em 2em 8em;
+    padding: 2em 2em 2em 2em;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.7); /* Color blanco con 50% de opacidad */
+    border-radius: 5em;
+    
+}
 .form-control {
-    width: 50%; /* O cualquier otro valor que desees */
+    width: 90%; /* O cualquier otro valor que desees */
     height: auto; /* Ajusta la altura según sea necesario */
     font-size: 18px; /* Aumenta el tamaño de la fuente */
   }

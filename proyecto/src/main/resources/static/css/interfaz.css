@@ -15,7 +15,8 @@ width: 90%;
 
 #logo{
     height: 5em;
-    width: 5em;
+    width: 5
+    em;
 }
 .carrito {
     position: absolute; /* Esto hace que el elemento se posicione en relación al primer ancestro posicionado */
@@ -34,6 +35,18 @@ width: 90%;
     margin-top: 1em;
     margin-bottom: 1em;
     height: 50em;
+}
+.carrouselImagenes{
+    height: 100%;
+    width: 100%;
+}
+#titulo{
+
+    background-color: rgb(255, 255, 255, 0.3);
+    border-radius: 2em;
+    width: 13em;
+    padding-left: 2em;
+    
 }
 #cabecera{
     height: 20%;

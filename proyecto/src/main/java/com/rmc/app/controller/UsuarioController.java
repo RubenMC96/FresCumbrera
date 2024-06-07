@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rmc.app.Repositories.UsuarioRepository;
 import com.rmc.app.domain.Rol;
@@ -100,7 +101,7 @@ public class UsuarioController {
                     return "redirect:/usuario/editarPerfil";
                 }  
                 else{
-                    usuarioService.añadir(usuarioForm);
+                    usuarioService.editarUsuario(usuarioForm);
                     return "redirect:/inicio";
                 }
                
@@ -119,8 +120,7 @@ public class UsuarioController {
                 return "redirect:/usuario/editar/{id}";
             }
             System.out.println(usuarioForm);
-
-            usuarioService.añadir(usuarioForm);
+            usuarioService.editar(usuarioForm);
                 return "redirect:/usuario/list";
         }
 

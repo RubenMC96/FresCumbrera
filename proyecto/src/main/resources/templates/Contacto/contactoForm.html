@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +17,8 @@
       defer
     ></script>
     <link rel="stylesheet" href="/css/form.css" />
+    <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
   </head>
   <body>
     <header data-bs-theme="dark">
@@ -117,22 +119,26 @@
             method="post"
             action="#"
             th:action="@{/contacto/submit}"
-            th:object="${contactoForm}">
+            th:object="${contactoForm}"
+           >
+           
   
           <div class="col-md-12">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" maxlength="40"
-            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$"required>
+            <input type="text" name="nombre" class="form-control" id="nombre" maxlength="40"
+            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" required> 
             <p id="avisoNombre"></p>
           </div>
           <div class="col-12">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Tu email" required>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Tu email" th:field="*{email}" required>
+            
             <p id="avisoEmail"></p>
           </div>
           <div class="col-12">
-            <label for="mensaje" class="form-label">Mensaje:</label>
-            <textarea class="form-control" value="mensaje" id="mensaje" placeholder="¿En qué podemos ayudarte?" rows="10" cols="10" required></textarea>
+            <label for="mensaje" name="mensaje" class="form-label">Mensaje:</label>
+            <textarea class="form-control" value="mensaje" id="mensaje" placeholder="¿En qué podemos ayudarte?" rows="10" cols="10" th:field="*{mensaje}" required></textarea>
+            
               <p id="avisoMensaje"></p>          
             </div>
           <div class="col-12">

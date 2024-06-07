@@ -1,13 +1,16 @@
 package com.rmc.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rmc.app.domain.Contacto;
 import com.rmc.app.domain.DTO.UsuarioAutoDTO;
+import com.rmc.app.service.ContactoService;
 
 import jakarta.validation.Valid;
 /**
@@ -15,6 +18,10 @@ import jakarta.validation.Valid;
  */
 @Controller
 public class MainController {
+
+    @Autowired
+    public ContactoService contactoService;
+
     @GetMapping({ "/", "/inicio" })
     public String showInicio() {
         return "Generales/indexView";
@@ -26,12 +33,20 @@ public class MainController {
         return "Contacto/contactoForm";
     }
 
+    // BindingResult bindingResult, 
     @PostMapping("/contacto/submit")
-    public String showContactoSubmit(@Valid Contacto contactoForm, BindingResult bindingResult){
+    public String showContactoSubmit(@RequestParam("nombre") String nombre,
+                                    @RequestParam("email") String email,
+                                    @RequestParam("mensaje") String mensaje,
+                                    Model model){
 
-        if(bindingResult.hasErrors())
-                return "redirect:/contacto/";
-                
+        // if(bindingResult.hasErrors())
+        //         return "redirect:/contacto/";
+        String cuerpoMensaje = "Muchas gracias por contactar " + nombre + ". <br><br> En breve le contactaremos para resolver todas sus dudas. <br><br><br> FresCumcumbreras. La tradición del sabor, con responsabilidad.<br><br><br> No responder a este correo.";
+        Boolean envioOk = contactoService.enviarEmail("frescumbrera.noreply@gmail.com",cuerpoMensaje, email, nombre, mensaje);
+                model.addAttribute("mensaje", envioOk);
+
+
         //Aqui se hace el envio del email
 
         return "Contacto/enviado";

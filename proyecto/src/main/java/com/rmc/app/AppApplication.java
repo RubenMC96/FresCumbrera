@@ -25,13 +25,14 @@ public class AppApplication {
 	// 		usuarioService.añadir(
 	// 			new Usuario(0L, 
 	// 					"administrador", 
-	// 					"1",
-	// 					"admin1@gmail.com", 
-	// 					"admin1", 
+	// 					"cinco",
+	// 					"admin5@gmail.com", 
+	// 					"admin5", 
 	// 					"1234",
 	// 					"123456789",
 	// 					Rol.ADMIN));
-
+	// 	};
+	// }
 	// 		usuarioService.añadir(
 	// 			new Usuario(0L, 
 	// 					"administrador", 

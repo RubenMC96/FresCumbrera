@@ -127,23 +127,23 @@
           <div class="col-md-12">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" maxlength="40"
-            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" required/>
+            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" />
             <p id="avisoNombre"></p>
           </div>
           <div class="col-md-12">
             <label for="apellidos" class="form-label">Apellidos</label>
             <input type="text" class="form-control" id="apellidos" maxlength="80"
-            placeholder="Apellidos" pattern="^[a-zA-Z\s]{1,80}$" th:field="*{apellidos}" required/>
+            placeholder="Apellidos" pattern="^[a-zA-Z\s]{1,80}$" th:field="*{apellidos}" />
             <p id="avisoApellidos"></p>
           </div>
           <div class="col-12">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="tuemail@frescumbrera.com" th:field="*{email}" required/>
+            <input type="email" class="form-control" id="email" placeholder="tuemail@frescumbrera.com" th:field="*{email}" />
             <p id="avisoEmail"></p>
           </div>
           <div class="col-12">
             <label for="nombreUsuario" class="form-label">Nombre usuario</label>
-            <input type="text" class="form-control" id="nombreUsuario" pattern="^[a-zA-Z0-9._-/*]+$" placeholder="Nombre usuario" th:field="*{nombreUsuario}" required/>
+            <input type="text" class="form-control" id="nombreUsuario" pattern="^[a-zA-Z0-9._-/*]+$" placeholder="Nombre usuario" th:field="*{nombreUsuario}" />
             <p id="avisoNombUsuario"></p>
           </div>
           <div class="col-12">
@@ -152,7 +152,7 @@
             minlength="5" pattern="^[\s\S]{5,20}$"
             placeholder="Contraseña entre 5 y 30 caracteres" 
             th:field="*{password}"
-            required/>
+            />
             <p id="avisoContrasena"></p>
           </div>
           <div class="col-12">
@@ -160,20 +160,20 @@
             <input type="password" class="form-control" id="contrasena2" maxlength="20"
             minlength="5" pattern="^[\s\S]{5,20}$"
             placeholder="Confirme la contrasena" 
-            required/>
+            />
             <p id="avisoContrasena2"></p>
           </div>
 
           <div class="col-12">
             <label for="telefono" class="form-label">Telefono</label>
             <input type="text" class="form-control" id="telefono" maxlength="9"
-            minlength="9" th:field="*{telefono}" required/>
+            minlength="9" th:field="*{telefono}" />
             <p id="avisoNombUsuario"></p>
           </div>
 
           <div class="col-12">
-            <label for="rol" class="form-label">Rol</label>
-            <select name="lenguaje" id="lenguaje">
+            <label for="roll" class="form-label">Rol</label>
+            <select name="roll" id="roll">
               <option value="0">Administrador</option>
               <option value="1">Manager</option>
               <option value="2">Usuario</option>
