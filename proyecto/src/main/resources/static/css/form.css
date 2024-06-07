@@ -72,7 +72,37 @@ width: 90%;
     color: #DB1A35; 
 }
 
-input[type="text"]::placeholder {
+.error {
+    display: block; /* Mantiene el comportamiento de bloque */
+    width: 100%; /* Mantiene el ancho total del contenedor padre */
+    height: auto; /* Altura ajustada según el contenido */
+    padding: 0.375rem 0.75rem; /* Padding vertical y horizontal */
+    font-size: 1rem; /* Tamaño de fuente base */
+    line-height: 1.5; /* Altura de línea */
+    color: #495057; /* Color del texto */
+    background-color: #fff; /* Color de fondo */
+    background-clip: padding-box; /* No extender el fondo más allá del padding */
+    border: 1px solid red; /* Cambia el borde a rojo */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Transiciones suaves para efectos visuales */
+  }
+.correcto{
+    display: block; /* Mantiene el comportamiento de bloque */
+    width: 100%; /* Mantiene el ancho total del contenedor padre */
+    height: auto; /* Altura ajustada según el contenido */
+    padding: 0.375rem 0.75rem; /* Padding vertical y horizontal */
+    font-size: 1rem; /* Tamaño de fuente base */
+    line-height: 1.5; /* Altura de línea */
+    color: #495057; /* Color del texto */
+    background-color: #fff; /* Color de fondo */
+    background-clip: padding-box; /* No extender el fondo más allá del padding */
+    border: 1px solid; /* Cambia el borde a rojo */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Transiciones suaves para efectos visuales */
+}
+  
+
+/* input[type="text"]::placeholder {
     color: #9FBC8F; 
 }
 input[type="email"]::placeholder {
@@ -80,12 +110,19 @@ input[type="email"]::placeholder {
 }
 textarea::placeholder {
     color: #9FBC8F; 
-}
+} */
 
 
 .dropdown-menu{
     margin-top: 10em;
     margin-bottom: 10em;
+}
+
+.mensajeError{
+    width: 100%; 
+    height: auto; 
+    font-size: 18px; 
+    color: #DB1A35;
 }
 
 #footerContainer{

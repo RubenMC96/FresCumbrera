@@ -44,7 +44,7 @@ public class UsuarioServiceImp implements UsuarioService {
     }
 
     public Usuario editar(Usuario usuario) {
-        if(usuario.getPassword() != null){
+        if(!usuario.getPassword().isEmpty()){
             String passCryString = passwordEncoder.encode(usuario.getPassword());
             usuario.setPassword(passCryString);
             }

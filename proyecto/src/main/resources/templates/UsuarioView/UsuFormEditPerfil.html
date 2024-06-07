@@ -131,18 +131,18 @@
           <div class="col-md-12">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" maxlength="40"
-            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}"/>
+            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" readonly/>
             <p id="avisoNombre"></p>
           </div>
           <div class="col-md-12">
             <label for="apellidos" class="form-label">Apellidos</label>
             <input type="text" class="form-control" id="apellidos" maxlength="80"
-            placeholder="Apellidos" pattern="^[a-zA-Z\s]{1,80}$" th:field="*{apellidos}"/>
+            placeholder="Apellidos" pattern="^[a-zA-Z\s]{1,80}$" th:field="*{apellidos}"readonly/>
             <p id="avisoApellidos"></p>
           </div>
           <div class="col-12">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="tuemail@frescumbrera.com" th:field="*{email}"/>
+            <input type="email" class="form-control" id="email" placeholder="tuemail@frescumbrera.com" th:field="*{email}"readonly/>
             <p id="avisoEmail"></p>
           </div>
           <div class="col-12">
@@ -172,7 +172,7 @@
             <label for="telefono" class="form-label">Telefono</label>
             <input type="text" class="form-control" id="telefono" maxlength="9"
             minlength="9" th:field="*{telefono}"/>
-            <p id="avisoNombUsuario"></p>
+            <p id="avisoTelefono"></p>
           </div>
 
           <div class="col-12">

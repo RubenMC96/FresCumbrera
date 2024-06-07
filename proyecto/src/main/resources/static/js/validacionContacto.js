@@ -54,11 +54,11 @@ function validar(e){
 
     let nombreValido = validarNombre();
     let emailValido = validarEmail();
-    let apellidosValido = validarApellidos();
+    let mensajeValido = validarMensaje();
 
     if(nombreValido && 
         emailValido &&
-        apellidosValido 
+        mensajeValido 
         ){
             alert('formulario enviado');
             document.getElementById("myForm").submit();
@@ -84,9 +84,9 @@ function error(elemento, mensaje){
             AVISOEMAIL.innerHTML = mensaje;
             AVISOEMAIL.className = "mensajeError";
             break;
-        case "apellidos":
-            AVISOAPELLIDOS.innerHTML = mensaje;
-            AVISOAPELLIDOS.className = "mensajeError";
+        case "mensaje":
+            AVISOMENSAJE.innerHTML = mensaje;
+            AVISOMENSAJE.className = "mensajeError";
             break;
         
     }
@@ -95,18 +95,14 @@ function error(elemento, mensaje){
 function borrarError(){
     let formulario = document.forms[0];
     let avisos = [AVISONOMBRE,
-                AVISOAPELLIDOS,
                 AVISOEMAIL,
-                AVISOTELEFONO, 
-                AVISONOMBUSUARIO, 
-                AVISOCONTRASENA,
-                AVISOCONTRASENA2];
+                AVISOMENSAJE ];
     
     for(let i = 0; i < formulario.length; i++){
         formulario.elements[i].className = "";
     }
     for(let i = 0; i < avisos.length; i++){
-        avisos[i].className = "normal";
+        avisos[i].className = "";
         avisos[i].innerHTML = "";
     }
 }

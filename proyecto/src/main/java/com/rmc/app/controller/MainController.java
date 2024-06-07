@@ -47,7 +47,6 @@ public class MainController {
                 model.addAttribute("mensaje", envioOk);
 
 
-        //Aqui se hace el envio del email
 
         return "Contacto/enviado";
     }
