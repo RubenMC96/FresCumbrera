@@ -38,20 +38,29 @@ body{
     width: 8em;
 }
 
-#container{
-    /* margin-right: 50em; */
+/* #container{
     margin: 15em 5em 5em 5em;
-    /* width: auto; */
-    /* border: 1px solid black; */
-    /* background-color: white; */
-    background-color: rgba(255, 255, 255, 0.7); /* Color rojo con 50% de opacidad */
+    background-color: rgba(255, 255, 255, 0.7); 
     border-radius: 5em;
     visibility: 0.5;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    
+} */
+#container {
+    margin: 0 auto; /* Centra horizontalmente */
+    margin-top: 15em;
+    margin-bottom: 2em;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
 #elemento{
     /* background-image: url('/images/fondoWeb.png'); */
     border: 2px black;

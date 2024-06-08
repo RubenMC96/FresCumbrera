@@ -16,19 +16,19 @@ public class ContactoServiceImp implements ContactoService{
     ContactoRepository contactoRepository;
 
     @Override
-    public Boolean enviarEmail(String remitente,String texto, String email, String nombre, String mensaje) throws RuntimeException{
+    public Boolean enviarEmail(String texto, String email, String nombre, String mensaje) throws RuntimeException{
         try{
             String cuerpoMensaje = texto;
             String destinatario= email;
             String asunto = "Gracias por contactar con nosotros";
-            String from = remitente;
-            Boolean envio = emailService.sendEmail(from,destinatario,asunto,cuerpoMensaje);
+           // String from = remitente;
+            //Boolean envio = emailService.sendEmail(destinatario,asunto,cuerpoMensaje);
             
-            if(envio){
-                System.out.println(asunto);
-                Contacto contacto = new Contacto(0L,nombre,email,mensaje);
-                contactoRepository.save(contacto);
-            }
+            // if(envio){
+            //     System.out.println(asunto);
+            //     Contacto contacto = new Contacto(0L,nombre,email,mensaje);
+            //     contactoRepository.save(contacto);
+            // }
             
             return true;
            

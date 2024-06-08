@@ -64,6 +64,12 @@ body{
     text-align: center;
 
 }
+#inputCantidad{
+    margin-right: 1em;
+}
+#annadir{
+    padding-left: 1em;
+}
 
 #footerContainer{
     width: 100%;

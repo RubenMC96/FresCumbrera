@@ -1,7 +1,7 @@
-window.addEventListener('load', iniciar, false);
+document.getElementById("enviar").addEventListener("click", validar, false);
 
-const AVISOCOMENTARIO = document.getElementById("comentario");
-const AVISOPUNTUACION = document.getElementById("puntuacion");
+const AVISOCOMENTARIO = document.getElementById("avisoComentario");
+const AVISOPUNTUACION = document.getElementById("avisoPuntuacion");
 
 
 function validarComentario(){

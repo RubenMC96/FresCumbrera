@@ -1,7 +1,5 @@
 package com.rmc.app.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
+import java.util.ArrayList;
 
-import com.rmc.app.domain.Categoria;
+
 import com.rmc.app.domain.Producto;
 import com.rmc.app.domain.DTO.LineaProductoDTO;
 import com.rmc.app.service.CategoriaService;
@@ -38,6 +38,9 @@ public class ProductoController {
     @GetMapping({"/", "/list"})
     public String showList(Model model){
 
+        List<Producto> productos = productoService.obtenerLista();
+
+        
         model.addAttribute("listaProductos", productoService.obtenerLista());
         // model.addAttribute("listaCategorias", categoriaService.obtenerLista());
         model.addAttribute("lineaForm", new LineaProductoDTO());
@@ -69,7 +72,7 @@ public class ProductoController {
 
             Long idCategoria = productoForm.getCategoria().getId();
             productoService.añadir(productoForm);
-                return "redirect: /categoria/listProductos/" + idCategoria;
+                return "redirect:/categoria/listProductos/" + idCategoria;
     }
     @PostMapping("/editar/submit")
     public String showEditSubmit (

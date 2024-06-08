@@ -125,8 +125,8 @@
           <th>En oferta</th>
           <th>Precio</th>
           <th>Stock</th>
-          <th>Editar</th>
-          <th>Borrar</th>
+          <th></th>
+          <th></th>
           <th>Valoraciones</th>
           <th>Comprar</th>
         </tr>
@@ -151,8 +151,7 @@
                 th:action="@{/lineaProducto/annadir/{id}(id=${producto.id})}"
                 th:object="${lineaForm}">
                 <label
-                  >Cantidad: <input type="number" min="1" max="10" id="cantidad" th:field="*{cantidadProductos}" /></label
-                ><br /> <br>
+                  >Cantidad: <input type="number" min="1" max="10" id="cantidad" th:field="*{cantidadProductos}"/></label>
                 <input class="btn btn-success" type="submit" value="Añadir" />
             </form>
           </td>

@@ -129,13 +129,16 @@
           <div class="col-md-12">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" maxlength="40"
-            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" required/>
+            placeholder="Nombre" pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{1,50}$"
+            th:field="*{nombre}" required/>
             <p id="avisoNombre"></p>
           </div>
           <div class="col-md-12">
             <label for="apellidos" class="form-label">Apellidos</label>
             <input type="text" class="form-control" id="apellidos" maxlength="80"
-            placeholder="Apellidos" pattern="^[a-zA-Z\s]{1,80}$" th:field="*{apellidos}" required/>
+            placeholder="Apellidos" pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{1,80}$
+            "
+            th:field="*{apellidos}" required/>
             <p id="avisoApellidos"></p>
           </div>
           <div class="col-12">

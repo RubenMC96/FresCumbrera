@@ -124,15 +124,17 @@
             <label for="comentario" class="form-label">Valoración</label>
             <input type="text" class="form-control" id="comentario" maxlength="40"
             placeholder="Comentario sobre el producto" th:field="*{comentario}" required/>
+            <p id="avisoComentario"></p>
           </div>
           <div class="col-md-12">
             <label for="puntuacion" class="form-label">Puntuación</label>
             <input type="number" class="form-control" id="puntuacion" min="0" max="5" th:field="*{puntuacion}" required/>
+            <p id="avisoPuntuacion"></p>
           </div>
 
           <div class="col-12">
             <button type="submit" class="btn btn-success" value="Enviar" id="enviar">Puntuar</button>
-            <a class="btn btn-success" th:href="@{/producto/}">Volver</a>
+            <a class="btn btn-danger" th:href="@{/producto/}">Volver</a>
           </div>
         </form>
       </div>
@@ -240,6 +242,6 @@
       </div>
     </footer>
   </body>
-  <script src="/js/validacionValoracion.js"></script>
+  <script src="/js/validacionValoracion.js"defer></script>
 
 </html>

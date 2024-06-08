@@ -59,8 +59,6 @@ public class UsuarioServiceImp implements UsuarioService {
                 usuario.setRol(rol);
            }
             try {
-                
-
                 return usuarioRepository.save(usuario);
             } catch (DataIntegrityViolationException e) {
                 e.printStackTrace();
@@ -131,9 +129,12 @@ public class UsuarioServiceImp implements UsuarioService {
 
     public Usuario editarUsuario(Usuario usuario){
 
-        if(usuario.getPassword() != null){
+        if(!usuario.getPassword().isEmpty()){
         String passCryString = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(passCryString);
+        Usuario usu = usuarioRepository.findById(usuario.getId()).orElse(null);
+        Rol rol = usu.getRol();
+        usuario.setRol(rol);
         }
         else{
             Usuario usu = usuarioRepository.findById(usuario.getId()).orElse(null);

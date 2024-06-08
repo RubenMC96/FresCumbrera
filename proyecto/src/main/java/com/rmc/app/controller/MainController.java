@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.rmc.app.domain.Contacto;
 import com.rmc.app.domain.DTO.UsuarioAutoDTO;
 import com.rmc.app.service.ContactoService;
+import com.rmc.app.service.EmailService;
 
 import jakarta.validation.Valid;
 /**
@@ -21,6 +22,8 @@ public class MainController {
 
     @Autowired
     public ContactoService contactoService;
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping({ "/", "/inicio" })
     public String showInicio() {
@@ -33,22 +36,26 @@ public class MainController {
         return "Contacto/contactoForm";
     }
 
+    // 
+
+
     // BindingResult bindingResult, 
     @PostMapping("/contacto/submit")
-    public String showContactoSubmit(@RequestParam("nombre") String nombre,
-                                    @RequestParam("email") String email,
-                                    @RequestParam("mensaje") String mensaje,
-                                    Model model){
+    public String sendContactEmail(@RequestParam("nombre") String nombre,
+                                   @RequestParam("email") String correo,
+                                   @RequestParam("mensaje") String mensaje,
+                                   Model model) {
+        String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
+        String asunto = "Gracias por contactar";
+        boolean isSent = emailService.sendEmail("frescumbrera.noreply@gmail.com", correo, asunto, textMessage);
 
-        // if(bindingResult.hasErrors())
-        //         return "redirect:/contacto/";
-        String cuerpoMensaje = "Muchas gracias por contactar " + nombre + ". <br><br> En breve le contactaremos para resolver todas sus dudas. <br><br><br> FresCumcumbreras. La tradición del sabor, con responsabilidad.<br><br><br> No responder a este correo.";
-        Boolean envioOk = contactoService.enviarEmail("frescumbrera.noreply@gmail.com",cuerpoMensaje, email, nombre, mensaje);
-                model.addAttribute("mensaje", envioOk);
+        if (isSent) {
+            model.addAttribute("mensaje", "Correo enviado.");
+        } else {
+            model.addAttribute("mensaje", "Error al enviar el correo.");
+        }
 
-
-
-        return "Contacto/enviado";
+        return "/Contacto/enviado"; 
     }
     @GetMapping("/autoRegistro")
     public String showAutoRegistro(Model model){

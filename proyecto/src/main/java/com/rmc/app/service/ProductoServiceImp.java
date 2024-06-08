@@ -33,6 +33,12 @@ public class ProductoServiceImp implements ProductoService{
 
     }
     public Producto editar(Producto producto) {
+
+        if(producto.getCategoria() == null){
+            Producto pr = proRepo.findById(producto.getId()).orElse(null);
+            producto.setCategoria(pr.getCategoria());
+        }
+
         return proRepo.save(producto);
     }
     public void borrar(Long id) {

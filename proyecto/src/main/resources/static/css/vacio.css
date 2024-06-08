@@ -51,6 +51,23 @@ body{
     margin: 15em 5em 5em 5em; /* Aplica un margen de 5em alrededor de cada elemento hijo */
   }
 
+  #vacio {
+    background-color: white;
+    border-radius: 50%;
+    width: 18em;
+    height: 18em;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin: 15em 5em 5em 5em; 
+  }
+  
+  #vacio img {
+    width: 10em;
+    height: 10em;
+  }
+  
+  
 
 #footerContainer{
     width: 100%;

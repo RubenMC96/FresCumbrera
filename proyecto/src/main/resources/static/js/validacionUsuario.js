@@ -31,7 +31,7 @@ function validarNombre(){
             error(elemento, "<b>!</b> Introduce tu nombre")
         }
         if(elemento.validity.patternMismatch){
-            error(elemento, "<b>!</b> El nombre debe tener entre 1 y 40 caracteres")
+            error(elemento, "<b>!</b> El nombre debe tener entre 1 y 50 letras, mayúsculas, minúsculas, ñ y pueden contener acéntos")
         }
         return false;
     }
@@ -45,7 +45,7 @@ function validarApellidos(){
             error(elemento, "<b>!</b> Introduce tu apellido")
         }
         if(elemento.validity.patternMismatch){
-            error(elemento, "<b>!</b> El nombre debe tener entre 1 y 80 caracteres")
+            error(elemento, "<b>!</b> El nombre debe tener entre 1 y 80 letras, mayúsculas, minúsculas, ñ y pueden contener acéntos")
         }
         return false;
     }
@@ -79,7 +79,7 @@ function validarTelefono(){
 }
 
 function validarNombUsu(){
-    let regexNombreUsuario = /^[A-Za-z][A-Za-z0-9_]{3,}$/;
+    let regexNombreUsuario = /^[A-Za-z][A-Za-z0-9_]{2,}$/;
     let elemento = document.getElementById("nombreUsuario");
 
     if(regexNombreUsuario.test(elemento.value)){
@@ -204,24 +204,30 @@ function error(elemento, mensaje){
         let formulario = document.forms[0];
         let avisos = [AVISONOMBRE,
             AVISOAPELLIDOS,
-            NOMBRE,
             AVISOEMAIL,
-            EMAIL,
             AVISOTELEFONO, 
-            TELEFONO,
             AVISONOMBUSUARIO, 
-            NOMBUSUARIO,
             AVISOCONTRASENA,
-            CONTRASENA,
             AVISOCONTRASENA2,
-            CONTRASENA2];
-        let 
+            ];
+        let avisoForm=[
+            NOMBRE,
+            APELLIDOS,
+            EMAIL,
+            TELEFONO,
+            NOMBUSUARIO,
+            CONTRASENA,
+            CONTRASENA2
+        ]
         for(let i = 0; i < formulario.length; i++){
             formulario.elements[i].className = "";
         }
         for(let i = 0; i < avisos.length; i++){
             avisos[i].className = "";
             avisos[i].innerHTML = "";
+        }
+        for(let i = 0; i < avisoForm.length; i++){
+            avisoForm[i].className = "correcto";
         }
 
 }
