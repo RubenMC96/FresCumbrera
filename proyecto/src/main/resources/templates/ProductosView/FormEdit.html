@@ -166,20 +166,19 @@
 
     
 
-    <!-- <div class="container"> -->
     <footer class="mt-auto py-5 bg-dark" id="footer">
       <div class="row">
         <div class="col-6 col-md-2 mb-3">
           <h5>Ayuda</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Preguntas frecuentes</a>
+              <a th:href="@{/preguntas/}" class="nav-link p-0 text-white">Preguntas frecuentes</a>
             </li>
             <li class="nav-item mb-2">
               <a th:href="@{/contacto/}" class="nav-link p-0 text-white">Contacto</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Cómo funciona</a>
+              <a th:href="@{/funciona/}" class="nav-link p-0 text-white">Cómo funciona</a>
             </li>
           </ul>
         </div>
@@ -191,7 +190,7 @@
               <a th:href="@{/somos/}" class="nav-link p-0 text-white">¿Quienes somos?</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Colaboraciones</a>
+              <a th:href="@{/colaboraciones/}" class="nav-link p-0 text-white">Colaboraciones</a>
             </li>
             <li class="nav-item mb-2">
             </li>
@@ -202,35 +201,17 @@
           <h5>Sostenibilidad</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Care of planet</a>
+              <a th:href="@{/planet/}" class="nav-link p-0 text-white">Care of planet</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Envases sostenibles</a>
+              <a th:href="@{/envases/}" class="nav-link p-0 text-white">Envases sostenibles</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Huella de carbono</a>
+              <a th:href="@{/huella/}" class="nav-link p-0 text-white">Huella de carbono</a>
             </li>
           </ul>
         </div>
 
-        <!-- <div class="col-md-5 offset-md-1 mb-3">
-          <form>
-            <h5>Subscribe to our newsletter</h5>
-            <p>Monthly digest of what's new and exciting from us.</p>
-            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden"
-                >Email address</label
-              >
-              <input
-                id="newsletter1"
-                type="text"
-                class="form-control"
-                placeholder="Email address"
-              />
-              <button class="btn btn-primary" type="button">Subscribe</button>
-            </div>
-          </form>
-        </div> -->
         <div class="col-md-5 offset-md-1 mb-3" id="divGif">
           <img src="/images/gif.gif" alt="" id="gif">
         </div>

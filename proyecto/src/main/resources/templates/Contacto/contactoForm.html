@@ -115,7 +115,7 @@
 
       <h1 class="titulo">Contacto</h1>
 
-      <div class="container" id="formulario">
+      <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-12" id="formulario">
         <form class="row g-3"
             id="myForm"
             method="post"
@@ -128,18 +128,18 @@
           <div class="col-md-12">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" name="nombre" class="form-control" id="nombre" maxlength="40"
-            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" th:field="*{nombre}" required> 
+            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" required> 
             <p id="avisoNombre"></p>
           </div>
           <div class="col-12">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Tu email" th:field="*{email}" required>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Tu email" required>
             
             <p id="avisoEmail"></p>
           </div>
           <div class="col-12">
-            <label for="mensaje" name="mensaje" class="form-label">Mensaje:</label>
-            <textarea class="form-control" value="mensaje" id="mensaje" placeholder="¿En qué podemos ayudarte?" rows="10" cols="10" th:field="*{mensaje}" required></textarea>
+            <label for="mensaje"  class="form-label">Mensaje:</label>
+            <textarea class="form-control" name="mensaje" value="mensaje" id="mensaje" placeholder="¿En qué podemos ayudarte?" rows="10" cols="10" required></textarea>
             
               <p id="avisoMensaje"></p>          
             </div>
@@ -152,20 +152,19 @@
 
     
 
-    <!-- <div class="container"> -->
     <footer class="mt-auto py-5 bg-dark" id="footer">
       <div class="row">
         <div class="col-6 col-md-2 mb-3">
           <h5>Ayuda</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Preguntas frecuentes</a>
+              <a th:href="@{/preguntas/}" class="nav-link p-0 text-white">Preguntas frecuentes</a>
             </li>
             <li class="nav-item mb-2">
               <a th:href="@{/contacto/}" class="nav-link p-0 text-white">Contacto</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Cómo funciona</a>
+              <a th:href="@{/funciona/}" class="nav-link p-0 text-white">Cómo funciona</a>
             </li>
           </ul>
         </div>
@@ -177,7 +176,7 @@
               <a th:href="@{/somos/}" class="nav-link p-0 text-white">¿Quienes somos?</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Colaboraciones</a>
+              <a th:href="@{/colaboraciones/}" class="nav-link p-0 text-white">Colaboraciones</a>
             </li>
             <li class="nav-item mb-2">
             </li>
@@ -188,35 +187,17 @@
           <h5>Sostenibilidad</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Care of planet</a>
+              <a th:href="@{/planet/}" class="nav-link p-0 text-white">Care of planet</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Envases sostenibles</a>
+              <a th:href="@{/envases/}" class="nav-link p-0 text-white">Envases sostenibles</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Huella de carbono</a>
+              <a th:href="@{/huella/}" class="nav-link p-0 text-white">Huella de carbono</a>
             </li>
           </ul>
         </div>
 
-        <!-- <div class="col-md-5 offset-md-1 mb-3">
-          <form>
-            <h5>Subscribe to our newsletter</h5>
-            <p>Monthly digest of what's new and exciting from us.</p>
-            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden"
-                >Email address</label
-              >
-              <input
-                id="newsletter1"
-                type="text"
-                class="form-control"
-                placeholder="Email address"
-              />
-              <button class="btn btn-primary" type="button">Subscribe</button>
-            </div>
-          </form>
-        </div> -->
         <div class="col-md-5 offset-md-1 mb-3" id="divGif">
           <img src="/images/gif.gif" alt="" id="gif">
         </div>

@@ -44,19 +44,41 @@ public class MainController {
     public String sendContactEmail(@RequestParam("nombre") String nombre,
                                    @RequestParam("email") String correo,
                                    @RequestParam("mensaje") String mensaje,
-                                   Model model) {
+                                   Model model
+                                   ) {
         String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
         String asunto = "Gracias por contactar";
-        boolean isSent = emailService.sendEmail("frescumbrera.noreply@gmail.com", correo, asunto, textMessage);
+        boolean isSent = emailService.sendEmail(correo, asunto, textMessage);
+        System.out.println();
 
         if (isSent) {
             model.addAttribute("mensaje", "Correo enviado.");
+            return "/Contacto/enviado"; 
+
         } else {
             model.addAttribute("mensaje", "Error al enviar el correo.");
+            return "/Contacto/enviado"; 
+
         }
 
-        return "/Contacto/enviado"; 
+        //enviarCorreos();
+
     }
+
+    public void enviarCorreos() {
+        String destinatario = "rubenmunozcumbreras@gmail.com";
+        String asunto = "Asunto del correo";
+        String cuerpoMensaje = "Este es el cuerpo del mensaje";
+        boolean resultadoEnvio = emailService.sendEmail(destinatario, asunto, cuerpoMensaje);
+    
+        if (resultadoEnvio) {
+            System.out.println("Correo enviado exitosamente.");
+        } else {
+            System.out.println("Error al enviar el correo.");
+        }
+    }
+
+
     @GetMapping("/autoRegistro")
     public String showAutoRegistro(Model model){
         model.addAttribute("usuarioForm", new UsuarioAutoDTO());

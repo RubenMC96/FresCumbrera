@@ -12,16 +12,16 @@ public class EmailService {
     @Autowired
     private JavaMailSender sender;
 
-    public boolean sendEmail(String from,String to, String subject, String textMessage) {
+    public boolean sendEmail(String destination, String subject, String textMessage) {
         try {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setFrom(from);
-        helper.setTo(to);
+        helper.setTo(destination);
         helper.setText(textMessage, true);
         helper.setSubject(subject);
         sender.send(message);
+        System.out.println(message);
         return true;
         } catch (MessagingException e) { e.printStackTrace(); return false; }
     }

@@ -42,10 +42,11 @@ width: 90%;
 }
 #titulo{
 
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgb(255, 255, 255, 0.5);
     border-radius: 2em;
     width: 13em;
     padding-left: 2em;
+    padding-right: 2em;
     
 }
 #cabecera{

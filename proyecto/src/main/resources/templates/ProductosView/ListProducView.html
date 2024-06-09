@@ -139,8 +139,8 @@
           <td th:text="${producto.oferta}">¿Oferta?</td>
           <td th:text="${producto.precio}">Precio</td>
           <td th:text="${producto.stock}">Stock</td>
-          <td><a class="btn btn-success" th:href="@{/producto/editar/{id}(id=${producto.id})}">Editar</a></td>
-          <td><a class="btn btn-danger" th:href="@{/producto/borrar/{id}(id=${producto.id})}">Borrar</a></td>
+          <td><a class="btn btn-success" sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/producto/editar/{id}(id=${producto.id})}">Editar</a></td>
+          <td><a class="btn btn-danger" sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/producto/borrar/{id}(id=${producto.id})}">Borrar</a></td>
           
           <td><a class="btn btn-success" th:href="@{/valoracion/producto/{id}(id=${producto.id})}">Valoraciones</a></td>
   
@@ -160,7 +160,7 @@
       </tbody>
     </table>
     <a class="btn btn-danger" th:href="@{/inicio}">Inicio</a>
-    <a class="btn btn-success" th:href="@{/producto/nuevo}">Nuevo producto</a><br />
+    <a class="btn btn-success" sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/producto/nuevo}">Nuevo producto</a><br />
 
 
     </div>
@@ -172,13 +172,13 @@
           <h5>Ayuda</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Preguntas frecuentes</a>
+              <a th:href="@{/preguntas/}" class="nav-link p-0 text-white">Preguntas frecuentes</a>
             </li>
             <li class="nav-item mb-2">
               <a th:href="@{/contacto/}" class="nav-link p-0 text-white">Contacto</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Cómo funciona</a>
+              <a th:href="@{/funciona/}" class="nav-link p-0 text-white">Cómo funciona</a>
             </li>
           </ul>
         </div>
@@ -190,7 +190,7 @@
               <a th:href="@{/somos/}" class="nav-link p-0 text-white">¿Quienes somos?</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Colaboraciones</a>
+              <a th:href="@{/colaboraciones/}" class="nav-link p-0 text-white">Colaboraciones</a>
             </li>
             <li class="nav-item mb-2">
             </li>
@@ -201,13 +201,13 @@
           <h5>Sostenibilidad</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Care of planet</a>
+              <a th:href="@{/planet/}" class="nav-link p-0 text-white">Care of planet</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Envases sostenibles</a>
+              <a th:href="@{/envases/}" class="nav-link p-0 text-white">Envases sostenibles</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-white">Huella de carbono</a>
+              <a th:href="@{/huella/}" class="nav-link p-0 text-white">Huella de carbono</a>
             </li>
           </ul>
         </div>
@@ -246,7 +246,6 @@
         </ul>
       </div>
     </footer>
-
 
   </body>
   <script src="/js/validacionProducto.js"></script>
