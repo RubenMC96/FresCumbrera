@@ -40,9 +40,15 @@ public class UsuarioServiceImp implements UsuarioService {
 
     public void borrar(Long id) {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario != null) {
-            usuarioRepository.delete(usuario);
+        try {
+            if (usuario != null) {
+                usuarioRepository.delete(usuario);
+            }
+
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
         }
+       
     }
 
     public Usuario editar(Usuario usuario) {
@@ -69,26 +75,44 @@ public class UsuarioServiceImp implements UsuarioService {
     }
 
     public Usuario obtenerPorId(Long id) {
-        Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario != null) {
-            return usuario;
-        } else
-            return null;
+        try{
+ 
+            Usuario usuario = usuarioRepository.findById(id).orElse(null);
+            if (usuario != null) {
+                return usuario;
+            } else
+                return null;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+        
 
     }
 
     public List<Usuario> obtenerLista() {
+        try{
+ 
+            return usuarioRepository.findAll();
 
-        return usuarioRepository.findAll();
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+
 
     }
 
     public Usuario obtenerUsuario(Long id) {
-        Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario != null) {
-            return usuario;
-        } else
-            return null;
+        try{
+            Usuario usuario = usuarioRepository.findById(id).orElse(null);
+            if (usuario != null) {
+                return usuario;
+            } else
+                return null;
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+        
     }
 
     public Usuario obtenerUsuarioConectado() {
