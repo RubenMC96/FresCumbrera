@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editar usuario</title>
+    <title>Colaboracion</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,7 +16,11 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <script src="/js/validacionColaboracion.js"defer></script>
+
     <link rel="stylesheet" href="/css/form.css" />
+    <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
   </head>
   <body>
     <header data-bs-theme="dark">
@@ -109,83 +113,44 @@
 
     <div class="form">
 
-      <h1 class="titulo">Editar usuario</h1>
+      <h1 class="titulo">Propuesta de colaboración</h1>
 
-      <div class="container" id="formulario">
+      <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-12" id="formulario">
         <form class="row g-3"
             id="myForm"
             method="post"
             action="#"
-            th:action="@{/usuario/editar/submit}"
-            th:object="${usuarioForm}">
-
-          <div class="col-md-12">
-            <label for="id" class="form-label"></label>
-            <input type="text" class="form-control" id="id" th:field="*{id}" hidden/>
-          </div>
+            th:action="@{/colaboracion/submit}"
+            th:object="${colaboracionForm}"
+           >
+           
   
           <div class="col-md-12">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" maxlength="40"
-            placeholder="Nombre" pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{1,50}$" th:field="*{nombre}" />
+            <input type="text" name="nombre" class="form-control" id="nombre" maxlength="40"
+            placeholder="Nombre" pattern="^[a-zA-Z\s]{1,50}$" required> 
             <p id="avisoNombre"></p>
           </div>
-          <div class="col-md-12">
-            <label for="apellidos" class="form-label">Apellidos</label>
-            <input type="text" class="form-control" id="apellidos" maxlength="80"
-            placeholder="Apellidos" pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{1,80}$"
-            th:field="*{apellidos}" />
-            <p id="avisoApellidos"></p>
-          </div>
           <div class="col-12">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="tuemail@frescumbrera.com" th:field="*{email}" />
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Tu email" required>
+            
             <p id="avisoEmail"></p>
           </div>
           <div class="col-12">
-            <label for="nombreUsuario" class="form-label">Nombre usuario</label>
-            <input type="text" class="form-control" id="nombreUsuario" pattern="^[a-zA-Z0-9._-/*]+$" placeholder="Nombre usuario" th:field="*{nombreUsuario}" />
-            <p id="avisoNombUsuario"></p>
+            <label for="rrss" class="form-label">RRSS:</label>
+            <input type="text" name="rrss" class="form-control" id="rrss" placeholder="Tus redes sociales" required>
+            
+            <p id="avisoRRSS"></p>
           </div>
           <div class="col-12">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="contrasena" maxlength="20"
-            minlength="5" pattern="^[\s\S]{5,20}$"
-            placeholder="Contraseña entre 5 y 30 caracteres" 
-            th:field="*{password}"
-            />
-            <p id="avisoContrasena"></p>
-          </div>
-          <div class="col-12">
-            <label for="contrasena2" class="form-label">Confirmar contrasena</label>
-            <input type="password" class="form-control" id="contrasena2" maxlength="20"
-            minlength="5" pattern="^[\s\S]{5,20}$"
-            placeholder="Confirme la contrasena" 
-            />
-            <p id="avisoContrasena2"></p>
-          </div>
-
-          <div class="col-12">
-            <label for="telefono" class="form-label">Telefono</label>
-            <input type="text" class="form-control" id="telefono" maxlength="9"
-            minlength="9" th:field="*{telefono}" />
-            <p id="avisoTelefono"></p>
-          </div>
-
-          <div class="col-12">
-            <label for="roll" class="form-label">Rol</label>
-            <select name="roll" id="roll" th:field="*{rol}">
-              <option value="0">Administrador</option>
-              <option value="1">Manager</option>
-              <option value="2">Usuario</option>
-            </select>
-            <p id="avisoRol"></p>
-          </div>
-
+            <label for="mensaje"  class="form-label">Cuentanos por qué quieres colaborar con nosotros:</label>
+            <textarea class="form-control" name="mensaje" value="mensaje" id="mensaje" placeholder="¿En qué podemos ayudarte?" rows="10" cols="10" required></textarea>
+            
+              <p id="avisoMensaje"></p>          
+            </div>
           <div class="col-12">
             <button type="submit" class="btn btn-success" value="Enviar" id="enviar">Enviar</button>
-            <a class="btn btn-danger" th:href="@{/usuario/borrar/{id}(id=${id})}">Borrar usuario</a>
-            <a class="btn btn-success" th:href="@{/usuario/}">Volver</a>
           </div>
         </form>
       </div>
@@ -274,6 +239,5 @@
       </div>
     </footer>
   </body>
-  <script src="/js/validacionUsuario.js" defer></script>
 
 </html>

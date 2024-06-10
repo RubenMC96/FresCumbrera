@@ -39,6 +39,8 @@ public class CategoriaController {
             model.addAttribute("listaCategoria", categoriaService.obtenerLista());
             return "CategoriaView/ListCatView";
         }
+
+
         @GetMapping({"/listProductos/{id}"})
         public String showListProductos(@PathVariable long id ,Model model){
 
@@ -103,3 +105,4 @@ public class CategoriaController {
 
     
 }
+

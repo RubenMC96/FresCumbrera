@@ -1,6 +1,8 @@
 package com.rmc.app.service;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,50 +21,99 @@ public class ProductoServiceImp implements ProductoService{
     CategoriaRepository catRepo;
 
     public Producto añadir(Producto producto) {
+        try{
+            return proRepo.save(producto);
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
         
-        return proRepo.save(producto); // podría no devolver nada, o boolean, etc.
     }
     public List<Producto> obtenerLista() {
-        return proRepo.findAll();
+        try{
+            return proRepo.findAll();
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
     }
     public Producto obtenerPorId(long id) {
         
-        Producto producto = proRepo.findById(id).orElse(null); // debería lanzar excepción si no encontrado
-        if(producto == null) return null;
-        return producto;
+        try{
+            Producto producto = proRepo.findById(id).orElse(null); // debería lanzar excepción si no encontrado
+            if(producto == null) return null;
+            return producto;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+
+
 
     }
     public Producto editar(Producto producto) {
 
-        if(producto.getCategoria() == null){
-            Producto pr = proRepo.findById(producto.getId()).orElse(null);
-            producto.setCategoria(pr.getCategoria());
+        try{
+
+            if(producto.getCategoria() == null){
+                Producto pr = proRepo.findById(producto.getId()).orElse(null);
+                producto.setCategoria(pr.getCategoria());
+            }
+    
+            return proRepo.save(producto);
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
 
-        return proRepo.save(producto);
+        
     }
     public void borrar(Long id) {
-        Producto producto = proRepo.findById(id).orElse(null); // debería lanzar excepción si no encontrado
-        if(producto != null)
-        proRepo.delete(producto);
+
+        try{
+
+            Producto producto = proRepo.findById(id).orElse(null); // debería lanzar excepción si no encontrado
+            if(producto != null)
+            proRepo.delete(producto);
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+
+
     }
     
     public List<Producto> findByCategory(Long idCat){
+
+        try{
+
+            Categoria categoria = catRepo.findById(idCat).orElse(null);
+
+            if(categoria == null) return null;
+    
+            List<Producto> productos = proRepo.findByCategoria(categoria);
+    
+            return productos;
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
         
-        Categoria categoria = catRepo.findById(idCat).orElse(null);
-
-        if(categoria == null) return null;
-
-        List<Producto> productos = proRepo.findByCategoria(categoria);
-
-        return productos;
+        
     }
 
 
     public void actualizarStock(Long idProducto,Integer nuevoStock){
-        Producto producto = proRepo.findById(idProducto).orElse(null);
-        if(producto != null){
-            producto.setStock(nuevoStock);
+
+
+        try{
+
+            Producto producto = proRepo.findById(idProducto).orElse(null);
+            if(producto != null){
+                producto.setStock(nuevoStock);
+            }
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
 
     }

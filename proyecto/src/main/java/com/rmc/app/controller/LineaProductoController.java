@@ -72,8 +72,9 @@ public class LineaProductoController {
         LineaProducto linea = new LineaProducto(0L, lineaForm.getCantidadProductos(),null ,producto);
         lineaProductoService.annadir(linea);
         
+        Long idCategoria = producto.getCategoria().getId();
 
-        return "redirect:/producto/list";
+        return "redirect:/categoria/listProductos/" + idCategoria;
 
     }
 

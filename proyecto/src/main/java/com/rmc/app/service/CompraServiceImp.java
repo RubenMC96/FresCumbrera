@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,115 +24,102 @@ public class CompraServiceImp implements CompraService {
 
     public Compra añadir(Compra compra) {
         
+       try{
         compraRepository.save(compra);
-        return compra; // podría no devolver nada, o boolean, etc.
+        return compra;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
     }
 
     public List<Compra> obtenerTodos() {
-        return compraRepository.findAll();
+        try{
+            return compraRepository.findAll();
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
     }
 
     public Compra obtenerPorId(long id) {
 
-        Compra compra = compraRepository.findById(id).orElse(null);// debería lanzar excepción si no encontrado
-        if (compra != null) {
-            return compra;
+        try{
+            Compra compra = compraRepository.findById(id).orElse(null);// debería lanzar excepción si no encontrado
+                if (compra != null) {
+                    return compra;
+                }
+                return null;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
-        return null;
 
     }
 
     public Compra editar(Compra compra) {
 
-        return compraRepository.save(compra);
+        try{
+            return compraRepository.save(compra);
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+        
     }
 
     public void borrar(Long id) {
-        Compra compra = compraRepository.findById(id).orElse(null);
-        if (compra != null) {
-            compraRepository.delete(compra);
+        try{
+            Compra compra = compraRepository.findById(id).orElse(null);
+            if (compra != null) {
+                compraRepository.delete(compra);
+            }
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
+       
     }
 
     public List<Compra> obtenerPorUsuario(Long id) {
-        //Puede que en la app final tenga que volver a obtener el usuario conectado.
-        //Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        Usuario usuario = usuarioService.obtenerPorId(id);
-        return compraRepository.findByUsuario(usuario);
+      
+        try{
+            Usuario usuario = usuarioService.obtenerPorId(id);
+            return compraRepository.findByUsuario(usuario);        
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+
     }
 
     public List<Compra> obtenerPedidos() {
-        return compraRepository.findAll();
+        try{
+            return compraRepository.findAll();
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
     }
 
-    // public Compra obtenerCompraActiva(Usuario usuario) {
-
-    //     List<Compra> compras = compraRepository.findByUsuario(usuario);
-    //     Compra compraActiva;
-    //     for (Compra compra : compras) {
-
-    //         if (compra.getFinalizado() == false) {
-    //             compraActiva = compra;
-    //             return compraActiva;
-    //         }
-    //     }
-    //     return null;// falta un neew compra
-    // }
-
-    // public Compra crearCompra(listaLineasCompra listaLinea){
-
-    // if(listaLinea == null){
-    //     return null;
-    // }   
-    // else{
-    //     Usuario usuario = usuarioService.obtenerUsuarioConectado();
-    //     LocalDateTime fecha = LocalDateTime.now();
-    //     LocalDate fechaCompra = LocalDate.now();
-    //     String numFactura = usuario.getNombre() + fecha;
-    //     Integer numProductos = 0;
-    //     for(LineaProducto linea : listaLinea.getListaLineaProducto()){
-    //         numProductos += linea.getCantidadProductos();
-    //     }
-    //     Double importe = 0D;
-    //     for(LineaProducto linea : listaLinea.getListaLineaProducto()){
-    //         linea.getProducto().getPrecio();
-    //     }
-    
-    //     Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe);
-    
-    //         return compra;
-    // } 
- 
-    // }
 
     public Compra crearCompra(List<LineaProducto> listaCompra){
+        
+        try{
 
-        Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        LocalDateTime fecha = LocalDateTime.now();
-        LocalDate fechaCompra = LocalDate.now();
-        String numFactura = usuario.getNombre() + fecha;
-        Integer numProductos = 0;
-        for(LineaProducto linea : listaCompra){
-               numProductos += linea.getCantidadProductos();
-            }
-        Double importe = 0D;
-        for(LineaProducto linea : listaCompra){
-                 importe += linea.getProducto().getPrecio() * linea.getCantidadProductos();
-            }
+            Usuario usuario = usuarioService.obtenerUsuarioConectado();
+            LocalDateTime fecha = LocalDateTime.now();
+            LocalDate fechaCompra = LocalDate.now();
+            String numFactura = usuario.getNombre() + fecha;
+            Integer numProductos = 0;
+            for(LineaProducto linea : listaCompra){
+                   numProductos += linea.getCantidadProductos();
+                }
+            Double importe = 0D;
+            for(LineaProducto linea : listaCompra){
+                     importe += linea.getProducto().getPrecio() * linea.getCantidadProductos();
+                }
+    
+            Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe,usuario);
+            return compra;
 
-        /*List<ProductoDTO> listaProductos = new ArrayList<>();
-        for(LineaProducto lista : listaCompra){
-            ProductoDTO productoDTO = new ProductoDTO(lista.getProducto().getId(),lista.getProducto().getNombre());
-            listaProductos.add(productoDTO);
-        }*/
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
 
         
-        // List<Producto> listaProductos = new ArrayList<>();
-        // for(LineaProducto lista : listaCompra){
-        //     listaProductos.add(lista.getProducto());
-        // }
-        
-        Compra compra = new Compra(0L, numFactura, fechaCompra, numProductos, importe,usuario);
-        return compra;
     }
 }

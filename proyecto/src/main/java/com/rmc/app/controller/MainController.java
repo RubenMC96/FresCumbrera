@@ -68,6 +68,46 @@ public class MainController {
         return "/Contacto/enviado";
 
     }
+    @GetMapping("/colaboracion/")
+    public String showColaboracion(Model model){
+        model.addAttribute("colaboracionForm", new Contacto());
+        return "Colaboracion/colaboracionForm";
+    }
+
+    // 
+
+
+    // BindingResult bindingResult, 
+    @PostMapping("/colaboracion/submit")
+    public String sendColaboracion(@RequestParam("nombre") String nombre,
+                                   @RequestParam("email") String correo,
+                                   @RequestParam("rrss") String rrss,
+                                   @RequestParam("mensaje") String mensaje,
+                                   Model model
+                                   ) {
+        //String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
+        String textMessage = "¡Nos encanta que quieras colaborar con nosotros " + nombre + "!" + ", valoraremos la propuesta y pronto tendremos una respuesta.";
+        String asunto = "Gracias por la propuesta de colaboracion";
+        
+        //boolean isSent = emailService.sendEmail(correo, asunto, rrss ,textMessage);
+        System.out.println();
+
+        // if (isSent) {
+        //     model.addAttribute("mensaje", "Correo enviado.");
+        //     return "/Contacto/enviado"; 
+
+        // } else {
+        //     model.addAttribute("mensaje", "Error al enviar el correo.");
+        //     return "/Contacto/enviado"; 
+
+        // }
+
+        //enviarCorreos();
+
+        model.addAttribute("mensaje", textMessage);
+        return "/Colaboracion/enviado";
+
+    }
 
     public void enviarCorreos() {
         String destinatario = "rubenmunozcumbreras@gmail.com";

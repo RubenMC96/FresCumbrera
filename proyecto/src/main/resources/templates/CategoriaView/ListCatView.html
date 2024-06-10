@@ -128,7 +128,7 @@
           <td><a class="btn btn-success" th:text="${categoria.nombre}" th:href="@{/categoria/listProductos/{id}(id=${categoria.id})}"></a></td>
           <td th:text="${categoria.descripcion}">Descripcion</td>
           <td>
-            <a class="btn btn-info" sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/categoria/editar/{id}(id=${categoria.id})}"
+            <a class="btn btn-success" sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/categoria/editar/{id}(id=${categoria.id})}"
               >Editar</a
             >
           </td>

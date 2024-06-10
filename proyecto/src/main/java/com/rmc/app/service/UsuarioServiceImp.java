@@ -2,6 +2,8 @@ package com.rmc.app.service;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -91,24 +93,38 @@ public class UsuarioServiceImp implements UsuarioService {
 
     public Usuario obtenerUsuarioConectado() {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String nombreUsuarioConectado = authentication.getName();
+        try{
 
-            return usuarioRepository.findByNombreUsuario(nombreUsuarioConectado);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (!(authentication instanceof AnonymousAuthenticationToken)) {
+                String nombreUsuarioConectado = authentication.getName();
+    
+                return usuarioRepository.findByNombreUsuario(nombreUsuarioConectado);
+            }
+            return null;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
-        return null;
+
+
     }
 
     public String obtenerRolUsuarioConectado() {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String rolUsuarioConectado = authentication.getAuthorities().toString();
+            try{
 
-            return rolUsuarioConectado;
-        }
-        return null;
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                if (!(authentication instanceof AnonymousAuthenticationToken)) {
+                    String rolUsuarioConectado = authentication.getAuthorities().toString();
+        
+                    return rolUsuarioConectado;
+                }
+                return null;
+            }catch(RuntimeErrorException e){
+                throw new RuntimeException("Error al obtener la categoria por nombre");
+            }
+
+        
     }
 
     public Usuario añadirAutoRegistro(Usuario autoRegistro){

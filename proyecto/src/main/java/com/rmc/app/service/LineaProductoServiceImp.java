@@ -2,6 +2,8 @@ package com.rmc.app.service;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,83 +33,100 @@ public class LineaProductoServiceImp implements LineaProductoService {
     ProductoService productoService;
 
     public List<LineaProducto> obtenerLista() {
-        return lineaProductoRepository.findAll();
+          try{
+            return lineaProductoRepository.findAll();
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
     }
 
     public LineaProducto obtenerPorId(long id) {
 
-        LineaProducto lineaProducto = lineaProductoRepository.findById(id).orElse(null);// debería lanzar excepción si
-                                                                                        // no encontrado
-        if (lineaProducto != null) {
-            return lineaProducto;
+        try{
+            LineaProducto lineaProducto = lineaProductoRepository.findById(id).orElse(null);// debería lanzar excepción si no encontrado
+                if (lineaProducto != null) {
+                return lineaProducto;
+                }
+                return null;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
-        return null;
+
+        
 
     }
 
     public void annadir(LineaProducto linea) {
 
-        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
-        Integer cantidad = linea.getCantidadProductos();
-        if(cantidad != null){
-            LineaProducto lineaProducto = new LineaProducto(0L, linea.getCantidadProductos(), usuarioConectado, linea.getProducto());
-            lineaProductoRepository.save(lineaProducto);
+        try{
+            Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+            Integer cantidad = linea.getCantidadProductos();
+            if(cantidad != null){
+                LineaProducto lineaProducto = new LineaProducto(0L, linea.getCantidadProductos(), usuarioConectado, linea.getProducto());
+                lineaProductoRepository.save(lineaProducto);
+            }
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
-        
-        
 
     }
 
     public LineaProducto editar(LineaProducto lineaProducto) {
+        try{
+            return lineaProductoRepository.save(lineaProducto);
 
-        return lineaProductoRepository.save(lineaProducto);
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+
     }
 
     public void borrar(Long id) {
-        LineaProducto lineaProducto = lineaProductoRepository.findById(id).orElse(null);
-        if (lineaProducto != null) {
-            lineaProductoRepository.delete(lineaProducto);
+
+        try{
+            LineaProducto lineaProducto = lineaProductoRepository.findById(id).orElse(null);
+            if (lineaProducto != null) {
+                lineaProductoRepository.delete(lineaProducto);
+            }
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
         }
+        
 
     }
 
     public void borrarTodo() {
 
-        lineaProductoRepository.deleteAll();
+        try{
+            lineaProductoRepository.deleteAll();
+
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
     }
-
-    // public List<LineaProducto> obtenerPorCompra(Compra compra) {
-
-    //     List<LineaProducto> lineaProducto = lineaProductoRepository.findByCompra(compra);
-
-    //     if (lineaProducto != null) {
-    //         return lineaProducto;
-    //     } else
-    //         return null;
-    // }
-
-    // public LineaProducto addNuevaLinea(Long id, Integer cantidad) {
-
-    //     Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
-    //     Compra compra = compraService.obtenerCompraActiva(usuarioConectado);
-    //     Producto producto = productoService.obtenerPorId(id);
-    //     LineaProducto lineaProducto = lineaProductoRepository.save(
-    //             new LineaProducto(null, cantidad, compra, producto));
-    //     return lineaProducto;
-    // }
 
     public List<LineaProducto> obtenerPorUsuario(){
 
-        Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
+        try{
+            Usuario usuarioConectado = usuarioService.obtenerUsuarioConectado();
 
-        List <LineaProducto> lineaProducto = lineaProductoRepository.findByUsuario(usuarioConectado);
+            List <LineaProducto> lineaProducto = lineaProductoRepository.findByUsuario(usuarioConectado);
+    
+            return lineaProducto;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
 
-        return lineaProducto;
+        
     }
 
     public Double obtenerImporte(List<LineaProducto> lineas){
 
-        Double importe = 0D;
+        
+        try{
+            Double importe = 0D;
 
         for(LineaProducto linea : lineas){
 
@@ -115,6 +134,10 @@ public class LineaProductoServiceImp implements LineaProductoService {
         }
 
         return importe;
+        }catch(RuntimeErrorException e){
+            throw new RuntimeException("Error al obtener la categoria por nombre");
+        }
+        
     }
 
 }
