@@ -46,22 +46,26 @@ public class MainController {
                                    @RequestParam("mensaje") String mensaje,
                                    Model model
                                    ) {
-        String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
+        //String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
+        String textMessage = "Muchas gracias por contactar con nosotros " + nombre + ", en breves responderemos a todas sus dudas.";
         String asunto = "Gracias por contactar";
-        boolean isSent = emailService.sendEmail(correo, asunto, textMessage);
+        //boolean isSent = emailService.sendEmail(correo, asunto, textMessage);
         System.out.println();
 
-        if (isSent) {
-            model.addAttribute("mensaje", "Correo enviado.");
-            return "/Contacto/enviado"; 
+        // if (isSent) {
+        //     model.addAttribute("mensaje", "Correo enviado.");
+        //     return "/Contacto/enviado"; 
 
-        } else {
-            model.addAttribute("mensaje", "Error al enviar el correo.");
-            return "/Contacto/enviado"; 
+        // } else {
+        //     model.addAttribute("mensaje", "Error al enviar el correo.");
+        //     return "/Contacto/enviado"; 
 
-        }
+        // }
 
         //enviarCorreos();
+
+        model.addAttribute("mensaje", textMessage);
+        return "/Contacto/enviado";
 
     }
 
@@ -84,6 +88,18 @@ public class MainController {
         model.addAttribute("usuarioForm", new UsuarioAutoDTO());
         return "UsuarioView/UsuAutoRegistro";
     }
+
+
+
+    @GetMapping("/suscripcionForm")
+    public String showSuscripcion(Model model){
+       // model.addAttribute("usuarioForm", new UsuarioAutoDTO());
+        return "Suscripcion/suscripcionForm";
+    }
+
+
+
+
 
     @GetMapping("/signin")
     public String showLogin() {
