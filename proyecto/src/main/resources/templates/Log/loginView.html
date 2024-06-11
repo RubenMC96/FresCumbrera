@@ -17,10 +17,13 @@
       defer
     ></script>
     <link rel="stylesheet" href="/css/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tiny5&display=swap" rel="stylesheet">
   </head>
   <body>
 
-      <div class="container" id="formulario">
+      <div class="container col-sm-8 col-md-8 col-lg-8 col-xl-8" id="formulario">
         <h1 class="inicio">Inicio de sesión</h1>
         <div  class="error" th:if="${param.error}"><b>Credenciales incorrectas</b></div>
         <!-- <div th:if="${param.logout}">Te has desconectado</div> -->

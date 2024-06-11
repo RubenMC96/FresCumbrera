@@ -3,8 +3,85 @@ body{
     background-repeat: repeat; /* Repite la imagen tanto horizontal como verticalmente */
     background-position: top left; 
     background-size: 25%;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+
 
 }
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+
 #navbarNav{
 /* background-color: rgb(37, 37, 37); */
 border-radius: 0 0 5% 5%;
@@ -22,7 +99,7 @@ align-content:space-around;
     margin: 2% 5% 2% 5%;
     align-items: center;    
     border-radius: 2em;
-}
+  }
 
 
 
@@ -43,15 +120,17 @@ align-content:space-around;
 
 }
 #formulario{
-    display: flex;
+    display: block;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 2em 2em 2em 8em;
+    margin: 0 auto;
     padding: 2em 2em 2em 2em;
-    width: 50%;
+    width: 75%;
+    margin-top: 1em;
+    margin-bottom: 2em;
     background-color: rgba(255, 255, 255, 0.7); /* Color blanco con 50% de opacidad */
-    border-radius: 5em;
+    border-radius: 4em;
     
 }
 .form-control {
@@ -83,6 +162,8 @@ align-content:space-around;
     width: 100%; /* Asegura que ocupe todo el ancho disponible */
     padding: 20px;
     margin-top: 10em;
+    font-size: 15px;
+
 }
 #divGif{
     margin-block-end: auto;

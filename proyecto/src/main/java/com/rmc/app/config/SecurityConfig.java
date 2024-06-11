@@ -98,6 +98,7 @@ public class SecurityConfig {
                                 .logout((logout) -> logout
                                                 .logoutSuccessUrl("/").permitAll())
                                 // .csrf(csrf -> csrf.disable())
+                                .rememberMe(Customizer.withDefaults())
                                 .httpBasic(Customizer.withDefaults());
                 http.exceptionHandling(exceptions -> exceptions.accessDeniedPage("/accessError"));
                 return http.build();

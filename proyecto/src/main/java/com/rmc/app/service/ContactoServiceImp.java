@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.rmc.app.Repositories.ContactoRepository;
 import com.rmc.app.domain.Contacto;
+import java.lang.String;
 
 
 @Service
@@ -16,21 +17,19 @@ public class ContactoServiceImp implements ContactoService{
     ContactoRepository contactoRepository;
 
     @Override
-    public Boolean enviarEmail(String texto, String email, String nombre, String mensaje) throws RuntimeException{
+    public String enviarEmail(String email, String nombre, String mensaje) throws RuntimeException{
         try{
-            String cuerpoMensaje = texto;
             String destinatario= email;
-            String asunto = "Gracias por contactar con nosotros";
-           // String from = remitente;
-            //Boolean envio = emailService.sendEmail(destinatario,asunto,cuerpoMensaje);
+            String cuerpoMensaje = "Gracias por contactar con nosotros " + nombre + ", pronto nos pondremos en contacto con una respuesta.";
+            String asunto = "Gracias por contactar";           
+            Boolean envio = emailService.sendEmail(destinatario,asunto,cuerpoMensaje);
             
-            // if(envio){
-            //     System.out.println(asunto);
-            //     Contacto contacto = new Contacto(0L,nombre,email,mensaje);
-            //     contactoRepository.save(contacto);
-            // }
+            if(envio){
+                Contacto contacto = new Contacto(0L,nombre,email,mensaje);
+                contactoRepository.save(contacto);
+            }
             
-            return true;
+            return cuerpoMensaje;
            
         }catch(Exception e){
 

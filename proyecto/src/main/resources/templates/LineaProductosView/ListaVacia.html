@@ -17,6 +17,9 @@
       defer
     ></script>
     <link rel="stylesheet" href="/css/vacio.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tiny5&display=swap" rel="stylesheet">
   </head>
   <body>
     <header data-bs-theme="dark">
@@ -106,19 +109,26 @@
         </div>
       </nav>
     </header>
+
+
     <div class="container">
 
-      <div class="col-ms-12 col-md-6 col-lg-6" id="info">
-        <h1 th:text="${listaVacia}"></h1> <br>
-        <a class="btn btn-danger" th:href="@{/categoria/}">Productos</a>
-        <a class="btn btn-success" th:href="@{/inicio}">Inicio</a>
+      <div class="row">
+        <div class="col-12 col-md-6 order-2 order-md-1" id="info">
+          <h1 th:text="${listaVacia}"></h1> <br><br>
+          <a class="btn btn-danger" th:href="@{/categoria/}">Productos</a>
+          <a class="btn btn-success" id="btnInicio" th:href="@{/inicio}">Inicio</a>
+        </div>
+              
+        <div class="col-12 col-md-6 order-1 order-md-2" id="vacio">
+          <img src="/images/gifCarrito.gif" alt="Gif carrito vacio" class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        </div>
       </div>
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="vacio">
-        <img src="/images/gifCarrito.gif" alt="Gif carrito vacio" class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      </div>
+
       
 
     </div>
+
 
     <footer class="mt-auto py-5 bg-dark" id="footer">
       <div class="row">

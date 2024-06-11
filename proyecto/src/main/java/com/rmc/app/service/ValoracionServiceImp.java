@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.rmc.app.Repositories.ProductoRepository;
@@ -33,12 +34,24 @@ public class ValoracionServiceImp implements ValoracionService {
     ProductoService productoService;
 
     public Valoracion añadir(Valoracion valoracion){
+         
+        try {
+            valRepo.save(valoracion);
+            return valoracion;
+
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            return null;
+
+        }
         
         //Valoracion valoracionSave = new Valoracion(valoracion.getId(),valoracion.getComentario(),valoracion.getPuntuacion(),valoracion.getFechaPublicacion(),valoracion.getUsuario(), valoracion.getProducto());
-        valRepo.save(valoracion);
-        return valoracion;
+
     }
     public Valoracion obtenerPorId(long id){
+
+        try {
+          
        Valoracion valoracion = valRepo.findById(id).orElse(null);
 
        if(valoracion!= null){
@@ -48,43 +61,89 @@ public class ValoracionServiceImp implements ValoracionService {
         return null;
        }
 
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
 
 
     }
     public Valoracion editar(Valoracion valoracion){
-        valRepo.save(valoracion);
-        return valoracion;
+        try {
+          
+            valRepo.save(valoracion);
+            return valoracion;
+             } catch (DataIntegrityViolationException e) {
+                 e.printStackTrace();
+                 return null;
+             }
+
     }
     public void borrar(Long id){
-        valRepo.deleteById(id);
+        try {
+            valRepo.deleteById(id);
+
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+
+        }
     }
+
     public List<Valoracion> obtenerPorUsuario(Long id){
 
-        Usuario usuario = usuRepo.findById(id).orElse(null);
-        if(usuario!= null){
-            return valRepo.findByUsuario(usuario);
-        }
-        else{
+        try {
+            Usuario usuario = usuRepo.findById(id).orElse(null);
+            if(usuario!= null){
+                return valRepo.findByUsuario(usuario);
+            }
+            else{
+                return null;
+            }
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
             return null;
+
         }
+
+
+
     }
     public List<Valoracion> obtenerPorProducto(Long id){
 
-        Producto producto = proRepo.findById(id).orElse(null);
-        if(producto != null){
-            return valRepo.findByProducto(producto);
-        }
-        else{
+        try {
+            Producto producto = proRepo.findById(id).orElse(null);
+            if(producto != null){
+                return valRepo.findByProducto(producto);
+            }
+            else{
+                return null;
+            }
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
             return null;
+
         }
 
     }
 
     public Valoracion crearValoracion(ValoracionDTO valoracionDTO){
-        Usuario usuario = usuarioService.obtenerUsuarioConectado();
-        Producto producto = productoService.obtenerPorId(valoracionDTO.getIdProducto());
-        Valoracion valoracion = new Valoracion(0L, valoracionDTO.getComentario(), valoracionDTO.getPuntuacion(), LocalDate.now(), usuario, producto);
-        return valoracion;
+
+        try {
+            Usuario usuario = usuarioService.obtenerUsuarioConectado();
+            Producto producto = productoService.obtenerPorId(valoracionDTO.getIdProducto());
+            Valoracion valoracion = new Valoracion(0L, valoracionDTO.getComentario(), valoracionDTO.getPuntuacion(), LocalDate.now(), usuario, producto);
+            return valoracion;
+
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            return null;
+
+        }
+
+
+
     }
 
     

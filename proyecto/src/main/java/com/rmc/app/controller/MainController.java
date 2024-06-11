@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rmc.app.domain.Colaboracion;
 import com.rmc.app.domain.Contacto;
 import com.rmc.app.domain.DTO.UsuarioAutoDTO;
+import com.rmc.app.service.ColaboracionService;
 import com.rmc.app.service.ContactoService;
 import com.rmc.app.service.EmailService;
 
@@ -22,6 +24,9 @@ public class MainController {
 
     @Autowired
     public ContactoService contactoService;
+
+    @Autowired
+    public ColaboracionService colaboracionService;
     @Autowired
     private EmailService emailService;
 
@@ -46,31 +51,23 @@ public class MainController {
                                    @RequestParam("mensaje") String mensaje,
                                    Model model
                                    ) {
-        //String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
-        String textMessage = "Muchas gracias por contactar con nosotros " + nombre + ", en breves responderemos a todas sus dudas.";
-        String asunto = "Gracias por contactar";
-        //boolean isSent = emailService.sendEmail(correo, asunto, textMessage);
-        System.out.println();
-
-        // if (isSent) {
-        //     model.addAttribute("mensaje", "Correo enviado.");
-        //     return "/Contacto/enviado"; 
-
-        // } else {
-        //     model.addAttribute("mensaje", "Error al enviar el correo.");
-        //     return "/Contacto/enviado"; 
-
-        // }
-
-        //enviarCorreos();
-
-        model.addAttribute("mensaje", textMessage);
-        return "/Contacto/enviado";
-
+            String enviado  = contactoService.enviarEmail(correo,nombre, mensaje);
+            System.out.println();
+                            
+                if (!enviado.isEmpty()) {
+                     model.addAttribute("mensaje", enviado);
+                    return "/Contacto/enviado"; 
+                            
+                } else {
+                    model.addAttribute("mensaje", "Error al enviar el correo.");
+                    return "/Contacto/enviado"; 
+                            
+                }
+                                   
     }
     @GetMapping("/colaboracion/")
     public String showColaboracion(Model model){
-        model.addAttribute("colaboracionForm", new Contacto());
+        model.addAttribute("colaboracionForm", new Colaboracion());
         return "Colaboracion/colaboracionForm";
     }
 
@@ -85,42 +82,23 @@ public class MainController {
                                    @RequestParam("mensaje") String mensaje,
                                    Model model
                                    ) {
-        //String textMessage = "Nombre: " + nombre + "\nCorreo: " + correo + "\n\nMensaje:\n" + mensaje;
-        String textMessage = "¡Nos encanta que quieras colaborar con nosotros " + nombre + "!" + ", valoraremos la propuesta y pronto tendremos una respuesta.";
-        String asunto = "Gracias por la propuesta de colaboracion";
         
-        //boolean isSent = emailService.sendEmail(correo, asunto, rrss ,textMessage);
-        System.out.println();
+        
+        String enviado = colaboracionService.enviarEmail(correo,rrss,nombre, mensaje);
 
-        // if (isSent) {
-        //     model.addAttribute("mensaje", "Correo enviado.");
-        //     return "/Contacto/enviado"; 
+        if (!enviado.isEmpty()) {
+            model.addAttribute("mensaje", enviado);
+            return "/Colaboracion/enviado"; 
 
-        // } else {
-        //     model.addAttribute("mensaje", "Error al enviar el correo.");
-        //     return "/Contacto/enviado"; 
-
-        // }
-
-        //enviarCorreos();
-
-        model.addAttribute("mensaje", textMessage);
-        return "/Colaboracion/enviado";
-
-    }
-
-    public void enviarCorreos() {
-        String destinatario = "rubenmunozcumbreras@gmail.com";
-        String asunto = "Asunto del correo";
-        String cuerpoMensaje = "Este es el cuerpo del mensaje";
-        boolean resultadoEnvio = emailService.sendEmail(destinatario, asunto, cuerpoMensaje);
-    
-        if (resultadoEnvio) {
-            System.out.println("Correo enviado exitosamente.");
         } else {
-            System.out.println("Error al enviar el correo.");
+            model.addAttribute("mensaje", "Error al enviar el correo.");
+            return "/Colaboracion/enviado"; 
+
         }
+
+
     }
+
 
 
     @GetMapping("/autoRegistro")

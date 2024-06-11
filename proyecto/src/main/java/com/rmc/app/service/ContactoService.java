@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ContactoService {
     
-    public Boolean enviarEmail(String cuerpoMensaje, String email, String nombre, String mensaje);
+    public String enviarEmail(String email, String nombre, String mensaje);
 }
