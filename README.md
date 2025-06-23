@@ -35,7 +35,7 @@ La interfaz web utiliza Thymeleaf para el renderizado de páginas y JavaScript p
 
 1. **Clona el repositorio:**
    ```
-   git clone https://github.com/RubenMC96/fresCumbrera.git
+   git clone https://github.com/RubenMC96/FresCumbrera.git
    ```
 
 2. **Importa el proyecto en tu IDE favorito.**
