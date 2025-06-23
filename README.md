@@ -1,11 +1,11 @@
-# fresCumbrerasProyect
+# fresCumbrerasProject
 Proyecto fin de grado
 
-# fresCumbreraProyect
+# fresCumbreraProject
 
 ## Descripción
 
-**fresCumbreraProyect** es una aplicación web desarrollada en Java con Spring Boot y Thymeleaf, cuyo objetivo es acercar los frutos rojos directamente al público. La plataforma permite a los usuarios comprar productos frescos directamente al agricultor y suscribirse a un servicio mensual para recibir estos productos en casa.
+**FresCumbrera** es una aplicación web desarrollada en Java con Spring Boot y Thymeleaf, cuyo objetivo es acercar los frutos rojos directamente al público. La plataforma permite a los usuarios comprar productos frescos directamente al agricultor y suscribirse a un servicio mensual para recibir estos productos en casa.
 
 ## Características principales
 
