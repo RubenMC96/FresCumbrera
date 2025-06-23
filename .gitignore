@@ -40,6 +40,8 @@ BD/
 *.mv.db
 *.trace.db
 
+/nombreBD*
+
 # Archivos de configuración sensibles y logs
 *.env
 *.log
@@ -50,3 +52,5 @@ src/main/resources/application-prod.properties
 
 # Archivos temporales
 *.tmp
+
+
